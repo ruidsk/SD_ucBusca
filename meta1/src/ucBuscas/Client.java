@@ -67,7 +67,7 @@ public class Client extends UnicastRemoteObject{
                             aux = rmi_interface.regista(username, password);
                             System.out.println("o servidor respondeu : "+aux);
                         } catch (RemoteException |NullPointerException enp) {
-                            connect();
+                            rmi_interface=connect();
                             exception = true;
                         }
                     } while (exception);
