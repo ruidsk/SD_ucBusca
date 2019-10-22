@@ -44,11 +44,9 @@ public class Client extends UnicastRemoteObject{
                    do {
                         try {
                             exception = false;
-                            aux = rmi_interface.regista(username, password);
-                        } catch (RemoteException e) {
-                            rmi_interface = connect();
-                            exception = true;
-                        }catch (NullPointerException np){
+                            aux = rmi_interface.login(username, password);
+
+                        } catch (NullPointerException | RemoteException np){
                             rmi_interface = connect();
                             exception = true;
                         }

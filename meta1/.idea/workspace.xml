@@ -40,7 +40,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Client">
+  <component name="RunManager" selected="Application.Server">
     <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ucBuscas.Client" />
       <module name="meta1" />
@@ -109,8 +109,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Multicast_Server" />
-        <item itemvalue="Application.Server" />
         <item itemvalue="Application.Client" />
+        <item itemvalue="Application.Server" />
         <item itemvalue="Application.Server_B" />
         <item itemvalue="Application.LoginRMIServer" />
       </list>
@@ -130,7 +130,7 @@
       <workItem from="1571673031769" duration="3381000" />
       <workItem from="1571676451796" duration="8277000" />
       <workItem from="1571741037259" duration="804000" />
-      <workItem from="1571741999916" duration="14130000" />
+      <workItem from="1571741999916" duration="18637000" />
     </task>
     <servers />
   </component>
