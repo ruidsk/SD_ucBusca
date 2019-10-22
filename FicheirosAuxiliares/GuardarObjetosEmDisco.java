@@ -1,0 +1,6 @@
+public class MyClassA implements Serializable {
+    ...
+} // in some other code elsewhere...
+MyClassA tmp = new MyClassA(arg);
+FileOutputStream fos=new FileOutputStream(“some.obj”);
+ObjectOutputStream out = new ObjectOutputStream(fos);out.writeObject(tmp);out.flush();out.close();
