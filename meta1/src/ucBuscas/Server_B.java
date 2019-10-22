@@ -26,10 +26,15 @@ public class Server_B extends UnicastRemoteObject implements RMIInterface {
             Registry r = LocateRegistry.createRegistry(7001);
             r.rebind("ucBusca", h);
             System.out.println("ucBusca Server B ready.");
+
         } catch (RemoteException re) {
             System.out.println("Exception in SERVER_B.main: " + re);
-            System.out.println("Exception in SERVER_B.main: " + re);
+
         }
     }
 
+    @Override
+    public String regista(String username, String password) throws RemoteException {
+        return null;
+    }
 }

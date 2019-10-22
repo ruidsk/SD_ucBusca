@@ -23,7 +23,25 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
     public Server() throws RemoteException {
         super();
     }
-    public static String toMulticast(String tmpPacket /*HashMap<String, String> tmpHash*/) throws RemoteException {
+
+    public String regista(String username, String password) throws RemoteException {
+        String feedback = null;
+        HashMap<String, String> tmpInput = new HashMap<>();
+        String protocolo = "type | registar ; nome | " + username + " ; password | " + password;
+
+        tmpInput = split(protocolo);
+
+        feedback = toMulticast(tmpInput);
+
+        return feedback;
+    }
+    public static HashMap<String, String> split(String protocolo) {
+        HashMap<String, String> tmpHash = new HashMap<>();
+        Arrays.stream(protocolo.split(";")).map(s -> s.split("\\|")).forEach(i -> tmpHash.put(i[0].trim(), i[1].trim()));
+        return tmpHash;
+    }
+
+    public static String toMulticast(HashMap<String, String> tmpHash) throws RemoteException {
         int MAX_LEN = 1000;
         MulticastSocket socket = null;
         InetAddress group = null;
@@ -36,13 +54,13 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
             socket.joinGroup(group);
 
         } catch (IOException e) {
-            System.out.println("IOException em registarPessoas");
+            System.out.println("IOException " + e);
         }
 
-        String feedback = null;/*
+        String feedback = null;
         byte[] buf = tmpHash.toString().getBytes();
 
-        String tmpPacket = tmpHash.toString();*/
+        String tmpPacket = tmpHash.toString();
 
         // Envia pacote
         try {
@@ -52,11 +70,11 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
             String message = name + ": " + tmpPacket;
             byte[] m = message.getBytes();
             DatagramPacket datagram = new DatagramPacket(m, m.length, group, PORT);
-            //System.out.println(datagram);
+
             socket.send(datagram);
 
 
-            // Espera por resposta
+            //Espera por resposta
 
             byte[] buffer = new byte[1000];
             DatagramPacket reply = new
@@ -68,7 +86,7 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
             sReply = new
                     String(reply.getData(), 0, reply.getLength(), "UTF-8"); // echo
 
-            //sReply = sReply.split(":")[1];
+
             if (!sReply.startsWith(Server.name)) {
                 System.out.println("\t" + sReply);
             }
@@ -90,8 +108,8 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
             Registry r = LocateRegistry.createRegistry(7000);
             r.rebind("ucBusca", h);
             System.out.println("ucBusca Server A ready.\n");
-            String resposta = toMulticast("Servidor Multicast é uma grande network");
-            System.out.println(resposta+"\n");
+
+
         } catch (RemoteException re) {
             System.out.println("Exception in SERVER_A.main: " + re);
         }
