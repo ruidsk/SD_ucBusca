@@ -6,6 +6,8 @@ import java.rmi.server.UnicastRemoteObject;
 
 public class Client extends UnicastRemoteObject{
 
+    private RMIInterface rmi_interface = null;
+
     protected Client() throws RemoteException {
         super();
     }
@@ -39,17 +41,17 @@ public class Client extends UnicastRemoteObject{
                     String username = input.next();
                     System.out.println("Password: ");
                     String password = input.next();
-
-                   /* do {
+                   do {
                         try {
                             exception = false;
-                            aux = RMIInterface.login(username, password);
-                        } catch (RemoteException e) {
-                            connect();
+                            aux = rmi_interface.login(username, password);
+
+                        } catch (NullPointerException | RemoteException np){
+                            rmi_interface = connect();
                             exception = true;
                         }
                     } while (exception);
-*/
+
                     break;
 
                 case 2:
@@ -57,22 +59,19 @@ public class Client extends UnicastRemoteObject{
                     username = input.nextLine();
                     System.out.println("Password: ");
                     password = input.nextLine();
-                   /* System.out.println("Data de Nascimento (dd/mm/yy): ");
-                    String datanascimento = input.nextLine();
-                    System.out.println("Email: ");
-                    String email = input.nextLine();*//*
                     do {
                         try {
                             exception = false;
-                            aux = RMIInterface.regista(username, password);
-                        } catch (RemoteException e) {
-                            connect();
+                            aux = rmi_interface.regista(username, password);
+                            System.out.println("o servidor respondeu : "+aux);
+                        } catch (RemoteException |NullPointerException enp) {
+                            rmi_interface=connect();
                             exception = true;
                         }
                     } while (exception);
-*/
 
                     break;
+
 
 
                 case 0:
@@ -90,30 +89,33 @@ public class Client extends UnicastRemoteObject{
 
         return aux;
     }
-    public void connect() {
+    public RMIInterface connect() {
         int port = 7000;
-        boolean flag_exception = true;
+
         long time = System.currentTimeMillis() + 30000;
         RMIInterface h = null;
-        while (flag_exception && time < System.currentTimeMillis()) {
+       do {
 
             try {
-                flag_exception = false;
+
                 h = (RMIInterface) LocateRegistry.getRegistry(port).lookup("ucBusca");
 
+                return h;
             } catch (Exception e) {
-                flag_exception = true;
+                h= null;
                 if (port == 7000) {
                     port = 7001;
                 } else if (port == 7001) {
                     port = 7000;
                 }
+
             }
 
-        }
-        if(h == null){
-            System.out.println("CONNECTION TIMED OUT");
-        }
+        }while(h==null &&  System.currentTimeMillis() < time);
+
+        System.out.println("RMI CONNECTION TIMEOUT");
+        System.exit(0);
+        return null;
 
     }
 
@@ -125,7 +127,7 @@ public class Client extends UnicastRemoteObject{
 		*/
         Client client = new Client();
 
-        client.connect();
+        client.rmi_interface = client.connect();
         client.menu();
 
 

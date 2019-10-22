@@ -20,10 +20,13 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1SWIUJUW3QmYYVoyqYSjT0ZtQ3h" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -37,7 +40,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Client">
+  <component name="RunManager" selected="Application.Server">
     <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ucBuscas.Client" />
       <module name="meta1" />
@@ -51,8 +54,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LoginRMIClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="rmi.LoginRMIClient" />
+    <configuration name="LoginRMIServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="rmi.LoginRMIServer" />
       <module name="meta1" />
       <extension name="coverage">
         <pattern>
@@ -64,8 +67,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LoginRMIServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="rmi.LoginRMIServer" />
+    <configuration name="Multicast_Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ucBuscas.Multicast_Server" />
       <module name="meta1" />
       <extension name="coverage">
         <pattern>
@@ -105,11 +108,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Multicast_Server" />
         <item itemvalue="Application.Client" />
-        <item itemvalue="Application.Server_B" />
         <item itemvalue="Application.Server" />
+        <item itemvalue="Application.Server_B" />
         <item itemvalue="Application.LoginRMIServer" />
-        <item itemvalue="Application.LoginRMIClient" />
       </list>
     </recent_temporary>
   </component>
@@ -127,10 +130,22 @@
       <workItem from="1571673031769" duration="3381000" />
       <workItem from="1571676451796" duration="8277000" />
       <workItem from="1571741037259" duration="804000" />
+      <workItem from="1571741999916" duration="18637000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
