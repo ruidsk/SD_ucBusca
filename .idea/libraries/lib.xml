@@ -1,0 +1,36 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/meta1/lib/commons-io.jar!/" />
+      <root url="jar://$PROJECT_DIR$/meta1/lib/log4j.jar!/" />
+      <root url="jar://$PROJECT_DIR$/meta1/lib/policy.jar!/" />
+      <root url="jar://$PROJECT_DIR$/meta1/lib/woodstox-core-asl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/meta1/lib/ognl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/meta1/lib/gmbal-api-only.jar!/" />
+      <root url="jar://$PROJECT_DIR$/meta1/lib/jaxws-rt.jar!/" />
+      <root url="jar://$PROJECT_DIR$/meta1/lib/javax.annotation.jar!/" />
+      <root url="jar://$PROJECT_DIR$/meta1/lib/management-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/meta1/lib/streambuffer.jar!/" />
+      <root url="jar://$PROJECT_DIR$/meta1/lib/saaj-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/meta1/lib/struts2-core.jar!/" />
+      <root url="jar://$PROJECT_DIR$/meta1/lib/stax2-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/meta1/lib/stax-ex.jar!/" />
+      <root url="jar://$PROJECT_DIR$/meta1/lib/commons-lang.jar!/" />
+      <root url="jar://$PROJECT_DIR$/meta1/lib/mimepull.jar!/" />
+      <root url="jar://$PROJECT_DIR$/meta1/lib/freemarker.jar!/" />
+      <root url="jar://$PROJECT_DIR$/meta1/lib/jsr181-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/meta1/lib/commons-fileupload.jar!/" />
+      <root url="jar://$PROJECT_DIR$/meta1/lib/jaxws-tools.jar!/" />
+      <root url="jar://$PROJECT_DIR$/meta1/lib/jaxb-impl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/meta1/lib/jaxb-xjc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/meta1/lib/mail.jar!/" />
+      <root url="jar://$PROJECT_DIR$/meta1/lib/jaxws-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/meta1/lib/ha-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/meta1/lib/FastInoset.jar!/" />
+      <root url="jar://$PROJECT_DIR$/meta1/lib/jaxb-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/meta1/lib/saaj-impl.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

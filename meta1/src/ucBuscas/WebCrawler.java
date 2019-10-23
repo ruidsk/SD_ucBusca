@@ -10,6 +10,12 @@ public class WebCrawler {
     private Set<String> paginasVisitadas = new HashSet<String>();
     private List<String> paginas_A_Visitar = new LinkedList<String>();
 
+    /**
+     * aqui metemos o URL e a palavra, ainda tenho de fazer um construtor p receber so o url
+     * ou só a palavra
+     * @param url
+     * @param searchWord
+     */
 
     public void search(String url, String searchWord)
     {
@@ -26,8 +32,7 @@ public class WebCrawler {
             {
                 currentUrl = this.nextUrl();
             }
-            leg.crawl(currentUrl); // Lots of stuff happening here. Look at the crawl method in
-            // WebCrawler2
+            leg.crawl(currentUrl);
             boolean success = leg.searchForWord(searchWord);
             if(success)
             {
@@ -40,6 +45,10 @@ public class WebCrawler {
     }
 
 
+    /**
+     * função que vai percorrendo a lista de sites a usar e removendo-os da lista
+     * @return
+     */
     private String nextUrl()
     {
         String nextUrl;

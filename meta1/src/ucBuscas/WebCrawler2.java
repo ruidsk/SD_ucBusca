@@ -20,6 +20,11 @@ public class WebCrawler2 {
     private List<String> links = new LinkedList<String>();
     private Document htmlDocument;
 
+
+    /**
+     * Esta funçao foi dada pelo prof, o file json
+     * @param args
+     */
     public static void main(String[] args) {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 
@@ -60,6 +65,12 @@ public class WebCrawler2 {
             e.printStackTrace();
         }
     }
+    /**
+     * Faz request Http, ve a resposta, ve os links e pesquisa as palavras
+     *
+     * @param url
+     * @return False se não tiver conseguido
+     */
 
     public boolean crawl(String url)
     {
@@ -93,6 +104,13 @@ public class WebCrawler2 {
         }
     }
 
+    /**
+     *
+     * Depois do crawl ele pesquisa a palavra no documento html
+     *
+     * @param searchWord
+     */
+
     public boolean searchForWord(String searchWord)
     {
         // Defensive coding. This method should only be used after a successful crawl.
@@ -112,6 +130,10 @@ public class WebCrawler2 {
         return this.links;
     }
 
+    /**
+     * Este tambem foi dado pelo prof, é a continuação do incial
+     * @param text
+     */
     private static void countWords(String text) {
         Map<String, Integer> countMap = new TreeMap<>();
         BufferedReader reader = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(text.getBytes(StandardCharsets.UTF_8))));
