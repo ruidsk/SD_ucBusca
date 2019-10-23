@@ -53,12 +53,11 @@ public class Multicast_Server {
             ois.close();
             fis.close();
             //print All
-
-
         }catch(Exception e){}
 
         return tmp;
     }
+
     public static String login_user(HashMap<String,String> login){
         String feedback = null;
 
@@ -76,6 +75,50 @@ public class Multicast_Server {
 
         }
         feedback = "type | registo ; resultado | fail";
+
+        return feedback;
+    }
+
+    public static String give_admin(HashMap<String,String> tmp) throws IOException, ClassNotFoundException {
+
+
+        HashMap<String,Boolean> aux= admin_load();
+
+        String feedback = null;
+
+        if(aux.get(tmp.get("nome")).equals(true)){
+            feedback = "type | admin_give ; resultado | already ;";
+        }else if(aux.get(tmp.get("nome")).equals(false)){
+            aux.put(tmp.get("nome"),true);
+            feedback = "type | admin_give ; resultado | success ;";
+        }else
+            feedback = "type | admin_give ; resultado | fail ;";
+
+        File fileOne=new File("admins");
+        FileOutputStream fos=new FileOutputStream(fileOne);
+        ObjectOutputStream oos=new ObjectOutputStream(fos);
+        oos.writeObject(aux);
+        oos.flush();
+        oos.close();
+        fos.close();
+
+
+        return feedback;
+    }
+
+    public static String check_admin(HashMap<String , String> tmp){
+        HashMap<String,Boolean> aux= admin_load();
+
+        String feedback = null;
+
+        if(aux.get(tmp.get("nome")).equals(true)){
+            feedback = "type | admin_check ; resultado | success ;";
+        }else if(aux.get(tmp.get("nome")).equals(false)){
+            aux.put(tmp.get("nome"),true);
+            feedback = "type | admin_check ; resultado | fail ;";
+        }else
+            feedback = "type | admin_check ; resultado | notfound ;";
+
 
         return feedback;
     }
@@ -233,6 +276,10 @@ class WaitPackets implements Runnable {
                         Multicast_Server.sendFeedback(socket,group,Multicast_Server.register_user(hashPacket));
                     }else if(hashPacket.get("type").equals("login")){
                         Multicast_Server.sendFeedback(socket,group,Multicast_Server.login_user(hashPacket));
+                    }else if(hashPacket.get("type").equals("admin_give")){
+                        Multicast_Server.sendFeedback(socket,group,Multicast_Server.give_admin(hashPacket));
+                    }else if(hashPacket.get("type").equals("admin_check")){
+                        Multicast_Server.sendFeedback(socket,group,Multicast_Server.check_admin(hashPacket));
                     }
 
 

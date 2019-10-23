@@ -47,7 +47,9 @@ public class Client extends UnicastRemoteObject{
                             exception = false;
                             aux = rmi_interface.login(username, password);
 
-                            return aux;
+                            if(aux.equals("Servidor Multicast: type | login ; resultado | success ;")){
+                                menuPrincipal(username);
+                            }
                         } catch (NullPointerException | RemoteException np){
                             rmi_interface = connect();
                             exception = true;
@@ -92,16 +94,16 @@ public class Client extends UnicastRemoteObject{
         return aux;
     }
 
-    public String menuPrincipal(){
+    public String menuPrincipal(String username){
 
             int a=0;
             boolean exception;
             String aux = null;
             do {
-                System.out.println("-----MENU-----");
-                System.out.println("1. coias");
+                System.out.println("-----MENU----- user: "+username);
+                System.out.println("1. entrar em modo administrador");
                 System.out.println("2. coisas");
-                System.out.println("0. coisas");
+                System.out.println("0. logout");
                 System.out.println("Selecione o número que deseja: ");
                 Scanner input = new Scanner(System.in);
                 do {
@@ -117,24 +119,21 @@ public class Client extends UnicastRemoteObject{
                 switch(a){
 
                     case 1:
-                        /*System.out.println("Username: ");
-                        String username = input.next();
-                        System.out.println("Password: ");
-                        String password = input.next();
-                        do {
+
+                       do {
                             try {
                                 exception = false;
-                                aux = rmi_interface.login(username, password);
-                                if (aux.startsWith("type | registo ; resultado | success ;"){
-                                    menuPrincipal();
+                                aux = rmi_interface.check_admin(username);
+                                if (aux.contains("success")){
+                                    admin_menu(username);
                                 }
                             } catch (NullPointerException | RemoteException np){
                                 rmi_interface = connect();
                                 exception = true;
                             }
-                        } while (exception);
-                        */
-                        admin_menu();
+                       } while (exception);
+
+
                         break;
 
                     case 2:
@@ -158,7 +157,8 @@ public class Client extends UnicastRemoteObject{
 
 
                     case 0:
-                        System.out.println("Saindo...");
+                        System.out.println("Saindo para o menu login...");
+                        menu();
                         break;
 
                     default:
@@ -175,7 +175,7 @@ public class Client extends UnicastRemoteObject{
 
 
 
-    public void admin_menu(){
+    public void admin_menu(String username){
         int a=0;
         boolean exception;
         String aux = null;
@@ -199,23 +199,23 @@ public class Client extends UnicastRemoteObject{
             switch(a){
 
                 case 1:
-                        /*System.out.println("Username: ");
-                        String username = input.next();
-                        System.out.println("Password: ");
-                        String password = input.next();
+                        System.out.println("introduza o username do novo admin: ");
+                        String user = input.next();
+                        /*System.out.println("Password: ");
+                        String password = input.next();*/
                         do {
                             try {
                                 exception = false;
-                                aux = rmi_interface.login(username, password);
-                                if (aux.startsWith("type | registo ; resultado | success ;"){
-                                    menuPrincipal();
+                                aux = rmi_interface.give_admin(user);
+                                if (aux.startsWith("Servidor Multicast: type | admin_give ; resultado | success ;")){
+                                    System.out.println("administrador atribuido a :"+user);
                                 }
                             } catch (NullPointerException | RemoteException np){
                                 rmi_interface = connect();
                                 exception = true;
                             }
                         } while (exception);
-                        */
+
                     break;
 
                 case 2:
@@ -240,7 +240,7 @@ public class Client extends UnicastRemoteObject{
 
                 case 0:
                     System.out.println("Saindo...");
-                    menuPrincipal();
+                    menuPrincipal(username);
                     break;
 
                 default:
@@ -296,12 +296,9 @@ public class Client extends UnicastRemoteObject{
         Client client = new Client();
 
         client.rmi_interface = client.connect();
-        if(client.menu().equals("Servidor Multicast: type | login ; resultado | success ;")){
-            client.menuPrincipal();
-        }else{
-            System.out.println("login failed try again\n");
-            client.menu();
-        }
+
+        client.menu();
+
 
 
 
