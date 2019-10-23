@@ -67,7 +67,7 @@ public class Multicast_Server {
 
             if(check.get(login.get("nome")).equals(login.get("password"))){
                 //sucesso a dar login
-                feedback = "type | login ; resultado | success";
+                feedback = "type | login ; resultado | success ;";
                 return feedback;
             }
 
