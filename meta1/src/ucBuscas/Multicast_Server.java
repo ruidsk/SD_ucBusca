@@ -74,7 +74,7 @@ public class Multicast_Server {
 
 
         }
-        feedback = "type | registo ; resultado | fail";
+        feedback = "type | login ; resultado | fail";
 
         return feedback;
     }
@@ -124,7 +124,13 @@ public class Multicast_Server {
     }
 
 
+    public static String send_notification(String user){
+        String feedback = null;
 
+        feedback = "type | admin_notification ; admin | " + user;
+
+        return feedback;
+    }
 
     public static String register_user(HashMap<String,String> login) throws IOException, ClassNotFoundException {
 

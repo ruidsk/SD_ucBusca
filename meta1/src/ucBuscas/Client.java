@@ -1,10 +1,14 @@
 package ucBuscas;
-import java.util.*;
-import java.rmi.RemoteException;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.server.UnicastRemoteObject;
 
-public class Client extends UnicastRemoteObject{
+import java.io.*;
+import java.net.*;
+import java.rmi.*;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.rmi.server.*;
+import java.util.*;
+
+public class Client extends UnicastRemoteObject implements ClientInterface{
 
 
     private RMIInterface rmi_interface = null;
@@ -12,8 +16,10 @@ public class Client extends UnicastRemoteObject{
     protected Client() throws RemoteException {
         super();
     }
-
-    public String menu(){
+    public void notification(String note) throws RemoteException{
+        System.out.println(note);
+    }
+    public String menu(Client c){
 
         int a=0;
         boolean exception;
@@ -42,16 +48,20 @@ public class Client extends UnicastRemoteObject{
                     String username = input.next();
                     System.out.println("Password: ");
                     String password = input.next();
+
                    do {
                         try {
                             exception = false;
                             aux = rmi_interface.login(username, password);
 
                             if(aux.equals("Servidor Multicast: type | login ; resultado | success ;")){
-                                menuPrincipal(username);
+
+                                rmi_interface.subscribe(username,(ClientInterface) c);
+                                menuPrincipal(username,c);
                             }
                         } catch (NullPointerException | RemoteException np){
                             rmi_interface = connect();
+
                             exception = true;
                         }
                     } while (exception);
@@ -94,7 +104,7 @@ public class Client extends UnicastRemoteObject{
         return aux;
     }
 
-    public String menuPrincipal(String username){
+    public String menuPrincipal(String username,Client c){
 
             int a=0;
             boolean exception;
@@ -125,7 +135,7 @@ public class Client extends UnicastRemoteObject{
                                 exception = false;
                                 aux = rmi_interface.check_admin(username);
                                 if (aux.contains("success")){
-                                    admin_menu(username);
+                                    admin_menu(username, c);
                                 }
                             } catch (NullPointerException | RemoteException np){
                                 rmi_interface = connect();
@@ -158,7 +168,7 @@ public class Client extends UnicastRemoteObject{
 
                     case 0:
                         System.out.println("Saindo para o menu login...");
-                        menu();
+                        menu(c);
                         break;
 
                     default:
@@ -175,7 +185,7 @@ public class Client extends UnicastRemoteObject{
 
 
 
-    public void admin_menu(String username){
+    public void admin_menu(String username, Client c){
         int a=0;
         boolean exception;
         String aux = null;
@@ -240,7 +250,7 @@ public class Client extends UnicastRemoteObject{
 
                 case 0:
                     System.out.println("Saindo...");
-                    menuPrincipal(username);
+                    menuPrincipal(username, c);
                     break;
 
                 default:
@@ -261,7 +271,10 @@ public class Client extends UnicastRemoteObject{
 
         long time = System.currentTimeMillis() + 30000;
         RMIInterface h = null;
-       do {
+
+
+
+        do {
 
             try {
 
@@ -289,15 +302,14 @@ public class Client extends UnicastRemoteObject{
 
     public static void main(String args[]) throws RemoteException {
 
-		/* This might be necessary if you ever need to download classes:
-		System.getProperties().put("java.security.policy", "policy.all");
-		System.setSecurityManager(new RMISecurityManager());
-		*/
+		/* This might be necessary if you ever need to download classes:*/
+
+
         Client client = new Client();
 
         client.rmi_interface = client.connect();
 
-        client.menu();
+        client.menu(client);
 
 
 

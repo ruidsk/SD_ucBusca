@@ -17,11 +17,20 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
     final static String INET_ADDR = "224.3.2.1";
     final static int PORT = 4321;
     static String name = "RMI Server";
+    static HashMap<String,ClientInterface> online = new HashMap<>();
 
     private static final long serialVersionUID = 1L;
 
     public Server() throws RemoteException {
         super();
+    }
+
+    public void subscribe(String username, ClientInterface c) throws RemoteException{
+        online.put(username,c);
+
+    }
+    public void disconnect(String username){
+        online.remove(username);
     }
 
     public String regista(String username, String password) throws RemoteException {
@@ -43,11 +52,15 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
 
     public String give_admin(String username) throws RemoteException {
         String feedback = null;
+
         HashMap<String, String> tmpInput = new HashMap<>();
         String protocolo = "type | admin_give ; nome | " + username;
         tmpInput = split(protocolo);
         feedback = toMulticast(tmpInput);
 
+        for (Map.Entry<String,ClientInterface> x : online.entrySet()) {
+            x.getValue().notification(username+" é o novo admin");
+        }
         return feedback;
     }
 
@@ -131,11 +144,14 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
     // =========================================================
     public static void main(String args[]) {
 
+
+
         try {
             Server h = new Server();
             Registry r = LocateRegistry.createRegistry(7000);
             r.rebind("ucBusca", h);
             System.out.println("ucBusca Server A ready.\n");
+
 
 
         } catch (RemoteException re) {
