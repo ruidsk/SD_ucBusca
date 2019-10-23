@@ -98,7 +98,7 @@ public class Client extends UnicastRemoteObject{
             boolean exception;
             String aux = null;
             do {
-
+                System.out.println("-----MENU-----");
                 System.out.println("1. coias");
                 System.out.println("2. coisas");
                 System.out.println("0. coisas");
@@ -134,6 +134,7 @@ public class Client extends UnicastRemoteObject{
                             }
                         } while (exception);
                         */
+                        admin_menu();
                         break;
 
                     case 2:
@@ -174,7 +175,85 @@ public class Client extends UnicastRemoteObject{
 
 
 
+    public void admin_menu(){
+        int a=0;
+        boolean exception;
+        String aux = null;
+        do {
+            System.out.println("-----ADMIN MENU------");
+            System.out.println("1. adicionar novo admin");
+            System.out.println("2. coisas");
+            System.out.println("0. menu principal");
+            System.out.println("Selecione o número que deseja: ");
+            Scanner input = new Scanner(System.in);
+            do {
+                exception = false;
+                try {
+                    a = Integer.parseInt(input.nextLine());
+                } catch (NumberFormatException e) {
+                    exception = true;
+                    System.out.println("Número inválido. Tente outra vez!");
+                }
+            } while (exception);
 
+            switch(a){
+
+                case 1:
+                        /*System.out.println("Username: ");
+                        String username = input.next();
+                        System.out.println("Password: ");
+                        String password = input.next();
+                        do {
+                            try {
+                                exception = false;
+                                aux = rmi_interface.login(username, password);
+                                if (aux.startsWith("type | registo ; resultado | success ;"){
+                                    menuPrincipal();
+                                }
+                            } catch (NullPointerException | RemoteException np){
+                                rmi_interface = connect();
+                                exception = true;
+                            }
+                        } while (exception);
+                        */
+                    break;
+
+                case 2:
+                       /* System.out.println("Username: ");
+                        username = input.nextLine();
+                        System.out.println("Password: ");
+                        password = input.nextLine();
+                        do {
+                            try {
+                                exception = false;
+                                aux = rmi_interface.regista(username, password);
+                                System.out.println("o servidor respondeu : "+aux);
+                            } catch (RemoteException |NullPointerException enp) {
+                                rmi_interface=connect();
+                                exception = true;
+                            }
+                        } while (exception);*/
+
+                    break;
+
+
+
+                case 0:
+                    System.out.println("Saindo...");
+                    menuPrincipal();
+                    break;
+
+                default:
+                    System.out.println("Escolha errada!");
+
+            }
+
+        }while(a!=0);
+
+
+
+       // return aux;
+    }
 
 
     public RMIInterface connect() {
