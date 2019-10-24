@@ -12,4 +12,6 @@ public interface RMIInterface extends Remote {
     public void subscribe(String username, ClientInterface client) throws RemoteException;
 
     public void disconnect(String username) throws RemoteException ;
+
+    public String addUrl(String url) throws RemoteException;
 }

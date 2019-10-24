@@ -247,6 +247,24 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
 
                     break;
 
+                case 3:
+                    System.out.println("Introduza o URL ");
+                    String url = input.next();
+                    do {
+                        try {
+                            exception = false;
+                            aux = rmi_interface.addUrl(url);
+                            if (aux.startsWith("Servidor Multicast: type | addUrl ; resultado | success ;")){
+                                System.out.println(url+ " adicionado com sucesso");
+                            }
+                        } catch (NullPointerException | RemoteException np){
+                            rmi_interface = connect();
+                            exception = true;
+                        }
+                    } while (exception);
+
+                    break;
+
 
 
                 case 0:

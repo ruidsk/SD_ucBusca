@@ -20,7 +20,7 @@ public class WebCrawler {
     private static List<String> links2 = new LinkedList<String>();
 
 
-    public static void main(String args) {
+    public static boolean main(String args) {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         Document doc =null;
 
@@ -39,7 +39,8 @@ public class WebCrawler {
                 doc = Jsoup.connect(ws).get();  // Documentation: https://jsoup.org/
             }
             catch (MalformedURLException e){
-                System.out.println("**Failure** Retrieved something other than HTML");
+                return false;
+                //System.out.println("**Failure** Retrieved something other than HTML");
             }
 
             // Title
@@ -67,8 +68,10 @@ public class WebCrawler {
             countWords(text);
         } catch (IOException e) {
             //e.printStackTrace();
-            System.out.println("**Failure** Retrieving links!");
+            return false;
+            //System.out.println("**Failure** Retrieving links!");
         }
+        return true;
     }
 
     private static void countWords(String text) {

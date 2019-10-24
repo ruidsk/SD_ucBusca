@@ -207,7 +207,16 @@ public class Multicast_Server {
         super();
     }
 
+    public static String addUrl(HashMap<String, String> tmp) {
 
+        String feedback = null;
+
+        if(WebCrawler.main(tmp.get("nome")))
+            feedback = "type | addUrl ; resultado | success ;";
+        else
+            feedback = "type | addUrl ; resultado | error ;";
+        return feedback;
+    }
 
     public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException {
 
@@ -235,6 +244,7 @@ public class Multicast_Server {
             System.out.println("Excepcao (IO): " + e);
         }
     }
+
 
 }
 
@@ -288,6 +298,9 @@ class WaitPackets implements Runnable {
 
                     }else if(hashPacket.get("type").equals("admin_check")){
                         Multicast_Server.sendFeedback(socket,group,Multicast_Server.check_admin(hashPacket));
+
+                    }else if(hashPacket.get("type").equals("addUrl")){
+                    Multicast_Server.sendFeedback(socket,group,Multicast_Server.addUrl(hashPacket));
 
                     }
 
