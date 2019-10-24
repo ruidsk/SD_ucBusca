@@ -66,7 +66,7 @@ public class Multicast_Server {
 
             if(check.get(login.get("nome")).equals(login.get("password"))){
                 //sucesso a dar login
-                feedback = "type | login ; resultado | success ;";
+                feedback = "type | logged ; resultado | success ;";
                 return feedback;
             }
 
@@ -74,7 +74,7 @@ public class Multicast_Server {
 
 
         }
-        feedback = "type | login ; resultado | fail";
+        feedback = "type | logged ; resultado | fail";
 
         return feedback;
     }
@@ -87,12 +87,12 @@ public class Multicast_Server {
         String feedback = null;
 
         if(aux.get(tmp.get("nome")).equals(true)){
-            feedback = "type | admin_give ; resultado | already ;";
+            feedback = "type | give ; resultado | already ;";
         }else if(aux.get(tmp.get("nome")).equals(false)){
             aux.put(tmp.get("nome"),true);
-            feedback = "type | admin_give ; resultado | success ;";
+            feedback = "type | give ; resultado | success ;";
         }else
-            feedback = "type | admin_give ; resultado | fail ;";
+            feedback = "type | give ; resultado | fail ;";
 
         File fileOne=new File("admins");
         FileOutputStream fos=new FileOutputStream(fileOne);
@@ -112,12 +112,12 @@ public class Multicast_Server {
         String feedback = null;
 
         if(aux.get(tmp.get("nome")).equals(true)){
-            feedback = "type | admin_check ; resultado | success ;";
+            feedback = "type | check ; resultado | success ;";
         }else if(aux.get(tmp.get("nome")).equals(false)){
             aux.put(tmp.get("nome"),true);
-            feedback = "type | admin_check ; resultado | fail ;";
+            feedback = "type | check ; resultado | fail ;";
         }else
-            feedback = "type | admin_check ; resultado | notfound ;";
+            feedback = "type | check ; resultado | notfound ;";
 
 
         return feedback;
@@ -164,7 +164,7 @@ public class Multicast_Server {
             oos.close();
             fos.close();
 
-            feedback = "type | registo ; resultado | success ; admin | "+flag;
+            feedback = "type | registado ; resultado | success ; admin | "+flag;
         }catch(Exception e){
 
             feedback = "fail";
