@@ -15,28 +15,30 @@ import java.util.*;
 
 public class WebCrawler {
     private static final int N_paginas_A_visitar = 2;
-    private Set<String> paginasVisitadas = new HashSet<String>();
-    private List<String> paginas_A_Visitar = new LinkedList<String>();
+    private static Set<String> paginasVisitadas = new HashSet<String>();
+    private static List<String> paginas_A_Visitar = new LinkedList<String>();
     private static List<String> links2 = new LinkedList<String>();
 
 
-    public static boolean main(String args) {
+    public static boolean main(String ws) {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         Document doc =null;
 
 
         // Read website
-        System.out.print("Website: ");
+        // System.out.print("Website: ");
         try {
 
-            String ws = bf.readLine();
+            //String ws = bf.readLine();
             if (! ws.startsWith("http://") && ! ws.startsWith("https://"))
                 ws = "http://".concat(ws);
 
 
             try {
                 // Attempt to connect and get the document
+                System.out.println("imprime");
                 doc = Jsoup.connect(ws).get();  // Documentation: https://jsoup.org/
+                System.out.println("nao imprime");
             }
             catch (MalformedURLException e){
                 return false;
@@ -117,32 +119,33 @@ public class WebCrawler {
         }
     }
 
-    public List<String> getLinks() {
+    public static List<String> getLinks() {
 
-        return this.links2;
+        return links2;
     }
 
 
-    public void indexaRecursiva(String url){
-        System.out.print("Website: ");
+    public static boolean indexaRecursiva(String url){
+
         String ws =url ;
         if (! ws.startsWith("http://") && ! ws.startsWith("https://"))
             ws = "http://".concat(ws);
 
-        while(this.paginasVisitadas.size() < N_paginas_A_visitar) {
+        while(paginasVisitadas.size() < N_paginas_A_visitar) {
             String currentUrl;
-            if(this.paginas_A_Visitar.isEmpty()) {
+            if(paginas_A_Visitar.isEmpty()) {
                 currentUrl = ws;
-                this.paginasVisitadas.add(ws);
+                paginasVisitadas.add(ws);
             }
             else {
-                currentUrl = this.nextUrl();
+                currentUrl = nextUrl();
             }
             main(currentUrl);
-            this.paginas_A_Visitar.addAll(this.getLinks());
+            paginas_A_Visitar.addAll(getLinks());
         }
-        System.out.println("\n**Done** Visited " + this.paginasVisitadas.size() + " web page(s)");
+        System.out.println("\n**Done** Visited " + paginasVisitadas.size() + " web page(s)");
 
+        return true;
     }
 
 
@@ -150,12 +153,12 @@ public class WebCrawler {
      * função que vai percorrendo a lista de sites a usar e removendo-os da lista
      * @return
      */
-    private String nextUrl() {
+    private static String nextUrl() {
         String nextUrl;
         do {
-            nextUrl = this.paginas_A_Visitar.remove(0);
-        } while(this.paginasVisitadas.contains(nextUrl));
-        this.paginasVisitadas.add(nextUrl);
+            nextUrl = paginas_A_Visitar.remove(0);
+        } while(paginasVisitadas.contains(nextUrl));
+        paginasVisitadas.add(nextUrl);
         return nextUrl;
     }
 }

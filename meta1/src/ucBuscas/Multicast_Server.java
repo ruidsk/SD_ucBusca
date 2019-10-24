@@ -163,8 +163,12 @@ public class Multicast_Server {
             oos.flush();
             oos.close();
             fos.close();
+            if(flag){
+                feedback = "type | registar ; resultado | success ; admin | true";
+            }else{
+                feedback = "type | registar ; resultado | success ; admin | false";
 
-            feedback = "type | registado ; resultado | success ; admin | "+flag;
+            }
         }catch(Exception e){
 
             feedback = "fail";
@@ -211,7 +215,7 @@ public class Multicast_Server {
 
         String feedback = null;
 
-        if(WebCrawler.main(tmp.get("nome")))
+        if(WebCrawler.indexaRecursiva(tmp.get("nome")))
             feedback = "type | addUrl ; resultado | success ;";
         else
             feedback = "type | addUrl ; resultado | error ;";
