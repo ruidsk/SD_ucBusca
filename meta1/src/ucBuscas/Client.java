@@ -54,7 +54,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
                             exception = false;
                             aux = rmi_interface.login(username, password);
 
-                            if(aux.equals("Servidor Multicast: type | logged; resultado | success ;")){
+                            if(aux.equals("Servidor Multicast: type | logged ; resultado | success ;")){
 
                                 rmi_interface.subscribe(username,(ClientInterface) c);
                                 menuPrincipal(username,c);
@@ -194,6 +194,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
             System.out.println("-----ADMIN MENU------");
             System.out.println("1. adicionar novo admin");
             System.out.println("2. coisas");
+            System.out.println("3. Adicionar url");
             System.out.println("0. menu principal");
             System.out.println("Selecione o número que deseja: ");
             Scanner input = new Scanner(System.in);
