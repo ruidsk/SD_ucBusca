@@ -54,7 +54,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
                             exception = false;
                             aux = rmi_interface.login(username, password);
 
-                            if(aux.equals("Servidor Multicast: type | login ; resultado | success ;")){
+                            if(aux.equals("Servidor Multicast: type | logged; resultado | success ;")){
 
                                 rmi_interface.subscribe(username,(ClientInterface) c);
                                 menuPrincipal(username,c);
@@ -218,7 +218,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
                             try {
                                 exception = false;
                                 aux = rmi_interface.give_admin(user);
-                                if (aux.startsWith("Servidor Multicast: type | admin_give ; resultado | success ;")){
+                                if (aux.startsWith("Servidor Multicast: type | give ; resultado | success ;")){
                                     System.out.println("administrador atribuido a :"+user);
                                 }
                             } catch (NullPointerException | RemoteException np){
