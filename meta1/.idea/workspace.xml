@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6e1188d7-9534-4bf1-a54d-9312ba68b991" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/jsoup-1.12.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ucBuscas/ClientInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ucBuscas/policy.all" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/meta1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/meta1.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/meta1/ucBuscas/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/meta1/ucBuscas/Client.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/meta1/ucBuscas/Multicast_Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/meta1/ucBuscas/Multicast_Server.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/meta1/ucBuscas/RMIInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/meta1/ucBuscas/RMIInterface.class" afterDir="false" />
@@ -77,7 +72,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Multicast_Server">
+  <component name="RunManager" selected="Application.Client">
     <configuration name="Client" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ucBuscas.Client" />
       <module name="meta1" />
@@ -168,6 +163,7 @@
       <workItem from="1571741037259" duration="804000" />
       <workItem from="1571741999916" duration="19296000" />
       <workItem from="1571821822650" duration="22092000" />
+      <workItem from="1571909751274" duration="4376000" />
     </task>
     <servers />
   </component>

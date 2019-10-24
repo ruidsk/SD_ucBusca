@@ -29,7 +29,7 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
         online.put(username,c);
 
     }
-    public void disconnect(String username){
+    public void disconnect(String username) throws RemoteException{
         online.remove(username);
     }
 

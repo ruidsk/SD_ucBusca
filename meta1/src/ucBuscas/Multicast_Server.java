@@ -219,18 +219,17 @@ public class Multicast_Server {
         try {
             InetAddress group = InetAddress.getByName(INET_ADDR);
             socket = new MulticastSocket(PORT);
-
-            socket.setTimeToLive(1); //Para subnet definir a 1
             socket.joinGroup(group);
+            socket.setTimeToLive(1);
 
-            Thread tread = new Thread(new
-                    WaitPackets(socket, group, PORT));
+
+            Thread t = new Thread(new WaitPackets(socket, group, PORT));
 
             // Spawn a thread for reading messages
-            tread.start();
+            t.start();
 
             // sent to the current group
-            System.out.println("\t-> Multicast Server: ON\n");
+            System.out.println("\n\t Multicast Server: ON\n\n");
 
         } catch (IOException e) {
             System.out.println("Excepcao (IO): " + e);
@@ -280,12 +279,16 @@ class WaitPackets implements Runnable {
 
                     if (hashPacket.get("type").equals("registar")) {
                         Multicast_Server.sendFeedback(socket,group,Multicast_Server.register_user(hashPacket));
+
                     }else if(hashPacket.get("type").equals("login")){
                         Multicast_Server.sendFeedback(socket,group,Multicast_Server.login_user(hashPacket));
+
                     }else if(hashPacket.get("type").equals("admin_give")){
                         Multicast_Server.sendFeedback(socket,group,Multicast_Server.give_admin(hashPacket));
+
                     }else if(hashPacket.get("type").equals("admin_check")){
                         Multicast_Server.sendFeedback(socket,group,Multicast_Server.check_admin(hashPacket));
+
                     }
 
 

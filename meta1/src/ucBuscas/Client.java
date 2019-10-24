@@ -104,7 +104,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
         return aux;
     }
 
-    public String menuPrincipal(String username,Client c){
+    public String menuPrincipal(String username,Client c) throws RemoteException {
 
             int a=0;
             boolean exception;
@@ -168,6 +168,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
 
                     case 0:
                         System.out.println("Saindo para o menu login...");
+                        rmi_interface.disconnect(username);
                         menu(c);
                         break;
 
@@ -185,7 +186,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
 
 
 
-    public void admin_menu(String username, Client c){
+    public void admin_menu(String username, Client c) throws RemoteException {
         int a=0;
         boolean exception;
         String aux = null;
