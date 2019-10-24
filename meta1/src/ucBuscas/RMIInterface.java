@@ -8,4 +8,8 @@ public interface RMIInterface extends Remote {
     String give_admin(String username) throws RemoteException;
 
     String check_admin(String username) throws RemoteException;
+
+    public void subscribe(String username, ClientInterface client) throws RemoteException;
+
+    public void disconnect(String username) throws RemoteException ;
 }
