@@ -167,7 +167,8 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
 
                     case 3:
                         System.out.println("Introduza as palavras, separadas por espaços.");
-                        String text = input.next();
+                        String text = input.nextLine();
+
                         String tmp;
                         tmp = rmi_interface.checkWords(text);
                         if(tmp.isEmpty()){

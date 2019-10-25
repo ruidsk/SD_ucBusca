@@ -172,9 +172,10 @@ public class WebCrawler {
     }
 
     public static String checkWords(String palavras) {
+        System.out.println(palavras);
         String[] words = palavras.split("[ ,;:.?!(){}\\[\\]<>']+");
         String urls = " ";
-        Iterator it = map.entrySet().iterator();
+        //Iterator it = map.entrySet().iterator();
         for (String word : words) {
             urls.concat(word+" ");
         }
