@@ -173,15 +173,22 @@ public class WebCrawler {
 
     public static String checkWords(String palavras) {
         String[] words = palavras.split("[ ,;:.?!(){}\\[\\]<>']+");
-        List<String> urls = new ArrayList<String>();
+        String urls = new String();
+        Iterator it = map.entrySet().iterator();
+        for (String word : words) {
+            urls.concat(word);
+        }
 
-        urls.add(map.get(urls).toString());
+        return urls;
 
+//        while (it.hasNext()){
+//            HashMap.Entry key = (HashMap.Entry) it.next();
+//            urls.add(String.valueOf(key.getValue()));
+//        }
 
 //        for (String word : words) {
 //            if(map.containsKey(word)){
-//                Iterator it = map.get(word).iterator();
-//                String[] temp = map.get(word).iterator();
+//                Iterator it2 = map.get(word).iterator();
 //                while (it.hasNext()) { //for (para percorrer a lista dos sites da key)
 //                    for para percorrer a lista "urls"
 //                    if (site da key==site da lista de urls)
@@ -190,9 +197,24 @@ public class WebCrawler {
 //                }
 //            }
 //        }
-//        return null;
 
-        return urls.toString();
+
+
+    }
+
+    public static String[] obtemUrls(String key){
+        String[] aux = new String[0],aux2 = new String[0];
+        Iterator it = map.entrySet().iterator();
+        while (it.hasNext()){
+            HashMap.Entry word = (HashMap.Entry) it.next();
+            aux= word.getValue().toString().split(", ");
+            for(int j = 0; j < aux.length; j++) {
+                aux2[j] = Arrays.toString(new String[]{aux[j]});
+                aux2[j] = aux2[j].replace("[", "");
+                aux2[j] = aux2[j].replace("]", "");
+            }
+        }
+        return aux;
     }
 }
 
