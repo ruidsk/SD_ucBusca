@@ -139,23 +139,21 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
             //Espera por resposta
 
             byte[] buffer = new byte[1000];
-            DatagramPacket reply = new
-                    DatagramPacket(buffer, buffer.length, datagram.getAddress(), datagram.getPort());
+            DatagramPacket reply = new DatagramPacket(buffer, buffer.length, datagram.getAddress(), datagram.getPort());
 
 
             socket.receive(reply); //echo
             socket.receive(reply);
-            sReply = new
-                    String(reply.getData(), 0, reply.getLength(), "UTF-8"); // echo
+            sReply = new String(reply.getData(), 0, reply.getLength(), "UTF-8"); // echo
 
 
             if (!sReply.startsWith(Server.name)) {
                 System.out.println("\t" + sReply);
             }
-
+            socket.close();
             feedback = sReply;
         } catch (IOException e) {
-            System.out.println("Excepcao a ler/escrever do multicast (IO): " + e);
+            System.out.println("Excepcao a ler/escrever do multicast " + e);
         }
         return feedback;
     }

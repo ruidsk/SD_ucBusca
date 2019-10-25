@@ -72,7 +72,6 @@ public class Multicast_Server {
 
         }catch(Exception e){
 
-
         }
         feedback = "type | logged ; resultado | fail";
 
@@ -290,6 +289,7 @@ class WaitPackets implements Runnable {
             {
 
                 socket.receive(datagram);
+
 
                 message = new String(buffer,0,datagram.getLength(),"UTF-8");
 
