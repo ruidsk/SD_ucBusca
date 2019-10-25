@@ -14,4 +14,6 @@ public interface RMIInterface extends Remote {
     public void disconnect(String username) throws RemoteException ;
 
     public String addUrl(String url) throws RemoteException;
+
+    public String checkWords(String text) throws RemoteException;
 }

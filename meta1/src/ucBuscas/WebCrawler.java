@@ -18,6 +18,7 @@ public class WebCrawler {
     private static Set<String> paginasVisitadas = new HashSet<String>();
     private static List<String> paginas_A_Visitar = new LinkedList<String>();
     private static List<String> links2 = new LinkedList<String>();
+    private static HashMap<String, HashSet<String>> map = new HashMap<String, HashSet<String>>();
 
 
     public static boolean main(String ws) {
@@ -60,6 +61,7 @@ public class WebCrawler {
                 if (!link.attr("href").startsWith("http")) {
                     continue;
                 }
+                //map.put(ws,link.text);
                 links2.add(link.absUrl("href"));
                 System.out.println("Link: " + link.attr("href"));
                 System.out.println("Text: " + link.text() + "\n");
@@ -67,7 +69,7 @@ public class WebCrawler {
 
             // Get website text and count words
             String text = doc.text(); // We can use doc.body().text() if we only want to get text from <body></body>
-            countWords(text);
+            countWords(text,ws);
         } catch (IOException e) {
             //e.printStackTrace();
             return false;
@@ -76,7 +78,7 @@ public class WebCrawler {
         return true;
     }
 
-    private static void countWords(String text) {
+    private static void countWords(String text, String url) {
         Map<String, Integer> countMap = new TreeMap<>();
         BufferedReader reader = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(text.getBytes(StandardCharsets.UTF_8))));
         String line;
@@ -97,6 +99,13 @@ public class WebCrawler {
                     }
                     else {
                         countMap.put(word, countMap.get(word) + 1);
+                    }
+                    if(map.containsKey(word)){
+                        map.get(word).add(url);}
+                    else{
+                        HashSet<String> aux = new HashSet<>();
+                        aux.add(url);
+                        map.put(word,aux);
                     }
                 }
             } catch (IOException e) {
@@ -160,6 +169,30 @@ public class WebCrawler {
         } while(paginasVisitadas.contains(nextUrl));
         paginasVisitadas.add(nextUrl);
         return nextUrl;
+    }
+
+    public static String checkWords(String palavras) {
+        String[] words = palavras.split("[ ,;:.?!(){}\\[\\]<>']+");
+        List<String> urls = new ArrayList<String>();
+
+        urls.add(map.get(urls).toString());
+
+
+//        for (String word : words) {
+//            if(map.containsKey(word)){
+//                Iterator it = map.get(word).iterator();
+//                String[] temp = map.get(word).iterator();
+//                while (it.hasNext()) { //for (para percorrer a lista dos sites da key)
+//                    for para percorrer a lista "urls"
+//                    if (site da key==site da lista de urls)
+//                    continue; //sai p frente
+//                    urls.remove(site);
+//                }
+//            }
+//        }
+//        return null;
+
+        return urls.toString();
     }
 }
 
