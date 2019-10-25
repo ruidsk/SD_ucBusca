@@ -221,6 +221,15 @@ public class Multicast_Server {
         return feedback;
     }
 
+    public static String checkWords(HashMap<String, String> hashPacket) {
+        String feedback = null;
+
+        String tmp = WebCrawler.checkWords(hashPacket.get("palavras"));
+
+        feedback = "type | addUrl ; resultado | ;"+tmp;
+        return feedback;
+    }
+
     public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException {
 
         Multicast_Server server_multicast = new Multicast_Server();
@@ -247,6 +256,7 @@ public class Multicast_Server {
             System.out.println("Excepcao (IO): " + e);
         }
     }
+
 
 
 }
@@ -302,6 +312,9 @@ class WaitPackets implements Runnable {
 
                     }else if(hashPacket.get("type").equals("admin_check")){
                         Multicast_Server.sendFeedback(socket,group,Multicast_Server.check_admin(hashPacket));
+
+                    }else if(hashPacket.get("type").equals("checkWords")){
+                        Multicast_Server.sendFeedback(socket,group,Multicast_Server.checkWords(hashPacket));
 
                     }else if(hashPacket.get("type").equals("addUrl")){
                     Multicast_Server.sendFeedback(socket,group,Multicast_Server.addUrl(hashPacket));
