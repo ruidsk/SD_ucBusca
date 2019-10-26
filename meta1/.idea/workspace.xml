@@ -3,17 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6e1188d7-9534-4bf1-a54d-9312ba68b991" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/meta1/ucBuscas/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/meta1/ucBuscas/Client.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/meta1/ucBuscas/Multicast_Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/meta1/ucBuscas/Multicast_Server.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/meta1/ucBuscas/RMIInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/meta1/ucBuscas/RMIInterface.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/meta1/ucBuscas/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/meta1/ucBuscas/Server.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/meta1/ucBuscas/Server_B.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/meta1/ucBuscas/Server_B.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/meta1/ucBuscas/WaitPackets.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/meta1/ucBuscas/WaitPackets.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/meta1/ucBuscas/WebCrawler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/meta1/ucBuscas/WebCrawler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ucBuscas/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ucBuscas/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ucBuscas/Multicast_Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ucBuscas/Multicast_Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ucBuscas/RMIInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ucBuscas/RMIInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ucBuscas/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ucBuscas/Server.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -168,7 +158,7 @@
       <workItem from="1571922745470" duration="1145000" />
       <workItem from="1571923916378" duration="1919000" />
       <workItem from="1571926117533" duration="3212000" />
-      <workItem from="1571939428530" duration="21735000" />
+      <workItem from="1571939428530" duration="22176000" />
     </task>
     <servers />
   </component>

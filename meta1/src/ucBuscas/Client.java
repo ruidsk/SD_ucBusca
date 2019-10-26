@@ -14,21 +14,6 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
         super();
     }
 
-    public static void main(String args[]) throws RemoteException {
-
-        /* This might be necessary if you ever need to download classes:*/
-
-
-        Client client = new Client();
-
-        client.rmi_interface = client.connect();
-
-        client.menu(client);
-
-
-        //System.out.println("Exception in main: " + e);
-        //e.printStackTrace();
-    }
 
     public void notification(String note) throws RemoteException {
         System.out.println(note);
