@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.net.MalformedURLException;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
@@ -23,7 +24,7 @@ public class WebCrawler {
 
     public static boolean main(String ws) {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-        Document doc =null;
+        Document doc = null;
 
 
         // Read website
@@ -31,7 +32,7 @@ public class WebCrawler {
         try {
 
             //String ws = bf.readLine();
-            if (! ws.startsWith("http://") && ! ws.startsWith("https://"))
+            if (!ws.startsWith("http://") && !ws.startsWith("https://"))
                 ws = "http://".concat(ws);
 
 
@@ -40,8 +41,7 @@ public class WebCrawler {
                 System.out.println("imprime");
                 doc = Jsoup.connect(ws).get();  // Documentation: https://jsoup.org/
                 System.out.println("nao imprime");
-            }
-            catch (MalformedURLException e){
+            } catch (MalformedURLException e) {
                 return false;
                 //System.out.println("**Failure** Retrieved something other than HTML");
             }
@@ -61,7 +61,7 @@ public class WebCrawler {
                 if (!link.attr("href").startsWith("http")) {
                     continue;
                 }
-                //map.put(ws,link.text);
+                //map.put(ws,link.text());
                 links2.add(link.absUrl("href"));
                 System.out.println("Link: " + link.attr("href"));
                 System.out.println("Text: " + link.text() + "\n");
@@ -69,7 +69,7 @@ public class WebCrawler {
 
             // Get website text and count words
             String text = doc.text(); // We can use doc.body().text() if we only want to get text from <body></body>
-            countWords(text,ws);
+            countWords(text, ws);
         } catch (IOException e) {
             //e.printStackTrace();
             return false;
@@ -96,16 +96,15 @@ public class WebCrawler {
                     }
                     if (!countMap.containsKey(word)) {
                         countMap.put(word, 1);
-                    }
-                    else {
+                    } else {
                         countMap.put(word, countMap.get(word) + 1);
                     }
-                    if(map.containsKey(word)){
-                        map.get(word).add(url);}
-                    else{
+                    if (map.containsKey(word)) {
+                        map.get(word).add(url);
+                    } else {
                         HashSet<String> aux = new HashSet<>();
                         aux.add(url);
-                        map.put(word,aux);
+                        map.put(word, aux);
                     }
                 }
             } catch (IOException e) {
@@ -121,11 +120,11 @@ public class WebCrawler {
         }
 
         // Display words and counts
-        for (String word : countMap.keySet()) {
+       /* for (String word : countMap.keySet()) {
             if (word.length() >= 3) { // Shall we ignore small words?
                 System.out.println(word + "\t" + countMap.get(word));
             }
-        }
+        }*/
     }
 
     public static List<String> getLinks() {
@@ -134,19 +133,18 @@ public class WebCrawler {
     }
 
 
-    public static boolean indexaRecursiva(String url){
+    public static boolean indexaRecursiva(String url) {
 
-        String ws =url ;
-        if (! ws.startsWith("http://") && ! ws.startsWith("https://"))
+        String ws = url;
+        if (!ws.startsWith("http://") && !ws.startsWith("https://"))
             ws = "http://".concat(ws);
 
-        while(paginasVisitadas.size() < N_paginas_A_visitar) {
+        while (paginasVisitadas.size() < N_paginas_A_visitar) {
             String currentUrl;
-            if(paginas_A_Visitar.isEmpty()) {
+            if (paginas_A_Visitar.isEmpty()) {
                 currentUrl = ws;
                 paginasVisitadas.add(ws);
-            }
-            else {
+            } else {
                 currentUrl = nextUrl();
             }
             main(currentUrl);
@@ -160,13 +158,14 @@ public class WebCrawler {
 
     /**
      * função que vai percorrendo a lista de sites a usar e removendo-os da lista
+     *
      * @return
      */
     private static String nextUrl() {
         String nextUrl;
         do {
             nextUrl = paginas_A_Visitar.remove(0);
-        } while(paginasVisitadas.contains(nextUrl));
+        } while (paginasVisitadas.contains(nextUrl));
         paginasVisitadas.add(nextUrl);
         return nextUrl;
     }
@@ -174,13 +173,19 @@ public class WebCrawler {
     public static String checkWords(String palavras) {
         System.out.println(palavras);
         String[] words = palavras.split("[ ,;:.?!(){}\\[\\]<>']+");
+        String[] temp;
+        String tmp2;
         String urls = " ";
         //Iterator it = map.entrySet().iterator();
         for (String word : words) {
-            urls.concat(word+" ");
-        }
+            if (map.containsKey(word)) {
+                urls.concat("Entrou aqui");
+                temp=obtemUrls(word);
+                tmp2= Arrays.toString(temp);
+                urls.concat(tmp2 + " ");
+            }
 
-        return urls;
+            return urls;
 
 //        while (it.hasNext()){
 //            HashMap.Entry key = (HashMap.Entry) it.next();
@@ -200,24 +205,29 @@ public class WebCrawler {
 //        }
 
 
-
+        }
+        return null;
     }
 
-    public static String[] obtemUrls(String key){
-        String[] aux = new String[0],aux2 = new String[0];
+    public static String[] obtemUrls(String key) {
+        String[] aux = new String[0], aux2 = new String[100];
+        String[] listFIM;
         Iterator it = map.entrySet().iterator();
-        while (it.hasNext()){
+        while (it.hasNext()) {
             HashMap.Entry word = (HashMap.Entry) it.next();
-            aux= word.getValue().toString().split(", ");
-            for(int j = 0; j < aux.length; j++) {
-                aux2[j] = Arrays.toString(new String[]{aux[j]});
-                aux2[j] = aux2[j].replace("[", "");
-                aux2[j] = aux2[j].replace("]", "");
+            if (word.getKey().equals(key)) {
+                aux = word.getValue().toString().split(", ");
+                for (int j = 0; j < aux.length; j++) {
+                    aux2[j] = Arrays.toString(new String[]{aux[j]});
+                    aux2[j] = aux2[j].replace("[", "");
+                    aux2[j] = aux2[j].replace("]", "");
+                }
             }
         }
         return aux;
     }
 }
+
 
 /*
     public void search(String url, String searchWord)
