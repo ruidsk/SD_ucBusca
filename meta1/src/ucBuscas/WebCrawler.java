@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.net.MalformedURLException;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
@@ -172,11 +173,15 @@ public class WebCrawler {
     public static String checkWords(String palavras) {
         System.out.println(palavras);
         String[] words = palavras.split("[ ,;:.?!(){}\\[\\]<>']+");
+        String[] temp;
+        String tmp2;
         String urls = " ";
         //Iterator it = map.entrySet().iterator();
         for (String word : words) {
             if (map.containsKey(word)) {
-                urls.concat(word + " ");
+                temp=obtemUrls(word);
+                tmp2= Arrays.toString(temp);
+                urls.concat(tmp2 + " ");
             }
 
             return urls;
