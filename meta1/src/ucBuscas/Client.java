@@ -19,7 +19,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
         System.out.println(note);
     }
 
-    public String menu(Client c) {
+    public String menu(Client c) throws RemoteException {
 
         int a = 0;
         boolean exception;
@@ -313,7 +313,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
             try {
 
                 h = (RMIInterface) LocateRegistry.getRegistry(port).lookup("ucBusca");
-                h.load_online();
+
                 return h;
             } catch (Exception e) {
                 h = null;

@@ -25,7 +25,7 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
         super();
     }
 
-    public void load_online()  {
+    public void load_online()  throws RemoteException{
         HashMap<String, ClientInterface> tmp = new HashMap<>();
         try{
             File toRead=new File("fileone");
