@@ -185,8 +185,7 @@ public class Multicast_Server {
         System.out.println("\tEnviar -> " + message);
         try {
             byte[] buffer = message.getBytes();
-            DatagramPacket datagram = new
-                    DatagramPacket(buffer, buffer.length, group, PORT);
+            DatagramPacket datagram = new DatagramPacket(buffer, buffer.length, group, PORT);
             socket.send(datagram);
         } catch (IOException e) {
             System.out.println("Excepcao (IO): " + e);
@@ -320,6 +319,7 @@ class WaitPackets implements Runnable {
                 }
             } catch (IOException | ClassNotFoundException e) {
                 System.out.println("Socket closed!");
+
             }
         }
     }

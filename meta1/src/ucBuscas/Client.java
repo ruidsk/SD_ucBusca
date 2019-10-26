@@ -55,9 +55,10 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
                             aux = rmi_interface.login(username, password);
 
                             if (aux.equals("Servidor Multicast: type | logged ; resultado | success ;")) {
-
                                 rmi_interface.subscribe(username, (ClientInterface) c);
                                 menuPrincipal(username, c);
+                            }else if(aux.contains("fail")){
+                                System.out.println("\nuser/password incorreto\n");
                             }
                         } catch (NullPointerException | RemoteException np) {
                             rmi_interface = connect();

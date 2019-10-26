@@ -185,6 +185,7 @@ public class WebCrawler {
                 temp=obtemUrls(word);
                 tmp2= Arrays.toString(temp);
                 urls.concat(tmp2 + " ");
+                System.out.println("->"+urls);
             }
 
             return urls;
@@ -225,7 +226,9 @@ public class WebCrawler {
                     aux2[j] = aux2[j].replace("]", "");
                 }
             }
+
         }
+        System.out.println("isto aqui->"+aux);
         return aux;
     }
 }
