@@ -120,11 +120,11 @@ public class WebCrawler {
         }
 
         // Display words and counts
-        for (String word : countMap.keySet()) {
+       /* for (String word : countMap.keySet()) {
             if (word.length() >= 3) { // Shall we ignore small words?
                 System.out.println(word + "\t" + countMap.get(word));
             }
-        }
+        }*/
     }
 
     public static List<String> getLinks() {
@@ -179,6 +179,7 @@ public class WebCrawler {
         //Iterator it = map.entrySet().iterator();
         for (String word : words) {
             if (map.containsKey(word)) {
+                urls.concat("Entrou aqui");
                 temp=obtemUrls(word);
                 tmp2= Arrays.toString(temp);
                 urls.concat(tmp2 + " ");
@@ -209,7 +210,7 @@ public class WebCrawler {
     }
 
     public static String[] obtemUrls(String key) {
-        String[] aux = new String[0], aux2 = new String[0];
+        String[] aux = new String[0], aux2 = new String[100];
         String[] listFIM;
         Iterator it = map.entrySet().iterator();
         while (it.hasNext()) {
@@ -222,8 +223,6 @@ public class WebCrawler {
                     aux2[j] = aux2[j].replace("]", "");
                 }
             }
-
-
         }
         return aux;
     }
