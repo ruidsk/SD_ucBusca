@@ -187,7 +187,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
                     if (tmp.isEmpty()) {
                         System.out.println("Não estem urls com as palavras");
                     } else {
-                        System.out.println("Os url são:" + text);
+                        System.out.println("Os url são:" + tmp);
                     }
 
 
