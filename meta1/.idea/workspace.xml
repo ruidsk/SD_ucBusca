@@ -5,17 +5,25 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/meta1/ucBuscas/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/meta1/ucBuscas/Client.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/meta1/ucBuscas/Multicast_Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/meta1/ucBuscas/Multicast_Server.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/meta1/ucBuscas/RMIInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/meta1/ucBuscas/RMIInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/meta1/ucBuscas/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/meta1/ucBuscas/Server.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/meta1/ucBuscas/Server_B.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/meta1/ucBuscas/Server_B.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/meta1/ucBuscas/WaitPackets.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/meta1/ucBuscas/WaitPackets.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/meta1/ucBuscas/WebCrawler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/meta1/ucBuscas/WebCrawler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ucBuscas/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ucBuscas/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ucBuscas/Multicast_Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ucBuscas/Multicast_Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ucBuscas/WebCrawler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ucBuscas/WebCrawler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ucBuscas/RMIInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ucBuscas/RMIInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ucBuscas/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ucBuscas/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ucBuscas/Server_B.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ucBuscas/Server_B.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ErrorTreeViewConfiguration">
+    <option name="hideWarnings" value="true" />
+    <option name="HIDE_WARNINGS" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -164,7 +172,7 @@
       <workItem from="1571922745470" duration="1145000" />
       <workItem from="1571923916378" duration="1919000" />
       <workItem from="1571926117533" duration="3212000" />
-      <workItem from="1571939428530" duration="30521000" />
+      <workItem from="1571939428530" duration="37209000" />
     </task>
     <servers />
   </component>

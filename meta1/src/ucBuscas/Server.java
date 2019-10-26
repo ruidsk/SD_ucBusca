@@ -25,10 +25,14 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
         super();
     }
 
+    public void show_online()  throws RemoteException{
+
+        System.out.println(online.keySet());
+    }
     public void load_online()  throws RemoteException{
         HashMap<String, ClientInterface> tmp = new HashMap<>();
         try{
-            File toRead=new File("fileone");
+            File toRead=new File("online");
             FileInputStream fis=new FileInputStream(toRead);
             ObjectInputStream ois=new ObjectInputStream(fis);
 
@@ -100,10 +104,13 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
         String protocolo = "type | admin_give ; nome | " + username;
         tmpInput = split(protocolo);
         feedback = toMulticast(tmpInput);
-
-        for (Map.Entry<String,ClientInterface> x : online.entrySet()) {
-            x.getValue().notification(username+" é o novo admin");
+        System.out.println(feedback);
+        if (feedback.contains("success")){
+            for (Map.Entry<String,ClientInterface> x : online.entrySet()) {
+                x.getValue().notification("\n\tSERVER NOTIFICATION:\n\t"+username+" é o novo admin\n");
+            }
         }
+
         return feedback;
     }
 

@@ -85,26 +85,33 @@ public class Multicast_Server {
 
     public static String give_admin(HashMap<String, String> tmp) throws IOException, ClassNotFoundException {
 
-
-        HashMap<String, Boolean> aux = admin_load();
-
         String feedback = null;
+        try{
+            HashMap<String, Boolean> aux = admin_load();
 
-        if (aux.get(tmp.get("nome")).equals(true)) {
-            feedback = "type | give ; resultado | already ;";
-        } else if (aux.get(tmp.get("nome")).equals(false)) {
-            aux.put(tmp.get("nome"), true);
-            feedback = "type | give ; resultado | success ;";
-        } else
+
+            if (aux.get(tmp.get("nome")).equals(true)) {
+                feedback = "type | give ; resultado | already ;";
+            } else if (aux.containsKey(tmp.get("nome")) && aux.get(tmp.get("nome")).equals(false)) {
+                aux.put(tmp.get("nome"), true);
+                feedback = "type | give ; resultado | success ;";
+            } else
+                feedback = "type | give ; resultado | fail ;";
+
+            File fileOne = new File("admins");
+            FileOutputStream fos = new FileOutputStream(fileOne);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(aux);
+            oos.flush();
+            oos.close();
+            fos.close();
+
+        }catch(NullPointerException e){
             feedback = "type | give ; resultado | fail ;";
+        }
 
-        File fileOne = new File("admins");
-        FileOutputStream fos = new FileOutputStream(fileOne);
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
-        oos.writeObject(aux);
-        oos.flush();
-        oos.close();
-        fos.close();
+
+
 
 
         return feedback;
