@@ -16,4 +16,6 @@ public interface RMIInterface extends Remote {
     public String addUrl(String url) throws RemoteException;
 
     public String checkWords(String text) throws RemoteException;
+
+    public void load_online();
 }

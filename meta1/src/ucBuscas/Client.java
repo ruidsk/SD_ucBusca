@@ -61,6 +61,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
                             }
                         } catch (NullPointerException | RemoteException np){
                             rmi_interface = connect();
+                            rmi_interface.load_online();
 
                             exception = true;
                         }
@@ -80,6 +81,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
                             System.out.println("o servidor respondeu : "+aux);
                         } catch (RemoteException |NullPointerException enp) {
                             rmi_interface=connect();
+                            rmi_interface.load_online();
                             exception = true;
                         }
                     } while (exception);
@@ -140,6 +142,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
                                 }
                             } catch (NullPointerException | RemoteException np){
                                 rmi_interface = connect();
+                                rmi_interface.load_online();
                                 exception = true;
                             }
                        } while (exception);
@@ -159,6 +162,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
                                 System.out.println("o servidor respondeu : "+aux);
                             } catch (RemoteException |NullPointerException enp) {
                                 rmi_interface=connect();
+                                rmi_interface.load_online();
                                 exception = true;
                             }
                         } while (exception);*/
@@ -242,6 +246,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
                                 }
                             } catch (NullPointerException | RemoteException np){
                                 rmi_interface = connect();
+                                rmi_interface.load_online();
                                 exception = true;
                             }
                         } while (exception);
@@ -260,6 +265,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
                                 System.out.println("o servidor respondeu : "+aux);
                             } catch (RemoteException |NullPointerException enp) {
                                 rmi_interface=connect();
+                                rmi_interface.load_online();
                                 exception = true;
                             }
                         } while (exception);*/
@@ -278,6 +284,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
                             }
                         } catch (NullPointerException | RemoteException np){
                             rmi_interface = connect();
+                            rmi_interface.load_online();
                             exception = true;
                         }
                     } while (exception);
@@ -317,7 +324,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
             try {
 
                 h = (RMIInterface) LocateRegistry.getRegistry(port).lookup("ucBusca");
-
+                h.load_online();
                 return h;
             } catch (Exception e) {
                 h= null;
@@ -346,6 +353,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
         Client client = new Client();
 
         client.rmi_interface = client.connect();
+        client.rmi_interface.load_online();
 
         client.menu(client);
 

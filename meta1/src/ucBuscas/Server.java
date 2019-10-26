@@ -25,12 +25,55 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
         super();
     }
 
+    public void load_online()  {
+        HashMap<String, ClientInterface> tmp = new HashMap<>();
+        try{
+            File toRead=new File("fileone");
+            FileInputStream fis=new FileInputStream(toRead);
+            ObjectInputStream ois=new ObjectInputStream(fis);
+
+            tmp=(HashMap<String,ClientInterface>)ois.readObject();
+
+            ois.close();
+            fis.close();
+            //print All
+            /*
+            for(Map.Entry<String,String> m :tmp.entrySet()){
+                System.out.println(m.getKey()+"<-user---aqui esta no file---pass ->"+m.getValue());
+            }*/
+        }catch(Exception e){
+            online = null;
+        }
+
+
+        online =  tmp;
+    }
+
     public void subscribe(String username, ClientInterface c) throws RemoteException{
+
         online.put(username,c);
+        save_online();
+
+        // aqui gravar en ficheiro para os rmi acederem quando cair um
 
     }
     public void disconnect(String username) throws RemoteException{
         online.remove(username);
+        save_online();
+    }
+
+    private void save_online() {
+        try{
+            File on=new File("online");
+            FileOutputStream fos=new FileOutputStream(on);
+            ObjectOutputStream oos=new ObjectOutputStream(fos);
+            oos.writeObject(online);
+            oos.flush();
+            oos.close();
+            fos.close();
+        }catch(Exception e){
+            System.out.println("Erro nos user online");
+        }
     }
 
     public String regista(String username, String password) throws RemoteException {
