@@ -1,13 +1,17 @@
 package ucBuscas;
 
 
-import java.io.*;
-import java.net.*;
-import java.rmi.*;
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.InetAddress;
+import java.net.MulticastSocket;
+import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.rmi.server.*;
-import java.util.*;
+import java.rmi.server.UnicastRemoteObject;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Server extends UnicastRemoteObject implements RMIInterface {
     /**
@@ -16,86 +20,13 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
 
     final static String INET_ADDR = "224.3.2.1";
     final static int PORT = 4321;
-    static String name = "RMI Server";
-    static HashMap<String,ClientInterface> online = new HashMap<>();
-
     private static final long serialVersionUID = 1L;
+    static String name = "RMI Server";
+    static HashMap<String, ClientInterface> online = new HashMap<>();
 
     public Server() throws RemoteException {
         super();
     }
-
-    public void subscribe(String username, ClientInterface c) throws RemoteException{
-        online.put(username,c);
-
-    }
-    public void disconnect(String username) throws RemoteException{
-        online.remove(username);
-    }
-
-    public String regista(String username, String password) throws RemoteException {
-        String feedback = null;
-        HashMap<String, String> tmpInput = new HashMap<>();
-        String protocolo = "type | registar ; nome | " + username + " ; password | " + password;
-        tmpInput = split(protocolo);
-        feedback = toMulticast(tmpInput);
-        return feedback;
-    }
-    public String login(String username, String password) throws RemoteException {
-        String feedback = null;
-        HashMap<String, String> tmpInput = new HashMap<>();
-        String protocolo = "type | login ; nome | " + username + " ; password | " + password;
-        tmpInput = split(protocolo);
-        feedback = toMulticast(tmpInput);
-        return feedback;
-    }
-
-    public String give_admin(String username) throws RemoteException {
-        String feedback = null;
-
-        HashMap<String, String> tmpInput = new HashMap<>();
-        String protocolo = "type | admin_give ; nome | " + username;
-        tmpInput = split(protocolo);
-        feedback = toMulticast(tmpInput);
-
-        for (Map.Entry<String,ClientInterface> x : online.entrySet()) {
-            x.getValue().notification(username+" é o novo admin");
-        }
-        return feedback;
-    }
-
-    public String check_admin(String username) throws RemoteException {
-        String feedback = null;
-        HashMap<String, String> tmpInput = new HashMap<>();
-        String protocolo = "type | admin_check ; nome | " + username;
-        tmpInput = split(protocolo);
-        feedback = toMulticast(tmpInput);
-        return feedback;
-
-
-    }
-
-    public String addUrl(String url) throws RemoteException {
-        String feedback = null;
-        HashMap<String, String> tmpInput = new HashMap<>();
-        String protocolo = "type | addUrl ; nome | " + url;
-        tmpInput = split(protocolo);
-        feedback = toMulticast(tmpInput);
-        return feedback;
-
-
-    }
-
-
-    public String checkWords(String text) throws RemoteException {
-        String feedback = null;
-        HashMap<String, String> tmpInput = new HashMap<>();
-        String protocolo = "type | checkWords ; palavras | " + text;
-        tmpInput = split(protocolo);
-        feedback = toMulticast(tmpInput);
-        return feedback;
-    }
-
 
     public static HashMap<String, String> split(String protocolo) {
         HashMap<String, String> tmpHash = new HashMap<>();
@@ -158,11 +89,9 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
         return feedback;
     }
 
-
     // =========================================================
     // =========================================================
     public static void main(String args[]) {
-
 
 
         try {
@@ -172,10 +101,81 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
             System.out.println("ucBusca Server A ready.\n");
 
 
-
         } catch (RemoteException re) {
             System.out.println("Exception in SERVER_A.main: " + re);
         }
+    }
+
+    public void subscribe(String username, ClientInterface c) throws RemoteException {
+        online.put(username, c);
+
+    }
+
+    public void disconnect(String username) throws RemoteException {
+        online.remove(username);
+    }
+
+    public String regista(String username, String password) throws RemoteException {
+        String feedback = null;
+        HashMap<String, String> tmpInput = new HashMap<>();
+        String protocolo = "type | registar ; nome | " + username + " ; password | " + password;
+        tmpInput = split(protocolo);
+        feedback = toMulticast(tmpInput);
+        return feedback;
+    }
+
+    public String login(String username, String password) throws RemoteException {
+        String feedback = null;
+        HashMap<String, String> tmpInput = new HashMap<>();
+        String protocolo = "type | login ; nome | " + username + " ; password | " + password;
+        tmpInput = split(protocolo);
+        feedback = toMulticast(tmpInput);
+        return feedback;
+    }
+
+    public String give_admin(String username) throws RemoteException {
+        String feedback = null;
+
+        HashMap<String, String> tmpInput = new HashMap<>();
+        String protocolo = "type | admin_give ; nome | " + username;
+        tmpInput = split(protocolo);
+        feedback = toMulticast(tmpInput);
+
+        for (Map.Entry<String, ClientInterface> x : online.entrySet()) {
+            x.getValue().notification(username + " é o novo admin");
+        }
+        return feedback;
+    }
+
+    public String check_admin(String username) throws RemoteException {
+        String feedback = null;
+        HashMap<String, String> tmpInput = new HashMap<>();
+        String protocolo = "type | admin_check ; nome | " + username;
+        tmpInput = split(protocolo);
+        feedback = toMulticast(tmpInput);
+        return feedback;
+
+
+    }
+
+    public String addUrl(String url) throws RemoteException {
+        String feedback = null;
+        HashMap<String, String> tmpInput = new HashMap<>();
+        String protocolo = "type | addUrl ; nome | " + url;
+        tmpInput = split(protocolo);
+        feedback = toMulticast(tmpInput);
+        return feedback;
+
+
+    }
+
+    public String checkWords(String text) throws RemoteException {
+        String feedback = null;
+        HashMap<String, String> tmpInput = new HashMap<>();
+        String protocolo = "type | checkWords ; palavras | " + text;
+        tmpInput = split(protocolo);
+        feedback = toMulticast(tmpInput);
+        return feedback;
     }
 
 }

@@ -1,14 +1,11 @@
 package ucBuscas;
 
-import java.io.*;
-import java.net.*;
-import java.rmi.*;
+import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
-import java.rmi.server.*;
-import java.util.*;
+import java.rmi.server.UnicastRemoteObject;
+import java.util.Scanner;
 
-public class Client extends UnicastRemoteObject implements ClientInterface{
+public class Client extends UnicastRemoteObject implements ClientInterface {
 
 
     private RMIInterface rmi_interface = null;
@@ -16,12 +13,30 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
     protected Client() throws RemoteException {
         super();
     }
-    public void notification(String note) throws RemoteException{
+
+    public static void main(String args[]) throws RemoteException {
+
+        /* This might be necessary if you ever need to download classes:*/
+
+
+        Client client = new Client();
+
+        client.rmi_interface = client.connect();
+
+        client.menu(client);
+
+
+        //System.out.println("Exception in main: " + e);
+        //e.printStackTrace();
+    }
+
+    public void notification(String note) throws RemoteException {
         System.out.println(note);
     }
-    public String menu(Client c){
 
-        int a=0;
+    public String menu(Client c) {
+
+        int a = 0;
         boolean exception;
         String aux = null;
         do {
@@ -41,7 +56,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
                 }
             } while (exception);
 
-            switch(a){
+            switch (a) {
 
                 case 1:
                     System.out.println("Username: ");
@@ -49,17 +64,17 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
                     System.out.println("Password: ");
                     String password = input.next();
 
-                   do {
+                    do {
                         try {
                             exception = false;
                             aux = rmi_interface.login(username, password);
 
-                            if(aux.equals("Servidor Multicast: type | logged ; resultado | success ;")){
+                            if (aux.equals("Servidor Multicast: type | logged ; resultado | success ;")) {
 
-                                rmi_interface.subscribe(username,(ClientInterface) c);
-                                menuPrincipal(username,c);
+                                rmi_interface.subscribe(username, (ClientInterface) c);
+                                menuPrincipal(username, c);
                             }
-                        } catch (NullPointerException | RemoteException np){
+                        } catch (NullPointerException | RemoteException np) {
                             rmi_interface = connect();
 
                             exception = true;
@@ -77,15 +92,14 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
                         try {
                             exception = false;
                             aux = rmi_interface.regista(username, password);
-                            System.out.println("o servidor respondeu : "+aux);
-                        } catch (RemoteException |NullPointerException enp) {
-                            rmi_interface=connect();
+                            System.out.println("o servidor respondeu : " + aux);
+                        } catch (RemoteException | NullPointerException enp) {
+                            rmi_interface = connect();
                             exception = true;
                         }
                     } while (exception);
 
                     break;
-
 
 
                 case 0:
@@ -97,57 +111,56 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
 
             }
 
-        }while(a!=0);
-
+        } while (a != 0);
 
 
         return aux;
     }
 
-    public String menuPrincipal(String username,Client c) throws RemoteException {
+    public String menuPrincipal(String username, Client c) throws RemoteException {
 
-            int a=0;
-            boolean exception;
-            String aux = null;
+        int a = 0;
+        boolean exception;
+        String aux = null;
+        do {
+            System.out.println("-----MENU----- user: " + username);
+            System.out.println("1. entrar em modo administrador");
+            System.out.println("2. coisas");
+            System.out.println("3. Pesquisar páginas que contenham um conjunto de palavras");
+            System.out.println("0. logout");
+            System.out.println("Selecione o número que deseja: ");
+            Scanner input = new Scanner(System.in);
             do {
-                System.out.println("-----MENU----- user: "+username);
-                System.out.println("1. entrar em modo administrador");
-                System.out.println("2. coisas");
-                System.out.println("3. Pesquisar páginas que contenham um conjunto de palavras");
-                System.out.println("0. logout");
-                System.out.println("Selecione o número que deseja: ");
-                Scanner input = new Scanner(System.in);
-                do {
-                    exception = false;
-                    try {
-                        a = Integer.parseInt(input.nextLine());
-                    } catch (NumberFormatException e) {
-                        exception = true;
-                        System.out.println("Número inválido. Tente outra vez!");
-                    }
-                } while (exception);
+                exception = false;
+                try {
+                    a = Integer.parseInt(input.nextLine());
+                } catch (NumberFormatException e) {
+                    exception = true;
+                    System.out.println("Número inválido. Tente outra vez!");
+                }
+            } while (exception);
 
-                switch(a){
+            switch (a) {
 
-                    case 1:
+                case 1:
 
-                       do {
-                            try {
-                                exception = false;
-                                aux = rmi_interface.check_admin(username);
-                                if (aux.contains("success")){
-                                    admin_menu(username, c);
-                                }
-                            } catch (NullPointerException | RemoteException np){
-                                rmi_interface = connect();
-                                exception = true;
+                    do {
+                        try {
+                            exception = false;
+                            aux = rmi_interface.check_admin(username);
+                            if (aux.contains("success")) {
+                                admin_menu(username, c);
                             }
-                       } while (exception);
+                        } catch (NullPointerException | RemoteException np) {
+                            rmi_interface = connect();
+                            exception = true;
+                        }
+                    } while (exception);
 
 
-                        break;
+                    break;
 
-                    case 2:
+                case 2:
                        /* System.out.println("Username: ");
                         username = input.nextLine();
                         System.out.println("Password: ");
@@ -163,49 +176,43 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
                             }
                         } while (exception);*/
 
-                        break;
+                    break;
 
-                    case 3:
-                        System.out.println("Introduza as palavras, separadas por espaços.");
-                        String text = input.nextLine();
+                case 3:
+                    System.out.println("Introduza as palavras, separadas por espaços.");
+                    String text = input.nextLine();
 
-                        String tmp;
-                        tmp = rmi_interface.checkWords(text);
-                        if(tmp.isEmpty()){
-                            System.out.println("Não estem urls com as palavras");
-                        }
-                        else{
-                            System.out.println("Os url são:" + text);
-                        }
-
+                    String tmp;
+                    tmp = rmi_interface.checkWords(text);
+                    if (tmp.isEmpty()) {
+                        System.out.println("Não estem urls com as palavras");
+                    } else {
+                        System.out.println("Os url são:" + text);
+                    }
 
 
-                        break;
+                    break;
 
 
+                case 0:
+                    System.out.println("Saindo para o menu login...");
+                    rmi_interface.disconnect(username);
+                    menu(c);
+                    break;
 
-                    case 0:
-                        System.out.println("Saindo para o menu login...");
-                        rmi_interface.disconnect(username);
-                        menu(c);
-                        break;
+                default:
+                    System.out.println("Escolha errada!");
 
-                    default:
-                        System.out.println("Escolha errada!");
+            }
 
-                }
-
-            }while(a!=0);
-
+        } while (a != 0);
 
 
-            return aux;
+        return aux;
     }
 
-
-
     public void admin_menu(String username, Client c) throws RemoteException {
-        int a=0;
+        int a = 0;
         boolean exception;
         String aux = null;
         do {
@@ -226,25 +233,25 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
                 }
             } while (exception);
 
-            switch(a){
+            switch (a) {
 
                 case 1:
-                        System.out.println("introduza o username do novo admin: ");
-                        String user = input.next();
+                    System.out.println("introduza o username do novo admin: ");
+                    String user = input.next();
                         /*System.out.println("Password: ");
                         String password = input.next();*/
-                        do {
-                            try {
-                                exception = false;
-                                aux = rmi_interface.give_admin(user);
-                                if (aux.startsWith("Servidor Multicast: type | give ; resultado | success ;")){
-                                    System.out.println("administrador atribuido a :"+user);
-                                }
-                            } catch (NullPointerException | RemoteException np){
-                                rmi_interface = connect();
-                                exception = true;
+                    do {
+                        try {
+                            exception = false;
+                            aux = rmi_interface.give_admin(user);
+                            if (aux.startsWith("Servidor Multicast: type | give ; resultado | success ;")) {
+                                System.out.println("administrador atribuido a :" + user);
                             }
-                        } while (exception);
+                        } catch (NullPointerException | RemoteException np) {
+                            rmi_interface = connect();
+                            exception = true;
+                        }
+                    } while (exception);
 
                     break;
 
@@ -273,17 +280,16 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
                         try {
                             exception = false;
                             aux = rmi_interface.addUrl(url);
-                            if (aux.startsWith("Servidor Multicast: type | addUrl ; resultado | success ;")){
-                                System.out.println(url+ " adicionado com sucesso");
+                            if (aux.startsWith("Servidor Multicast: type | addUrl ; resultado | success ;")) {
+                                System.out.println(url + " adicionado com sucesso");
                             }
-                        } catch (NullPointerException | RemoteException np){
+                        } catch (NullPointerException | RemoteException np) {
                             rmi_interface = connect();
                             exception = true;
                         }
                     } while (exception);
 
                     break;
-
 
 
                 case 0:
@@ -296,20 +302,17 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
 
             }
 
-        }while(a!=0);
+        } while (a != 0);
 
 
-
-       // return aux;
+        // return aux;
     }
-
 
     public RMIInterface connect() {
         int port = 7000;
 
         long time = System.currentTimeMillis() + 30000;
         RMIInterface h = null;
-
 
 
         do {
@@ -320,7 +323,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
 
                 return h;
             } catch (Exception e) {
-                h= null;
+                h = null;
                 if (port == 7000) {
                     port = 7001;
                 } else if (port == 7001) {
@@ -329,33 +332,12 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
 
             }
 
-        }while(h==null &&  System.currentTimeMillis() < time);
+        } while (h == null && System.currentTimeMillis() < time);
 
         System.out.println("RMI CONNECTION TIMEOUT");
         System.exit(0);
         return null;
 
-    }
-
-
-    public static void main(String args[]) throws RemoteException {
-
-		/* This might be necessary if you ever need to download classes:*/
-
-
-        Client client = new Client();
-
-        client.rmi_interface = client.connect();
-
-        client.menu(client);
-
-
-
-
-
-
-        //System.out.println("Exception in main: " + e);
-        //e.printStackTrace();
     }
 
 }

@@ -1,33 +1,35 @@
 package ucBuscas;
 
 import java.io.*;
-import java.util.*;
-import java.net.*;
+import java.net.DatagramPacket;
+import java.net.InetAddress;
+import java.net.MulticastSocket;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
 
 public class Multicast_Server {
 
     final static String INET_ADDR = "224.3.2.1";
     final static int PORT = 4321;
+    private static final String TERMINATE = "Exit";
+    static String multicastName = "Servidor Multicast";
+    static volatile boolean finished = false;
     private static MulticastSocket socket = null;
 
 
+    public Multicast_Server() {
+        super();
+    }
 
-
-
-    static String multicastName = "Servidor Multicast";
-    private static final String TERMINATE = "Exit";
-    static volatile boolean finished = false;
-
-
-
-    public static HashMap<String,String> loadLoginData() throws IOException, ClassNotFoundException {
+    public static HashMap<String, String> loadLoginData() throws IOException, ClassNotFoundException {
         HashMap<String, String> tmp = null;
-        try{
-            File toRead=new File("fileone");
-            FileInputStream fis=new FileInputStream(toRead);
-            ObjectInputStream ois=new ObjectInputStream(fis);
+        try {
+            File toRead = new File("fileone");
+            FileInputStream fis = new FileInputStream(toRead);
+            ObjectInputStream ois = new ObjectInputStream(fis);
 
-            tmp=(HashMap<String,String>)ois.readObject();
+            tmp = (HashMap<String, String>) ois.readObject();
 
             ois.close();
             fis.close();
@@ -36,41 +38,44 @@ public class Multicast_Server {
             for(Map.Entry<String,String> m :tmp.entrySet()){
                 System.out.println(m.getKey()+"<-user---aqui esta no file---pass ->"+m.getValue());
             }*/
-        }catch(Exception e){}
+        } catch (Exception e) {
+        }
 
 
         return tmp;
     }
-    public static HashMap<String, Boolean> admin_load(){
-        HashMap<String, Boolean> tmp = null;
-        try{
-            File toRead=new File("admins");
-            FileInputStream fis=new FileInputStream(toRead);
-            ObjectInputStream ois=new ObjectInputStream(fis);
 
-            tmp=(HashMap<String,Boolean>)ois.readObject();
+    public static HashMap<String, Boolean> admin_load() {
+        HashMap<String, Boolean> tmp = null;
+        try {
+            File toRead = new File("admins");
+            FileInputStream fis = new FileInputStream(toRead);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+
+            tmp = (HashMap<String, Boolean>) ois.readObject();
 
             ois.close();
             fis.close();
             //print All
-        }catch(Exception e){}
+        } catch (Exception e) {
+        }
 
         return tmp;
     }
 
-    public static String login_user(HashMap<String,String> login){
+    public static String login_user(HashMap<String, String> login) {
         String feedback = null;
 
-        try{
+        try {
             HashMap<String, String> check = loadLoginData();
 
-            if(check.get(login.get("nome")).equals(login.get("password"))){
+            if (check.get(login.get("nome")).equals(login.get("password"))) {
                 //sucesso a dar login
                 feedback = "type | logged ; resultado | success ;";
                 return feedback;
             }
 
-        }catch(Exception e){
+        } catch (Exception e) {
 
         }
         feedback = "type | logged ; resultado | fail";
@@ -78,24 +83,24 @@ public class Multicast_Server {
         return feedback;
     }
 
-    public static String give_admin(HashMap<String,String> tmp) throws IOException, ClassNotFoundException {
+    public static String give_admin(HashMap<String, String> tmp) throws IOException, ClassNotFoundException {
 
 
-        HashMap<String,Boolean> aux= admin_load();
+        HashMap<String, Boolean> aux = admin_load();
 
         String feedback = null;
 
-        if(aux.get(tmp.get("nome")).equals(true)){
+        if (aux.get(tmp.get("nome")).equals(true)) {
             feedback = "type | give ; resultado | already ;";
-        }else if(aux.get(tmp.get("nome")).equals(false)){
-            aux.put(tmp.get("nome"),true);
+        } else if (aux.get(tmp.get("nome")).equals(false)) {
+            aux.put(tmp.get("nome"), true);
             feedback = "type | give ; resultado | success ;";
-        }else
+        } else
             feedback = "type | give ; resultado | fail ;";
 
-        File fileOne=new File("admins");
-        FileOutputStream fos=new FileOutputStream(fileOne);
-        ObjectOutputStream oos=new ObjectOutputStream(fos);
+        File fileOne = new File("admins");
+        FileOutputStream fos = new FileOutputStream(fileOne);
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(aux);
         oos.flush();
         oos.close();
@@ -105,25 +110,24 @@ public class Multicast_Server {
         return feedback;
     }
 
-    public static String check_admin(HashMap<String , String> tmp){
-        HashMap<String,Boolean> aux= admin_load();
+    public static String check_admin(HashMap<String, String> tmp) {
+        HashMap<String, Boolean> aux = admin_load();
 
         String feedback = null;
 
-        if(aux.get(tmp.get("nome")).equals(true)){
+        if (aux.get(tmp.get("nome")).equals(true)) {
             feedback = "type | check ; resultado | success ;";
-        }else if(aux.get(tmp.get("nome")).equals(false)){
-            aux.put(tmp.get("nome"),true);
+        } else if (aux.get(tmp.get("nome")).equals(false)) {
+            aux.put(tmp.get("nome"), true);
             feedback = "type | check ; resultado | fail ;";
-        }else
+        } else
             feedback = "type | check ; resultado | notfound ;";
 
 
         return feedback;
     }
 
-
-    public static String send_notification(String user){
+    public static String send_notification(String user) {
         String feedback = null;
 
         feedback = "type | admin_notification ; admin | " + user;
@@ -131,44 +135,44 @@ public class Multicast_Server {
         return feedback;
     }
 
-    public static String register_user(HashMap<String,String> login) throws IOException, ClassNotFoundException {
+    public static String register_user(HashMap<String, String> login) throws IOException, ClassNotFoundException {
 
         String feedback = null;
-        HashMap<String,String> aux = new HashMap<>();
-        HashMap<String,Boolean> admin_hash = new HashMap<>();
-        boolean flag  = false;
-        try{
+        HashMap<String, String> aux = new HashMap<>();
+        HashMap<String, Boolean> admin_hash = new HashMap<>();
+        boolean flag = false;
+        try {
             aux.putAll(loadLoginData());
             admin_hash.putAll(admin_load());
-        }catch(NullPointerException e){
-            flag=true;
+        } catch (NullPointerException e) {
+            flag = true;
         }
-        admin_hash.put(login.get("nome"),flag);
-        aux.put(login.get("nome"),login.get("password"));
+        admin_hash.put(login.get("nome"), flag);
+        aux.put(login.get("nome"), login.get("password"));
 
-        try{
-            File fileOne=new File("fileone");
-            FileOutputStream fos=new FileOutputStream(fileOne);
-            ObjectOutputStream oos=new ObjectOutputStream(fos);
+        try {
+            File fileOne = new File("fileone");
+            FileOutputStream fos = new FileOutputStream(fileOne);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(aux);
             oos.flush();
             oos.close();
             fos.close();
 
-            fileOne=new File("admins");
-            fos=new FileOutputStream(fileOne);
-            oos=new ObjectOutputStream(fos);
+            fileOne = new File("admins");
+            fos = new FileOutputStream(fileOne);
+            oos = new ObjectOutputStream(fos);
             oos.writeObject(admin_hash);
             oos.flush();
             oos.close();
             fos.close();
-            if(flag){
+            if (flag) {
                 feedback = "type | registar ; resultado | success ; admin | true";
-            }else{
+            } else {
                 feedback = "type | registar ; resultado | success ; admin | false";
 
             }
-        }catch(Exception e){
+        } catch (Exception e) {
 
             feedback = "fail";
         }
@@ -176,7 +180,7 @@ public class Multicast_Server {
         return feedback;
     }
 
-    public static void sendFeedback (MulticastSocket socket, InetAddress group, String feedback) {
+    public static void sendFeedback(MulticastSocket socket, InetAddress group, String feedback) {
         String message = multicastName + ": " + feedback;
         System.out.println("\tEnviar -> " + message);
         try {
@@ -188,6 +192,7 @@ public class Multicast_Server {
             System.out.println("Excepcao (IO): " + e);
         }
     }
+
     public static HashMap<String, String> strToHash(String str) {
         Properties props = new Properties();
         try {
@@ -205,16 +210,11 @@ public class Multicast_Server {
         return null;
     }
 
-
-    public Multicast_Server(){
-        super();
-    }
-
     public static String addUrl(HashMap<String, String> tmp) {
 
         String feedback = null;
 
-        if(WebCrawler.indexaRecursiva(tmp.get("nome")))
+        if (WebCrawler.indexaRecursiva(tmp.get("nome")))
             feedback = "type | addUrl ; resultado | success ;";
         else
             feedback = "type | addUrl ; resultado | error ;";
@@ -226,7 +226,7 @@ public class Multicast_Server {
 
         String tmp = WebCrawler.checkWords(hashPacket.get("palavras"));
 
-        feedback = "type | addUrl ; resultado | ;"+tmp;
+        feedback = "type | addUrl ; resultado | ;" + tmp;
         return feedback;
     }
 
@@ -234,7 +234,7 @@ public class Multicast_Server {
 
         Multicast_Server server_multicast = new Multicast_Server();
 
-       // HashMap<String, String> login_data = loadLoginData();
+        // HashMap<String, String> login_data = loadLoginData();
 
         //server_multicast.run();
         try {
@@ -258,42 +258,37 @@ public class Multicast_Server {
     }
 
 
-
 }
 
 /* thread que responde às mensagens do RMI_SEVER*/
 
 class WaitPackets implements Runnable {
+    private static final int MAX_LEN = 1000;
     private MulticastSocket socket;
     private InetAddress group;
     private int port;
-    private static final int MAX_LEN = 1000;
 
-    WaitPackets(MulticastSocket socket,InetAddress group,int port)
-    {
+    WaitPackets(MulticastSocket socket, InetAddress group, int port) {
         this.socket = socket;
         this.group = group;
         this.port = port;
     }
 
     @Override
-    public void run()
-    {
+    public void run() {
 
-        while(!Multicast_Server.finished)
-        {
+        while (!Multicast_Server.finished) {
             byte[] buffer = new byte[WaitPackets.MAX_LEN];
-            DatagramPacket datagram = new DatagramPacket(buffer,buffer.length,group,port);
+            DatagramPacket datagram = new DatagramPacket(buffer, buffer.length, group, port);
             String message;
-            try
-            {
+            try {
 
                 socket.receive(datagram);
 
 
-                message = new String(buffer,0,datagram.getLength(),"UTF-8");
+                message = new String(buffer, 0, datagram.getLength(), "UTF-8");
 
-                if(!message.startsWith(Multicast_Server.multicastName)) {
+                if (!message.startsWith(Multicast_Server.multicastName)) {
                     System.out.println("\t" + message);
 
                     String delimeter = ": ";
@@ -302,29 +297,28 @@ class WaitPackets implements Runnable {
                     System.out.println(hashPacket.get("type"));
 
                     if (hashPacket.get("type").equals("registar")) {
-                        Multicast_Server.sendFeedback(socket,group,Multicast_Server.register_user(hashPacket));
+                        Multicast_Server.sendFeedback(socket, group, Multicast_Server.register_user(hashPacket));
 
-                    }else if(hashPacket.get("type").equals("login")){
-                        Multicast_Server.sendFeedback(socket,group,Multicast_Server.login_user(hashPacket));
+                    } else if (hashPacket.get("type").equals("login")) {
+                        Multicast_Server.sendFeedback(socket, group, Multicast_Server.login_user(hashPacket));
 
-                    }else if(hashPacket.get("type").equals("admin_give")){
-                        Multicast_Server.sendFeedback(socket,group,Multicast_Server.give_admin(hashPacket));
+                    } else if (hashPacket.get("type").equals("admin_give")) {
+                        Multicast_Server.sendFeedback(socket, group, Multicast_Server.give_admin(hashPacket));
 
-                    }else if(hashPacket.get("type").equals("admin_check")){
-                        Multicast_Server.sendFeedback(socket,group,Multicast_Server.check_admin(hashPacket));
+                    } else if (hashPacket.get("type").equals("admin_check")) {
+                        Multicast_Server.sendFeedback(socket, group, Multicast_Server.check_admin(hashPacket));
 
-                    }else if(hashPacket.get("type").equals("checkWords")){
-                        Multicast_Server.sendFeedback(socket,group,Multicast_Server.checkWords(hashPacket));
+                    } else if (hashPacket.get("type").equals("checkWords")) {
+                        Multicast_Server.sendFeedback(socket, group, Multicast_Server.checkWords(hashPacket));
 
-                    }else if(hashPacket.get("type").equals("addUrl")){
-                    Multicast_Server.sendFeedback(socket,group,Multicast_Server.addUrl(hashPacket));
+                    } else if (hashPacket.get("type").equals("addUrl")) {
+                        Multicast_Server.sendFeedback(socket, group, Multicast_Server.addUrl(hashPacket));
 
                     }
 
 
-
                 }
-            } catch(IOException | ClassNotFoundException e) {
+            } catch (IOException | ClassNotFoundException e) {
                 System.out.println("Socket closed!");
             }
         }
