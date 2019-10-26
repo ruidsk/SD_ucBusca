@@ -12,6 +12,7 @@ import java.io.InputStreamReader;
 import java.lang.reflect.Array;
 import java.net.MalformedURLException;
 import java.nio.charset.StandardCharsets;
+import java.sql.SQLOutput;
 import java.util.*;
 
 public class WebCrawler {
@@ -177,6 +178,7 @@ public class WebCrawler {
         String tmp2;
         String urls = " ";
         //Iterator it = map.entrySet().iterator();
+        System.out.println(map);
         for (String word : words) {
             if (map.containsKey(word)) {
                 urls.concat("Entrou aqui");

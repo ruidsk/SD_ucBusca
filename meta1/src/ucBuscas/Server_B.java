@@ -74,6 +74,11 @@ public class Server_B extends UnicastRemoteObject implements RMIInterface {
         return null;
     }
 
+    @Override
+    public void load_online() {
+
+    }
+
     public static HashMap<String, String> split(String protocolo) {
         HashMap<String, String> tmpHash = new HashMap<>();
         Arrays.stream(protocolo.split(";")).map(s -> s.split("\\|")).forEach(i -> tmpHash.put(i[0].trim(), i[1].trim()));
