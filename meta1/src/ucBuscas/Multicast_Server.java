@@ -111,9 +111,6 @@ public class Multicast_Server {
         }
 
 
-
-
-
         return feedback;
     }
 
@@ -246,6 +243,7 @@ public class Multicast_Server {
         try {
             InetAddress group = InetAddress.getByName(INET_ADDR);
             socket = new MulticastSocket(PORT);
+            System.out.println(InetAddress.getLocalHost());
             socket.joinGroup(group);
             socket.setTimeToLive(1);
 

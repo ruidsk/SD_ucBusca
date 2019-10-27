@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Client extends UnicastRemoteObject implements ClientInterface {
 
 
-    private RMIInterface rmi_interface = null;
+    RMIInterface rmi_interface = null;
 
     protected Client() throws RemoteException {
         super();
@@ -323,11 +323,13 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
 
             try {
 
-                h = (RMIInterface) LocateRegistry.getRegistry("localhost",port).lookup("ucBusca");
-
+                h = (RMIInterface) LocateRegistry.getRegistry(port).lookup("ucBusca");
+                //david -> 194.210.37.29
+                //me -> 192.168.56.1
                 return h;
             } catch (Exception e) {
                 h = null;
+                System.out.println("no\n");
                 if (port == 7000) {
                     port = 7001;
                 } else if (port == 7001) {
