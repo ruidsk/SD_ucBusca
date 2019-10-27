@@ -13,7 +13,7 @@ import java.sql.SQLOutput;
 import java.util.*;
 
 public class WebCrawler {
-    private static final int N_paginas_A_visitar = 2;
+    private static int N_paginas_A_visitar = 2;
     private static Set<String> paginasVisitadas = new HashSet<String>();
     private static List<String> paginas_A_Visitar = new LinkedList<String>();
     private static List<String> links2 = new LinkedList<String>();
@@ -134,7 +134,7 @@ public class WebCrawler {
     }
 
 
-    public boolean indexaRecursiva(String url) {
+    public static boolean indexaRecursiva(String url) {
         int count = 0;
         String ws = url;
         if (!ws.startsWith("http://") && !ws.startsWith("https://"))
@@ -152,6 +152,7 @@ public class WebCrawler {
             paginas_A_Visitar.addAll(getLinks());
             count++;
         }
+        N_paginas_A_visitar+=2;
         faz_backup(ws);
         System.out.println("\n**Done** Visited " + count + " web page(s)");
 
@@ -234,8 +235,8 @@ public class WebCrawler {
         return aux;
     }
 
-    public void ler_dados(){
-        File file = new File("C:\\Users\\davidvazcortesao\\Desktop\\SD_ucBusca\\SD\\backups\\hash.txt");
+    public static void ler_dados(){
+        File file = new File("C:\\Users\\davidvazcortesao\\Desktop\\SD_ucBusca\\SD\\backups\\hash.txt.txt");
         BufferedReader br = null;
         try {
             br = new BufferedReader(new FileReader(file));
@@ -259,26 +260,24 @@ public class WebCrawler {
         }
     }
 
-    public void faz_backup(String ws) {
-        File file = new File("C:\\Users\\davidvazcortesao\\Desktop\\SD_ucBusca\\SD\\backups\\hash.txt");
+    public static void faz_backup(String ws) {
+        File file = new File("C:\\Users\\davidvazcortesao\\Desktop\\SD_ucBusca\\SD\\backups\\hash.txt.txt");
         if (file.exists() && file.isFile()) {
             try {
                 FileWriter filew = new FileWriter(file, true);
                 BufferedWriter bw = new BufferedWriter(filew);
-                for (String temp : hash) {
-                    bw.append(temp);
-                    bw.newLine();
-                }
+                bw.append(ws);
+                bw.newLine();
                 bw.close();
                 filew.close();
             } catch (IOException e) {
                 System.out.println("Não foi possível escrever no file");
             }
         } else {
-            System.out.println("Não exites qualquer backup");
+            System.out.println("Não exite qualquer backup");
         }
 
-        ler_dados();
+       // ler_dados();
     }
 }
 

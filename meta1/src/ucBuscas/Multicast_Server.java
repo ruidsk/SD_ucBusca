@@ -232,7 +232,7 @@ public class Multicast_Server {
 
         String tmp = WebCrawler.checkWords(hashPacket.get("palavras"));
 
-        feedback = "type | addUrl ; resultado | ;" + tmp;
+        feedback = tmp;
         return feedback;
     }
 
