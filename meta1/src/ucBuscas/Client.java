@@ -113,7 +113,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
         boolean exception;
         String aux = null;
         do {
-            System.out.println("-----MENU----- user: " + username);
+            System.out.println("\n-----MENU----- user: " + username);
             System.out.println("1. entrar em modo administrador");
             System.out.println("2. coisas");
             System.out.println("3. Pesquisar páginas que contenham um conjunto de palavras");
@@ -171,15 +171,15 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
                     break;
 
                 case 3:
-                    System.out.println("Introduza as palavras, separadas por espaços.");
+                    System.out.println("\nIntroduza as palavras, separadas por espaços.");
                     String text = input.nextLine();
 
                     String tmp;
                     tmp = rmi_interface.checkWords(text);
-                    if (tmp.isEmpty()) {
-                        System.out.println("Não estem urls com as palavras");
+                    if (tmp.length()==22) {
+                        System.out.println("\nNão estem urls com as palavras!");
                     } else {
-                        System.out.println("Os url são:" + tmp);
+                        System.out.println("\nOs urls são:" + tmp);
                     }
 
 
@@ -252,7 +252,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
                                 rmi_interface.load_online();
                                 exception = true;
                             }
-                        
+
                     } while (exception);
 
                     break;
@@ -324,8 +324,10 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
             try {
 
                 h = (RMIInterface) LocateRegistry.getRegistry(port).lookup("ucBusca");
+
                 //david -> 194.210.37.29
                 //me -> 192.168.56.1
+
                 return h;
             } catch (Exception e) {
                 h = null;

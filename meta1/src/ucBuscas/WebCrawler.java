@@ -5,22 +5,18 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.lang.reflect.Array;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.nio.charset.StandardCharsets;
-import java.sql.SQLOutput;
 import java.util.*;
 
 public class WebCrawler {
-    private static final int N_paginas_A_visitar = 2;
+    private static int N_paginas_A_visitar = 2;
     private static Set<String> paginasVisitadas = new HashSet<String>();
     private static List<String> paginas_A_Visitar = new LinkedList<String>();
     private static List<String> links2 = new LinkedList<String>();
     private static HashMap<String, HashSet<String>> map = new HashMap<String, HashSet<String>>();
+    private static ArrayList<String> hash = new ArrayList<>(); //backup
 
 
     public static boolean main(String ws) {
@@ -97,12 +93,14 @@ public class WebCrawler {
                     }
                     if (!countMap.containsKey(word)) {
                         countMap.put(word, 1);
-                    } else {
+                    }
+                    else {
                         countMap.put(word, countMap.get(word) + 1);
                     }
                     if (map.containsKey(word)) {
                         map.get(word).add(url);
-                    } else {
+                    }
+                    else {
                         HashSet<String> aux = new HashSet<>();
                         aux.add(url);
                         map.put(word, aux);
@@ -135,7 +133,7 @@ public class WebCrawler {
 
 
     public static boolean indexaRecursiva(String url) {
-
+        int count = 0;
         String ws = url;
         if (!ws.startsWith("http://") && !ws.startsWith("https://"))
             ws = "http://".concat(ws);
@@ -150,8 +148,11 @@ public class WebCrawler {
             }
             main(currentUrl);
             paginas_A_Visitar.addAll(getLinks());
+            count++;
         }
-        System.out.println("\n**Done** Visited " + paginasVisitadas.size() + " web page(s)");
+        N_paginas_A_visitar+=2;
+        faz_backup(ws);
+        System.out.println("\n**Done** Visited " + count + " web page(s)");
 
         return true;
     }
@@ -172,23 +173,20 @@ public class WebCrawler {
     }
 
     public static String checkWords(String palavras) {
-        System.out.println(palavras);
         String[] words = palavras.split("[ ,;:.?!(){}\\[\\]<>']+");
-        String[] temp;
-        String tmp2;
-        String urls = " ";
+        String tmp;
+        String urls = "\n ";
         //Iterator it = map.entrySet().iterator();
-        System.out.println(map);
+        //System.out.println(map);
         for (String word : words) {
             if (map.containsKey(word)) {
-                urls.concat("Entrou aqui");
-                temp=obtemUrls(word);
-                tmp2= Arrays.toString(temp);
-                urls.concat(tmp2 + " ");
-                System.out.println("->"+urls);
+                System.out.println("\nSites: "+obtemUrls(word));
+                tmp = obtemUrls(word);
+                urls= urls + tmp + " ";
             }
+        }
 
-            return urls;
+
 
 //        while (it.hasNext()){
 //            HashMap.Entry key = (HashMap.Entry) it.next();
@@ -208,13 +206,13 @@ public class WebCrawler {
 //        }
 
 
-        }
-        return null;
+
+        return urls;
     }
 
-    public static String[] obtemUrls(String key) {
+    public static String obtemUrls(String key) {
         String[] aux = new String[0], aux2 = new String[100];
-        String[] listFIM;
+        String listEnd = "";
         Iterator it = map.entrySet().iterator();
         while (it.hasNext()) {
             HashMap.Entry word = (HashMap.Entry) it.next();
@@ -224,12 +222,59 @@ public class WebCrawler {
                     aux2[j] = Arrays.toString(new String[]{aux[j]});
                     aux2[j] = aux2[j].replace("[", "");
                     aux2[j] = aux2[j].replace("]", "");
+                    //System.out.println(aux2[j].toString());
+                    listEnd= listEnd+aux2[j].toString() + " |";
+
                 }
             }
 
         }
-        System.out.println("isto aqui->"+aux);
-        return aux;
+        return listEnd;
+    }
+
+    public static void ler_dados(){
+        File file = new File("C:\\Users\\davidvazcortesao\\Desktop\\SD_ucBusca\\SD\\backups\\hash.txt.txt");
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader(file));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        String temp;
+        int i = 0;
+        try {
+            while (((temp=br.readLine()) != null)) {
+                i++;
+                if (i > 100) {
+                    break;
+                } else {
+                    main(temp);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void faz_backup(String ws) {
+        File file = new File("C:\\Users\\davidvazcortesao\\Desktop\\SD_ucBusca\\SD\\backups\\hash.txt.txt");
+        if (file.exists() && file.isFile()) {
+            try {
+                FileWriter filew = new FileWriter(file, true);
+                BufferedWriter bw = new BufferedWriter(filew);
+                bw.append(ws);
+                bw.newLine();
+                bw.close();
+                filew.close();
+            } catch (IOException e) {
+                System.out.println("Não foi possível escrever no file");
+            }
+        } else {
+            System.out.println("Não exite qualquer backup");
+        }
+
+       // ler_dados();
     }
 }
 

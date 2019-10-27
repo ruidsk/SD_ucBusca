@@ -229,15 +229,19 @@ public class Multicast_Server {
 
         String tmp = WebCrawler.checkWords(hashPacket.get("palavras"));
 
-        feedback = "type | addUrl ; resultado | ;" + tmp;
+        feedback = tmp;
         return feedback;
     }
+
+
+
 
     public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException {
 
         Multicast_Server server_multicast = new Multicast_Server();
 
         // HashMap<String, String> login_data = loadLoginData();
+        System.out.println(InetAddress.getLocalHost());
 
         //server_multicast.run();
         try {
@@ -272,11 +276,13 @@ class WaitPackets implements Runnable {
     private InetAddress group;
     private int port;
 
-    WaitPackets(MulticastSocket socket, InetAddress group, int port) {
+    WaitPackets(MulticastSocket socket, InetAddress group, int port) throws IOException {
         this.socket = socket;
+
         this.group = group;
         this.port = port;
     }
+
 
     @Override
     public void run() {
@@ -286,9 +292,10 @@ class WaitPackets implements Runnable {
             DatagramPacket datagram = new DatagramPacket(buffer, buffer.length, group, port);
             String message;
             try {
-
+                System.out.println("esperando");
+                System.out.println(socket);
                 socket.receive(datagram);
-
+                System.out.println("recebi");
 
                 message = new String(buffer, 0, datagram.getLength(), "UTF-8");
 
