@@ -5,10 +5,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.lang.reflect.Array;
 import java.net.MalformedURLException;
 import java.nio.charset.StandardCharsets;
@@ -21,6 +18,7 @@ public class WebCrawler {
     private static List<String> paginas_A_Visitar = new LinkedList<String>();
     private static List<String> links2 = new LinkedList<String>();
     private static HashMap<String, HashSet<String>> map = new HashMap<String, HashSet<String>>();
+    private static ArrayList<String> hash = new ArrayList<>(); //backup
 
 
     public static boolean main(String ws) {
@@ -97,12 +95,14 @@ public class WebCrawler {
                     }
                     if (!countMap.containsKey(word)) {
                         countMap.put(word, 1);
-                    } else {
+                    }
+                    else {
                         countMap.put(word, countMap.get(word) + 1);
                     }
                     if (map.containsKey(word)) {
                         map.get(word).add(url);
-                    } else {
+                    }
+                    else {
                         HashSet<String> aux = new HashSet<>();
                         aux.add(url);
                         map.put(word, aux);
@@ -134,8 +134,8 @@ public class WebCrawler {
     }
 
 
-    public static boolean indexaRecursiva(String url) {
-
+    public boolean indexaRecursiva(String url) {
+        int count = 0;
         String ws = url;
         if (!ws.startsWith("http://") && !ws.startsWith("https://"))
             ws = "http://".concat(ws);
@@ -150,8 +150,10 @@ public class WebCrawler {
             }
             main(currentUrl);
             paginas_A_Visitar.addAll(getLinks());
+            count++;
         }
-        System.out.println("\n**Done** Visited " + paginasVisitadas.size() + " web page(s)");
+        faz_backup(ws);
+        System.out.println("\n**Done** Visited " + count + " web page(s)");
 
         return true;
     }
@@ -172,7 +174,6 @@ public class WebCrawler {
     }
 
     public static String checkWords(String palavras) {
-        System.out.println(palavras);
         String[] words = palavras.split("[ ,;:.?!(){}\\[\\]<>']+");
         String[] temp;
         String tmp2;
@@ -224,12 +225,60 @@ public class WebCrawler {
                     aux2[j] = Arrays.toString(new String[]{aux[j]});
                     aux2[j] = aux2[j].replace("[", "");
                     aux2[j] = aux2[j].replace("]", "");
+                    System.out.println(aux2);
                 }
             }
 
         }
         System.out.println("isto aqui->"+aux);
         return aux;
+    }
+
+    public void ler_dados(){
+        File file = new File("C:\\Users\\davidvazcortesao\\Desktop\\SD_ucBusca\\SD\\backups\\hash.txt");
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader(file));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        String temp;
+        int i = 0;
+        try {
+            while (((temp=br.readLine()) != null)) {
+                i++;
+                if (i > 100) {
+                    break;
+                } else {
+                    main(temp);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void faz_backup(String ws) {
+        File file = new File("C:\\Users\\davidvazcortesao\\Desktop\\SD_ucBusca\\SD\\backups\\hash.txt");
+        if (file.exists() && file.isFile()) {
+            try {
+                FileWriter filew = new FileWriter(file, true);
+                BufferedWriter bw = new BufferedWriter(filew);
+                for (String temp : hash) {
+                    bw.append(temp);
+                    bw.newLine();
+                }
+                bw.close();
+                filew.close();
+            } catch (IOException e) {
+                System.out.println("Não foi possível escrever no file");
+            }
+        } else {
+            System.out.println("Não exites qualquer backup");
+        }
+
+        ler_dados();
     }
 }
 

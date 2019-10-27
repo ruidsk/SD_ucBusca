@@ -3,6 +3,7 @@ package ucBuscas;
 
 import java.io.*;
 import java.net.*;
+import java.net.UnknownHostException;
 import java.rmi.*;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -31,6 +32,8 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
     }
     public void load_online()  throws RemoteException{
         HashMap<String, ClientInterface> tmp = new HashMap<>();
+        System.out.println("ansdnajsdn");
+
         try{
             File toRead=new File("online");
             FileInputStream fis=new FileInputStream(toRead);
@@ -82,6 +85,7 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
 
     public String regista(String username, String password) throws RemoteException {
         String feedback = null;
+        System.out.println("ahsdasjd");
         HashMap<String, String> tmpInput = new HashMap<>();
         String protocolo = "type | registar ; nome | " + username + " ; password | " + password;
         tmpInput = split(protocolo);
@@ -184,7 +188,7 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
             DatagramPacket datagram = new DatagramPacket(m, m.length, group, PORT);
 
             socket.send(datagram);
-
+            System.out.println("enviei"+socket);
 
             //Espera por resposta
 
@@ -211,9 +215,8 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
 
     // =========================================================
     // =========================================================
-    public static void main(String args[]) {
-
-
+    public static void main(String args[]) throws UnknownHostException {
+        System.out.println(InetAddress.getLocalHost());
         System.getProperties().put("java.security.policy","al.policy");
         if(System.getSecurityManager() == null){
             System.setSecurityManager(new SecurityManager());
