@@ -323,7 +323,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
 
             try {
 
-                h = (RMIInterface) LocateRegistry.getRegistry(port).lookup("ucBusca");
+                h = (RMIInterface) LocateRegistry.getRegistry("localhost",port).lookup("ucBusca");
 
                 return h;
             } catch (Exception e) {
