@@ -176,14 +176,30 @@ public class WebCrawler {
         String[] words = palavras.split("[ ,;:.?!(){}\\[\\]<>']+");
         String tmp;
         String urls = "\n ";
+        ArrayList<String> resultado = new ArrayList<String>();
+        ArrayList<String> aux = new ArrayList<String>();
+        int existe=0;
         //Iterator it = map.entrySet().iterator();
         //System.out.println(map);
+        resultado=obtemUrls2(words[0]);
         for (String word : words) {
             if (map.containsKey(word)) {
                 System.out.println("\nSites: "+obtemUrls(word));
-                System.out.println("\nArray: "+obtemUrls2(word));
-                tmp = obtemUrls(word);
-                urls= urls + tmp + " ";
+                aux=obtemUrls2(word);
+                existe=0;
+                for(int j=0; j<resultado.size();j++){
+                    for(int i=0;i<aux.size();i++){
+                        if(aux.get(i).equals(resultado.get(j))){
+                            existe=1;
+                        }
+                    }
+                    if(existe==0){
+                        resultado.remove(j);
+                    }
+                }
+                urls= String.valueOf(resultado);
+//                tmp = obtemUrls(word);
+//                urls= urls + tmp + " ";
             }
         }
 
