@@ -6,10 +6,8 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.*;
-import java.lang.reflect.Array;
 import java.net.MalformedURLException;
 import java.nio.charset.StandardCharsets;
-import java.sql.SQLOutput;
 import java.util.*;
 
 public class WebCrawler {
@@ -176,21 +174,19 @@ public class WebCrawler {
 
     public static String checkWords(String palavras) {
         String[] words = palavras.split("[ ,;:.?!(){}\\[\\]<>']+");
-        String[] temp;
-        String tmp2;
-        String urls = " ";
+        String tmp;
+        String urls = "\n ";
         //Iterator it = map.entrySet().iterator();
-        System.out.println(map);
+        //System.out.println(map);
         for (String word : words) {
             if (map.containsKey(word)) {
-                urls.concat("Entrou aqui");
-                temp=obtemUrls(word);
-                tmp2= Arrays.toString(temp);
-                urls.concat(tmp2 + " ");
-                System.out.println("->"+urls);
+                System.out.println("\nSites: "+obtemUrls(word));
+                tmp = obtemUrls(word);
+                urls= urls + tmp + " ";
             }
+        }
 
-            return urls;
+
 
 //        while (it.hasNext()){
 //            HashMap.Entry key = (HashMap.Entry) it.next();
@@ -210,13 +206,13 @@ public class WebCrawler {
 //        }
 
 
-        }
-        return null;
+
+        return urls;
     }
 
-    public static String[] obtemUrls(String key) {
+    public static String obtemUrls(String key) {
         String[] aux = new String[0], aux2 = new String[100];
-        String[] listFIM;
+        String listEnd = "";
         Iterator it = map.entrySet().iterator();
         while (it.hasNext()) {
             HashMap.Entry word = (HashMap.Entry) it.next();
@@ -226,13 +222,14 @@ public class WebCrawler {
                     aux2[j] = Arrays.toString(new String[]{aux[j]});
                     aux2[j] = aux2[j].replace("[", "");
                     aux2[j] = aux2[j].replace("]", "");
-                    System.out.println(aux2);
+                    //System.out.println(aux2[j].toString());
+                    listEnd= listEnd+aux2[j].toString() + " |";
+
                 }
             }
 
         }
-        System.out.println("isto aqui->"+aux);
-        return aux;
+        return listEnd;
     }
 
     public static void ler_dados(){
