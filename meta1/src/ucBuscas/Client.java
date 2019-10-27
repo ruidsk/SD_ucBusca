@@ -348,7 +348,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
     public static void main(String args[]) throws RemoteException {
 
 		/* This might be necessary if you ever need to download classes:*/
-        System.getProperties().put("java.security.policy", "policy.all");
+        System.getProperties().put("java.security.policy", "al.policy");
         if(System.getSecurityManager() == null){
             System.setSecurityManager(new SecurityManager());
         }

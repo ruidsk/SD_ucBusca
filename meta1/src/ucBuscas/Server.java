@@ -214,7 +214,7 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
     public static void main(String args[]) {
 
 
-        System.getProperties().put("java.security.policy","policy.all");
+        System.getProperties().put("java.security.policy","al.policy");
         if(System.getSecurityManager() == null){
             System.setSecurityManager(new SecurityManager());
         }
