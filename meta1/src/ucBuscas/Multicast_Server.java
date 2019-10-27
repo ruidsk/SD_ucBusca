@@ -242,6 +242,14 @@ public class Multicast_Server {
         return feedback;
     }
 
+    public static String tabelaLigacoes() {
+        String feedback = null;
+
+        String tmp = WebCrawler.tabelaLigacoes();
+
+        feedback = tmp;
+        return feedback;
+    }
 
 
 

@@ -116,7 +116,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
         do {
             System.out.println("\n-----MENU----- user: " + username);
             System.out.println("1. entrar em modo administrador");
-            System.out.println("2. coisas");
+            System.out.println("2. Resultados ordenados por número de ligações para cada página");
             System.out.println("3. Pesquisar páginas que contenham um conjunto de palavras");
             System.out.println("0. logout");
             System.out.println("Selecione o número que deseja: ");
@@ -153,6 +153,18 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
                     break;
 
                 case 2:
+                    System.out.println("\n\nOs sites mais visitados são:");
+                    String tmp=rmi_interface.tabelaLigacoes();
+                    System.out.println(tmp);
+                    System.out.println("\nSize é: "+tmp.length());
+
+
+//                    if (tmp.length()==22) {
+//                        System.out.println("\nNão existem urls com as palavras!");
+//                    } else {
+//
+//                        System.out.println("\nOs urls são: "+tmp_split[1]);
+//                    }
                        /* System.out.println("Username: ");
                         username = input.nextLine();
                         System.out.println("Password: ");
@@ -175,7 +187,6 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
                     System.out.println("\nIntroduza as palavras, separadas por espaços.");
                     String text = input.nextLine();
 
-                    String tmp;
                     String[] tmp_split;
                     tmp = rmi_interface.checkWords(text);
                     tmp_split = tmp.split(":",2);

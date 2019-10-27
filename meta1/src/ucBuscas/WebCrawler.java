@@ -291,7 +291,7 @@ public class WebCrawler {
     }
 
     //Resultados ordenados por número de ligações para cada página
-    public String tabelaLigacoes() {
+    public static String tabelaLigacoes() {
         int maiorI = 0;
         String auxS = "";
         String resultado = "\n";
