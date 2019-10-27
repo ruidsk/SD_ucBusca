@@ -179,15 +179,14 @@ public class WebCrawler {
         ArrayList<String> resultado = new ArrayList<String>();
         ArrayList<String> aux = new ArrayList<String>();
         int existe=0;
-        //Iterator it = map.entrySet().iterator();
-        //System.out.println(map);
+        System.out.println(map);
         resultado=obtemUrls2(words[0]);
         for (String word : words) {
             if (map.containsKey(word)) {
                 System.out.println("\nSites: "+obtemUrls(word));
                 aux=obtemUrls2(word);
-                existe=0;
                 for(int j=0; j<resultado.size();j++){
+                    existe=0;
                     for(int i=0;i<aux.size();i++){
                         if(aux.get(i).equals(resultado.get(j))){
                             existe=1;
@@ -202,28 +201,6 @@ public class WebCrawler {
 //                urls= urls + tmp + " ";
             }
         }
-
-
-
-//        while (it.hasNext()){
-//            HashMap.Entry key = (HashMap.Entry) it.next();
-//            urls.add(String.valueOf(key.getValue()));
-//        }
-
-//        for (String word : words) {
-//            if(map.containsKey(word)){
-//                Iterator it2 = map.get(word).iterator();
-//                while (it.hasNext()) { //for (para percorrer a lista dos sites da key)
-//                    for para percorrer a lista "urls"
-//                    if (site da key==site da lista de urls)
-//                    continue; //sai p frente
-//                    urls.remove(site);
-//                }
-//            }
-//        }
-
-
-
         return urls;
     }
 
