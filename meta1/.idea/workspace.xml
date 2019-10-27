@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="6e1188d7-9534-4bf1-a54d-9312ba68b991" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/online" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/meta1/ucBuscas/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/meta1/ucBuscas/Server.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ucBuscas/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ucBuscas/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ucBuscas/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ucBuscas/Server.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -135,8 +138,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Server" />
         <item itemvalue="Application.Multicast_Server" />
+        <item itemvalue="Application.Server" />
         <item itemvalue="Application.Server_B" />
         <item itemvalue="Application.LoginRMIServer" />
       </list>
@@ -163,7 +166,7 @@
       <workItem from="1571923916378" duration="1919000" />
       <workItem from="1571926117533" duration="3212000" />
       <workItem from="1571939428530" duration="37964000" />
-      <workItem from="1572169457714" duration="1341000" />
+      <workItem from="1572169457714" duration="2077000" />
     </task>
     <servers />
   </component>

@@ -214,12 +214,16 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
     public static void main(String args[]) {
 
 
+        System.getProperties().put("java.security.policy","policy.all");
+        if(System.getSecurityManager() == null){
+            System.setSecurityManager(new SecurityManager());
+        }
 
         try {
             Server h = new Server();
             Registry r = LocateRegistry.createRegistry(7000);
             r.rebind("ucBusca", h);
-            System.out.println("ucBusca Server A ready.\n");
+            System.out.println("\n\n\n\tucBusca Server A ready.\n");
 
 
 
