@@ -94,6 +94,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
 
                 case 0:
                     System.out.println("Saindo...");
+                    System.exit(0);
                     break;
 
                 default:
@@ -175,11 +176,15 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
                     String text = input.nextLine();
 
                     String tmp;
+                    String[] tmp_split;
                     tmp = rmi_interface.checkWords(text);
+                    tmp_split = tmp.split(":",2);
+
                     if (tmp.length()==22) {
                         System.out.println("\nNão existem urls com as palavras!");
                     } else {
-                        System.out.println("\nOs urls são:" + tmp);
+
+                        System.out.println("\nOs urls são: "+tmp_split[1]);
                     }
 
 

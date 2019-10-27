@@ -33,16 +33,25 @@ public class Multicast_Server {
 
             ois.close();
             fis.close();
-            //print All
-            /*
-            for(Map.Entry<String,String> m :tmp.entrySet()){
-                System.out.println(m.getKey()+"<-user---aqui esta no file---pass ->"+m.getValue());
-            }*/
+
+
         } catch (Exception e) {
         }
 
 
         return tmp;
+    }
+
+    public static String note_help() throws IOException, ClassNotFoundException {
+        HashMap<String, String> tmp = loadLoginData();
+        String aux = "";
+
+        for(String m :tmp.keySet()) {
+            aux+=m+";";
+
+        }
+
+        return aux;
     }
 
     public static HashMap<String, Boolean> admin_load() {
@@ -292,10 +301,8 @@ class WaitPackets implements Runnable {
             DatagramPacket datagram = new DatagramPacket(buffer, buffer.length, group, port);
             String message;
             try {
-                System.out.println("esperando");
-                System.out.println(socket);
+
                 socket.receive(datagram);
-                System.out.println("recebi");
 
                 message = new String(buffer, 0, datagram.getLength(), "UTF-8");
 
@@ -305,7 +312,7 @@ class WaitPackets implements Runnable {
                     String delimeter = ": ";
                     String[] tmpPacket = message.split(delimeter);
                     HashMap<String, String> hashPacket = Multicast_Server.strToHash(tmpPacket[1]);
-                    System.out.println(hashPacket.get("type"));
+                    //System.out.println(hashPacket.get("type"));
 
                     if (hashPacket.get("type").equals("registar")) {
                         Multicast_Server.sendFeedback(socket, group, Multicast_Server.register_user(hashPacket));
@@ -324,7 +331,8 @@ class WaitPackets implements Runnable {
 
                     } else if (hashPacket.get("type").equals("addUrl")) {
                         Multicast_Server.sendFeedback(socket, group, Multicast_Server.addUrl(hashPacket));
-
+                    }else if (hashPacket.get("type").equals("help_note")) {
+                        Multicast_Server.sendFeedback(socket, group, Multicast_Server.note_help());
                     }
 
 

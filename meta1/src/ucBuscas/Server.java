@@ -19,8 +19,8 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
     final static int PORT = 4321;
     static String name = "RMI Server";
     static HashMap<String,ClientInterface> online = new HashMap<>();
-
     private static final long serialVersionUID = 1L;
+    HashMap<String,String> nome_nota = new HashMap<>();
 
     public Server() throws RemoteException {
         super();
@@ -32,7 +32,7 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
     }
     public void load_online()  throws RemoteException{
         HashMap<String, ClientInterface> tmp = new HashMap<>();
-        System.out.println("ansdnajsdn");
+        //System.out.println("ansdnajsdn");
 
         try{
             File toRead=new File("online");
@@ -52,17 +52,19 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
             online = null;
         }
 
-
         online =  tmp;
     }
+
 
     public void subscribe(String username, ClientInterface c) throws RemoteException{
 
         online.put(username,c);
+        if(nome_nota.containsKey(username)){
+            online.get(username).notification(nome_nota.get(username));
+        }
         save_online();
 
         // aqui gravar en ficheiro para os rmi acederem quando cair um
-
     }
     public void disconnect(String username) throws RemoteException{
         online.remove(username);
@@ -98,21 +100,39 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
         String protocolo = "type | login ; nome | " + username + " ; password | " + password;
         tmpInput = split(protocolo);
         feedback = toMulticast(tmpInput);
+
         return feedback;
     }
 
     public String give_admin(String username) throws RemoteException {
         String feedback = null;
-
+        String feedback2 = null;
+        String[] spliter = null;
+        String[] all_users = null;
         HashMap<String, String> tmpInput = new HashMap<>();
         String protocolo = "type | admin_give ; nome | " + username;
         tmpInput = split(protocolo);
         feedback = toMulticast(tmpInput);
         System.out.println(feedback);
         if (feedback.contains("success")){
-            for (Map.Entry<String,ClientInterface> x : online.entrySet()) {
-                x.getValue().notification("\n\tSERVER NOTIFICATION:\n\t"+username+" é o novo admin\n");
+            protocolo = "type | help_note ; nome | "+ username;
+            tmpInput = split(protocolo);
+            feedback2 = toMulticast(tmpInput);
+            spliter = feedback2.split(":");
+            all_users = spliter[1].split(";");
+            for(String i : all_users){
+                if(!online.containsKey(i)){
+                    nome_nota.put(i,"\n\tSERVER NOTIFICATION:\n\t"+username+" é o novo admin\n");
+                }
             }
+
+            for (Map.Entry<String,ClientInterface> nome : online.entrySet()) {
+                nome.getValue().notification("\n\tSERVER NOTIFICATION:\n\t"+username+" é o novo admin\n");
+
+            }
+
+
+
         }
 
         return feedback;
