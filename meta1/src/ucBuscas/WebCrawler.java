@@ -176,37 +176,31 @@ public class WebCrawler {
         String[] words = palavras.split("[ ,;:.?!(){}\\[\\]<>']+");
         String tmp;
         String urls = "\n ";
-        //Iterator it = map.entrySet().iterator();
-        //System.out.println(map);
+        ArrayList<String> resultado = new ArrayList<String>();
+        ArrayList<String> aux = new ArrayList<String>();
+        int existe=0;
+        System.out.println(map);
+        resultado=obtemUrls2(words[0]);
         for (String word : words) {
             if (map.containsKey(word)) {
                 System.out.println("\nSites: "+obtemUrls(word));
-                tmp = obtemUrls(word);
-                urls= urls + tmp + " ";
+                aux=obtemUrls2(word);
+                for(int j=0; j<resultado.size();j++){
+                    existe=0;
+                    for(int i=0;i<aux.size();i++){
+                        if(aux.get(i).equals(resultado.get(j))){
+                            existe=1;
+                        }
+                    }
+                    if(existe==0){
+                        resultado.remove(j);
+                    }
+                }
+                urls= String.valueOf(resultado);
+//                tmp = obtemUrls(word);
+//                urls= urls + tmp + " ";
             }
         }
-
-
-
-//        while (it.hasNext()){
-//            HashMap.Entry key = (HashMap.Entry) it.next();
-//            urls.add(String.valueOf(key.getValue()));
-//        }
-
-//        for (String word : words) {
-//            if(map.containsKey(word)){
-//                Iterator it2 = map.get(word).iterator();
-//                while (it.hasNext()) { //for (para percorrer a lista dos sites da key)
-//                    for para percorrer a lista "urls"
-//                    if (site da key==site da lista de urls)
-//                    continue; //sai p frente
-//                    urls.remove(site);
-//                }
-//            }
-//        }
-
-
-
         return urls;
     }
 
@@ -224,10 +218,28 @@ public class WebCrawler {
                     aux2[j] = aux2[j].replace("]", "");
                     //System.out.println(aux2[j].toString());
                     listEnd= listEnd+aux2[j].toString() + " |";
-
                 }
             }
+        }
+        return listEnd;
+    }
 
+    public static ArrayList<String> obtemUrls2(String key) {
+        String[] aux = new String[0], aux2 = new String[100];
+        ArrayList<String> listEnd = new ArrayList<String>();
+        Iterator it = map.entrySet().iterator();
+        while (it.hasNext()) {
+            HashMap.Entry word = (HashMap.Entry) it.next();
+            if (word.getKey().equals(key)) {
+                aux = word.getValue().toString().split(", ");
+                for (int j = 0; j < aux.length; j++) {
+                    aux2[j] = Arrays.toString(new String[]{aux[j]});
+                    aux2[j] = aux2[j].replace("[", "");
+                    aux2[j] = aux2[j].replace("]", "");
+                    //System.out.println(aux2[j].toString());
+                    listEnd.add(aux2[j].toString());
+                }
+            }
         }
         return listEnd;
     }

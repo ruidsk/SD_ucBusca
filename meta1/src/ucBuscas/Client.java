@@ -177,7 +177,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
                     String tmp;
                     tmp = rmi_interface.checkWords(text);
                     if (tmp.length()==22) {
-                        System.out.println("\nNão estem urls com as palavras!");
+                        System.out.println("\nNão existem urls com as palavras!");
                     } else {
                         System.out.println("\nOs urls são:" + tmp);
                     }
