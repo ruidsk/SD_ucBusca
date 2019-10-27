@@ -11,13 +11,13 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 public class WebCrawler {
+    static Map<String, Integer> NlinksPSite = new TreeMap<>();
     private static int N_paginas_A_visitar = 2;
     private static Set<String> paginasVisitadas = new HashSet<String>();
     private static List<String> paginas_A_Visitar = new LinkedList<String>();
     private static List<String> links2 = new LinkedList<String>();
     private static HashMap<String, HashSet<String>> map = new HashMap<String, HashSet<String>>();
     private static ArrayList<String> hash = new ArrayList<>(); //backup
-
 
     public static boolean main(String ws) {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
@@ -35,14 +35,16 @@ public class WebCrawler {
 
             try {
                 // Attempt to connect and get the document
-                System.out.println("imprime");
                 doc = Jsoup.connect(ws).get();  // Documentation: https://jsoup.org/
-                System.out.println("nao imprime");
+                System.out.println("**Sucesso** Recebeu do html");
             } catch (MalformedURLException e) {
+                System.out.println("**Failure** Retrieved something other than HTML");
                 return false;
-                //System.out.println("**Failure** Retrieved something other than HTML");
-            }
 
+            }
+            if (!NlinksPSite.containsKey(ws)) {
+                NlinksPSite.put(ws, 0);
+            }
             // Title
             System.out.println(doc.title() + "\n");
 
@@ -60,6 +62,7 @@ public class WebCrawler {
                 }
                 //map.put(ws,link.text());
                 links2.add(link.absUrl("href"));
+                NlinksPSite.put(ws, NlinksPSite.get(ws) + 1);
                 System.out.println("Link: " + link.attr("href"));
                 System.out.println("Text: " + link.text() + "\n");
             }
@@ -93,14 +96,12 @@ public class WebCrawler {
                     }
                     if (!countMap.containsKey(word)) {
                         countMap.put(word, 1);
-                    }
-                    else {
+                    } else {
                         countMap.put(word, countMap.get(word) + 1);
                     }
                     if (map.containsKey(word)) {
                         map.get(word).add(url);
-                    }
-                    else {
+                    } else {
                         HashSet<String> aux = new HashSet<>();
                         aux.add(url);
                         map.put(word, aux);
@@ -150,7 +151,7 @@ public class WebCrawler {
             paginas_A_Visitar.addAll(getLinks());
             count++;
         }
-        N_paginas_A_visitar+=2;
+        N_paginas_A_visitar += 2;
         faz_backup(ws);
         System.out.println("\n**Done** Visited " + count + " web page(s)");
 
@@ -178,25 +179,25 @@ public class WebCrawler {
         String urls = "\n ";
         ArrayList<String> resultado = new ArrayList<String>();
         ArrayList<String> aux = new ArrayList<String>();
-        int existe=0;
+        int existe = 0;
         System.out.println(map);
-        resultado=obtemUrls2(words[0]);
+        resultado = obtemUrls2(words[0]);
         for (String word : words) {
             if (map.containsKey(word)) {
-                System.out.println("\nSites: "+obtemUrls(word));
-                aux=obtemUrls2(word);
-                for(int j=0; j<resultado.size();j++){
-                    existe=0;
-                    for(int i=0;i<aux.size();i++){
-                        if(aux.get(i).equals(resultado.get(j))){
-                            existe=1;
+                System.out.println("\nSites: " + obtemUrls(word));
+                aux = obtemUrls2(word);
+                for (int j = 0; j < resultado.size(); j++) {
+                    existe = 0;
+                    for (int i = 0; i < aux.size(); i++) {
+                        if (aux.get(i).equals(resultado.get(j))) {
+                            existe = 1;
                         }
                     }
-                    if(existe==0){
+                    if (existe == 0) {
                         resultado.remove(j);
                     }
                 }
-                urls= String.valueOf(resultado);
+                urls = String.valueOf(resultado);
 //                tmp = obtemUrls(word);
 //                urls= urls + tmp + " ";
             }
@@ -217,7 +218,7 @@ public class WebCrawler {
                     aux2[j] = aux2[j].replace("[", "");
                     aux2[j] = aux2[j].replace("]", "");
                     //System.out.println(aux2[j].toString());
-                    listEnd= listEnd+aux2[j].toString() + " |";
+                    listEnd = listEnd + aux2[j].toString() + " |";
                 }
             }
         }
@@ -244,7 +245,7 @@ public class WebCrawler {
         return listEnd;
     }
 
-    public static void ler_dados(){
+    public static void ler_dados() {
         File file = new File("C:\\Users\\davidvazcortesao\\Desktop\\SD_ucBusca\\SD\\backups\\hash.txt.txt");
         BufferedReader br = null;
         try {
@@ -256,7 +257,7 @@ public class WebCrawler {
         String temp;
         int i = 0;
         try {
-            while (((temp=br.readLine()) != null)) {
+            while (((temp = br.readLine()) != null)) {
                 i++;
                 if (i > 100) {
                     break;
@@ -286,8 +287,37 @@ public class WebCrawler {
             System.out.println("Não exite qualquer backup");
         }
 
-       // ler_dados();
+        // ler_dados();
     }
+
+    //Resultados ordenados por número de ligações para cada página
+    public String tabelaLigacoes() {
+        int maiorI = 0;
+        String auxS = "";
+        String resultado = "\n";
+
+        for (String key : NlinksPSite.keySet()) {
+            if (NlinksPSite.get(key) > maiorI) {
+                maiorI = NlinksPSite.get(key);
+                auxS = key;
+            }
+        }
+        resultado = resultado + auxS + "\t" + maiorI;
+        for (int i = 0; i < 3; i++) {
+            int aux = 0;
+            for (String key : NlinksPSite.keySet()) {
+                if (NlinksPSite.get(key) > aux && NlinksPSite.get(key) < maiorI) {
+                    aux = NlinksPSite.get(key);
+                    auxS = key;
+                }
+            }
+            maiorI = aux;
+            resultado = resultado + "\n" + auxS + "\t" + maiorI;
+        }
+
+        return resultado;
+    }
+
 }
 
 
