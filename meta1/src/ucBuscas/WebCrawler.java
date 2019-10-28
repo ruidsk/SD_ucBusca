@@ -298,7 +298,7 @@ public class WebCrawler {
 
     //Consultar lista de pesquisas feitas pelo próprio utilizador
     public static boolean atualizaConsultas(String user, String text) throws IOException {
-        File file = new File("C:\\Users\\davidvazcortesao\\Desktop\\SD_ucBusca\\SD\\backups\\" + user + "hash.txt");
+        File file = new File("C:\\Users\\davidvazcortesao\\Desktop\\SD_ucBusca\\SD\\backups\\" + user + "_hist.txt");
         file.createNewFile();
         BufferedReader br = null;
         try {
