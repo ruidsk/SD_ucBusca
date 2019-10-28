@@ -314,7 +314,8 @@ public class Multicast_Server {
 
         // HashMap<String, String> login_data = loadLoginData();
         System.out.println(InetAddress.getLocalHost());
-
+        System.out.println("\nA carregar dados...\n\n\n");
+        server_multicast.load();
         //server_multicast.run();
         try {
             InetAddress group = InetAddress.getByName(INET_ADDR);
