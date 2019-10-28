@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6e1188d7-9534-4bf1-a54d-9312ba68b991" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/meta1_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/meta1_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/meta1_war_exploded.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/meta1/ucBuscas/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/meta1/ucBuscas/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/meta1/ucBuscas/Multicast_Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/meta1/ucBuscas/Multicast_Server.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/meta1/ucBuscas/WaitPackets.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/meta1/ucBuscas/WaitPackets.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/meta1/ucBuscas/WebCrawler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/meta1/ucBuscas/WebCrawler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ucBuscas/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ucBuscas/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ucBuscas/Multicast_Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ucBuscas/Multicast_Server.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,6 +36,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
@@ -46,10 +53,10 @@
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.language" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">

@@ -9,7 +9,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
 
 
     RMIInterface rmi_interface = null;
-
+    boolean flag ;
     protected Client() throws RemoteException {
         super();
     }
@@ -36,6 +36,9 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
 
     public void notification(String note) throws RemoteException {
         System.out.println(note);
+        if(flag==true){
+
+        }
     }
 
     public String menu(Client c) throws RemoteException {
@@ -154,6 +157,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
         boolean exception;
         String aux = null;
         do {
+            flag = true;
             System.out.println("\n\n-----MENU----- user: " + username);
             System.out.println("\n1. Consultar o histórico de pesquisas");
             System.out.println("2. Resultados ordenados por número de ligações para cada página");
@@ -172,6 +176,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
             System.out.println("0. Logout");
             System.out.println("Selecione o número que deseja: ");
             Scanner input = new Scanner(System.in);
+            flag =false;
             do {
                 exception = false;
                 try {
