@@ -166,12 +166,14 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
 
                 case 1:
                     String tmp = rmi_interface.mostraConsultas(username);
+                    String[] tmp_split;
+                    tmp_split = tmp.split(":", 2);
                     //System.out.println("size:" + tmp.length());
                     if (tmp.length() < 21) {
                         System.out.println("Não existem pesquisas na base de dados");
                     } else {
                         System.out.println("\n\nAs pesquisas realizadas são:");
-                        System.out.println(tmp);
+                        System.out.println(tmp_split[1]);
                     }
 
 
@@ -183,7 +185,6 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
 
                     tmp = rmi_interface.tabelaLigacoes();
 //                    System.out.println("size:" + tmp.length());
-                    String[] tmp_split;
                     tmp_split = tmp.split(":", 2);
                     if (tmp.length() < 50) {
                         System.out.println("Não existem sites na base de dados");
