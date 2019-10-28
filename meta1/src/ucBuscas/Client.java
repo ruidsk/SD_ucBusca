@@ -182,11 +182,13 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
 
                     tmp = rmi_interface.tabelaLigacoes();
 //                    System.out.println("size:" + tmp.length());
+                    String[] tmp_split;
+                    tmp_split = tmp.split(":", 2);
                     if (tmp.length() < 50) {
                         System.out.println("Não existem sites na base de dados");
                     } else {
-                        System.out.println("\n\nOs sites mais visitados são:");
-                        System.out.println(tmp);
+                        System.out.println("\n\nOs sites com mais links são:");
+                        System.out.println(tmp_split[1]);
                     }
 
 //                    if (tmp.length()==22) {
@@ -217,7 +219,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
                     System.out.println("\nIntroduza as palavras, separadas por espaços");
                     String text = input.nextLine();
 
-                    String[] tmp_split;
+
                     tmp = rmi_interface.checkWords(text);
                     rmi_interface.atualizaConsultas(username, text);
                     tmp_split = tmp.split(":", 2);

@@ -371,8 +371,8 @@ public class WebCrawler {
                 auxS = key;
             }
         }
-        resultado = resultado + auxS + "\t" + maiorI;
-        for (int i = 0; i < 3; i++) {
+        resultado = resultado +"1. "+ auxS + "\t" + maiorI;
+        for (int i = 2; i < 11; i++) {
             int aux = 0;
             for (String key : NlinksPSite.keySet()) {
                 if (NlinksPSite.get(key) > aux && NlinksPSite.get(key) < maiorI) {
@@ -381,7 +381,7 @@ public class WebCrawler {
                 }
             }
             if (aux != 0) {
-                resultado = resultado + "\n" + auxS + "\t" + aux;
+                resultado = resultado + "\n"+i+". " + auxS + "\t" + aux;
             }
             maiorI = aux;
         }
