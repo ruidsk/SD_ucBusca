@@ -49,6 +49,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
 
             System.out.println("1. Entrar");
             System.out.println("2. Registar");
+            System.out.println("3. Realizar uma pesquisa");
             System.out.println("0. Sair");
             System.out.println("Selecione o número que deseja: ");
             Scanner input = new Scanner(System.in);
@@ -109,6 +110,23 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
                     } while (exception);
 
                     break;
+                case 3:
+
+                    System.out.println("\nIntroduza as palavras, separadas por espaços:");
+                    String text = input.nextLine();
+
+                    String tmp = rmi_interface.checkWords(text);
+                    String[] tmp_split = tmp.split(":", 2);
+
+                    if (tmp.length() == 22) {
+                        System.out.println("\nNão existem urls com as palavras!");
+                    } else {
+
+                        System.out.println("\nOs urls são: " + tmp_split[1]);
+                    }
+
+                    break;
+
                 case 99:
                     rmi_interface.show_online();
                     break;

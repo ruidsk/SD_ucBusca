@@ -63,12 +63,12 @@ public class WebCrawler {
                         continue;
                     }
                     //map.put(ws,link.text());
-                    System.out.println("\nVou juntar ao mapa:"+ws+" e "+ link.attr("href"));
+
                     if (mapUrls.containsKey(ws)) {
-                        System.out.println("\nentrou em 1");
+
                         mapUrls.get(ws).add(link.attr("href"));
                     } else {
-                        System.out.println("\nentrou em 2");
+
                         HashSet<String> aux = new HashSet<>();
                         aux.add(link.attr("href"));
                         mapUrls.put(ws, aux);
