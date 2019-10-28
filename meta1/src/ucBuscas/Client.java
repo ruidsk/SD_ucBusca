@@ -5,6 +5,9 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.Scanner;
 
+/**
+ *
+ */
 public class Client extends UnicastRemoteObject implements ClientInterface {
 
 
@@ -14,6 +17,11 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
         super();
     }
 
+    /**
+     * @param args
+     * @throws RemoteException
+
+     */
     public static void main(String args[]) throws RemoteException {
 
         /* This might be necessary if you ever need to download classes:*/
@@ -34,6 +42,11 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
         //e.printStackTrace();
     }
 
+    /**
+     * @param note notificação enviada pelo server
+     * @throws RemoteException
+     *  função chamada pelo servidor para imprimir uma notificação nos clientes online
+     */
     public void notification(String note) throws RemoteException {
         System.out.println(note);
         if(flag==true){
@@ -41,6 +54,14 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
         }
     }
 
+    /**
+     * @param c
+     * @return
+     * @throws RemoteException
+     * função menu é onde são imprimidas as opções que o utilizador tem e pode escolher o que quer fazer
+     * é onde um utilizador se regista e da login
+     * pode tambem fazer uma pesquisa offline
+     */
     public String menu(Client c) throws RemoteException {
 
         int a = 0;
@@ -149,6 +170,13 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
         return aux;
     }
 
+    /**
+     * @param username nome do utilizador online
+     * @param c
+     * @return
+     * @throws RemoteException
+     * quando um utilizador se encontra neste menu é porque esta logado (online) e pode interagir com o servidor RMI
+     */
     public String menuPrincipal(String username, Client c) throws RemoteException {
 
         rmi_interface.loadUser(username);
@@ -321,6 +349,13 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
         return aux;
     }
 
+    /**
+     * @param username
+     * @param c
+     * @throws RemoteException
+     *
+     * quando um utilizador acede a este menu é porque foi verificado que ele é um admin e entao pode usar estas opções de administrador
+     */
     public void admin_menu(String username, Client c) throws RemoteException {
         int a = 0;
         boolean exception;
@@ -454,6 +489,10 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
         // return aux;
     }
 
+    /**
+     * @return
+     * função que garante a ligação entre o cliente e os servidores RMI
+     */
     public RMIInterface connect() {
         int port = 7000;
 
