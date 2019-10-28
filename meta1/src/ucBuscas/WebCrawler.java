@@ -19,7 +19,7 @@ public class WebCrawler {
     private static HashMap<String, HashSet<String>> map = new HashMap<String, HashSet<String>>();
     private static HashMap<String, HashSet<String>> mapUrls = new HashMap<String, HashSet<String>>();
 
-
+    private static String diretoria = "D:\\trabalhos - FCTUC - DEI\\---------\\SD\\SD_ucBusca\\meta1\\backups";
     public static boolean main(String ws) {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         Document doc = null;
