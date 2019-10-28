@@ -2,6 +2,7 @@ package ucBuscas;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.Set;
 
 public interface RMIInterface extends Remote {
     public String regista(String username, String password) throws RemoteException;
@@ -23,6 +24,8 @@ public interface RMIInterface extends Remote {
     public void load_online() throws RemoteException;
 
     void show_online() throws RemoteException;
+
+    String showOnline2Admin() throws RemoteException;
 
     String tabelaLigacoes() throws RemoteException;
 

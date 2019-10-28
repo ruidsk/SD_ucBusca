@@ -12,6 +12,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class Server_B extends UnicastRemoteObject implements RMIInterface {
     /**
@@ -110,6 +111,11 @@ public class Server_B extends UnicastRemoteObject implements RMIInterface {
     public void show_online() throws RemoteException {
 
         System.out.println(online.keySet());
+    }
+
+    @Override
+    public String showOnline2Admin() throws RemoteException {
+        return null;
     }
 
     @Override
