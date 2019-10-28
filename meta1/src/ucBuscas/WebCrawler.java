@@ -13,7 +13,7 @@ import java.util.*;
 public class WebCrawler {
     static Map<String, Integer> NlinksPSite = new TreeMap<>();  //links e numero de ligacoes
     static Map<String, Integer> Npalavras = new TreeMap<>(); //palavras e numero de vezes que são pesquisadas
-    private static int N_paginas_A_visitar = 2;
+    private static int N_paginas_A_visitar = 10;
     private static Set<String> paginasVisitadas = new HashSet<String>();
     private static List<String> paginas_A_Visitar = new LinkedList<String>();
     private static List<String> links2 = new LinkedList<String>();
@@ -154,9 +154,10 @@ public class WebCrawler {
     }
 
 
-    public static boolean indexaRecursiva(String url) {
+    public static String indexaRecursiva(String url) {
         int count = 0;
         String ws = url;
+        String resultado = "";
         if (!ws.startsWith("http://") && !ws.startsWith("https://"))
             ws = "http://".concat(ws);
 
@@ -176,7 +177,9 @@ public class WebCrawler {
         faz_backup(ws);
         System.out.println("\n**Done** Visited " + count + " web page(s)");
 
-        return true;
+        resultado=String.valueOf(count);
+
+        return resultado;
     }
 
 

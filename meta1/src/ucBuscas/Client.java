@@ -415,19 +415,10 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
                     System.out.println("Introduza o URL: ");
                     url = input.next();
                     System.out.println("\n");
-                    do {
-                        try {
-                            exception = false;
-                            aux = rmi_interface.addUrl(url);
-                            if (aux.startsWith("Servidor Multicast: type | addUrl ; resultado | success ;")) {
-                                System.out.println(url + " adicionado com sucesso");
-                            }
-                        } catch (NullPointerException | RemoteException np) {
-                            rmi_interface = connect();
-                            rmi_interface.load_online();
-                            exception = true;
-                        }
-                    } while (exception);
+                    aux = rmi_interface.addUrlRec(url);
+                    String[] tmp_split = aux.split(":", 2);
+                    System.out.println("\nForam adicionados "+ tmp_split[1] + " sites!");
+
 
                     break;
 
