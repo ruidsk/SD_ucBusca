@@ -139,6 +139,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
             System.out.println("\n1. Consultar o histórico de pesquisas");
             System.out.println("2. Resultados ordenados por número de ligações para cada página");
             System.out.println("3. Pesquisar páginas que contenham um conjunto de palavras");
+            System.out.println("4. Consultar lista de páginas com ligações para uma página específica");
             try {
                 aux = rmi_interface.check_admin(username);
                 if (aux.contains("success")) {
@@ -216,7 +217,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
                     break;
 
                 case 3:
-                    System.out.println("\nIntroduza as palavras, separadas por espaços");
+                    System.out.println("\nIntroduza as palavras, separadas por espaços:");
                     String text = input.nextLine();
 
 
@@ -230,6 +231,15 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
 
                         System.out.println("\nOs urls são: " + tmp_split[1]);
                     }
+                    break;
+
+                case 4:
+                    System.out.println("\nIntroduza o url a pesquisar:");
+                    text = input.nextLine();
+                    tmp = rmi_interface.ligacoesALinks(text);
+                    tmp_split = tmp.split(":", 2);
+                    System.out.println(tmp_split[1]);
+
                     break;
 
                 case 10:
