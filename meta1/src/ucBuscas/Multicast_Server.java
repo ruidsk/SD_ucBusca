@@ -388,7 +388,7 @@ class WaitPackets implements Runnable {
                     }else if (hashPacket.get("type").equals("mostraConsultas")) {
                         Multicast_Server.sendFeedback(socket, group, Multicast_Server.mostraConsultas(hashPacket));
                     }else if (hashPacket.get("type").equals("ligacoesALinks")) {
-                        Multicast_Server.sendFeedback(socket, group, Multicast_Server.mostraConsultas(hashPacket));
+                        Multicast_Server.sendFeedback(socket, group, Multicast_Server.ligacoesALinks(hashPacket));
                     }
 
 

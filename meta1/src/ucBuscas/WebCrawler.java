@@ -62,9 +62,12 @@ public class WebCrawler {
                         continue;
                     }
                     //map.put(ws,link.text());
+                    System.out.println("\nVou juntar ao mapa:"+ws+" e "+ link.attr("href"));
                     if (mapUrls.containsKey(ws)) {
+                        System.out.println("\nentrou em 1");
                         mapUrls.get(ws).add(link.attr("href"));
                     } else {
+                        System.out.println("\nentrou em 2");
                         HashSet<String> aux = new HashSet<>();
                         aux.add(link.attr("href"));
                         mapUrls.put(ws, aux);
@@ -390,9 +393,9 @@ public class WebCrawler {
     }
 
     public static String obtemUrlsFromUrls(String key) {
-        String[] aux = new String[0], aux2 = new String[100];
+        String[] aux = new String[0], aux2 = new String[10000];
         String listEnd = "\n";
-        Iterator it = map.entrySet().iterator();
+        Iterator it = mapUrls.entrySet().iterator();
         while (it.hasNext()) {
             HashMap.Entry word = (HashMap.Entry) it.next();
             if (word.getKey().equals(key)) {
@@ -411,8 +414,10 @@ public class WebCrawler {
 
     public static String ligacoesALinks(String ws){
         String resultado= "\n";
+        if (!ws.startsWith("http://") && !ws.startsWith("https://"))
+            ws = "http://".concat(ws);
         if (mapUrls.containsKey(ws)){
-            resultado = "Os urls são:" + obtemUrlsFromUrls(ws);
+            resultado = "Os urls relacionados são:" + obtemUrlsFromUrls(ws);
         }
         else{
             resultado="Não existe o link na base de dados";
