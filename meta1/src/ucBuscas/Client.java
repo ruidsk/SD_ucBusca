@@ -323,8 +323,9 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
         do {
             System.out.println("\n\n-----ADMIN MENU------");
             System.out.println("\n1. Adicionar novo admin");
-            System.out.println("2. Adicionar url");
-            System.out.println("3. Mostrar utilizadores online");
+            System.out.println("2. Indexar um url");
+            System.out.println("3. Indexar iterativamente urls");
+            System.out.println("4. Mostrar utilizadores online");
             System.out.println("0. Voltar ao menu principal");
             System.out.println("Selecione o número que deseja: ");
             Scanner input = new Scanner(System.in);
@@ -405,6 +406,27 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
                     break;
 
                 case 3:
+
+                    System.out.println("Introduza o URL: ");
+                    url = input.next();
+                    System.out.println("\n");
+                    do {
+                        try {
+                            exception = false;
+                            aux = rmi_interface.addUrl(url);
+                            if (aux.startsWith("Servidor Multicast: type | addUrl ; resultado | success ;")) {
+                                System.out.println(url + " adicionado com sucesso");
+                            }
+                        } catch (NullPointerException | RemoteException np) {
+                            rmi_interface = connect();
+                            rmi_interface.load_online();
+                            exception = true;
+                        }
+                    } while (exception);
+
+                    break;
+
+                case 4:
                     do {
                         try {
                             exception = false;
