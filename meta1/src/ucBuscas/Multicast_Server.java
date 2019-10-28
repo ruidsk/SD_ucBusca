@@ -226,10 +226,20 @@ public class Multicast_Server {
 
         String feedback = null;
 
-        if (WebCrawler.indexaRecursiva(tmp.get("nome")))
+        if (WebCrawler.main(tmp.get("nome")))
             feedback = "type | addUrl ; resultado | success ;";
         else
             feedback = "type | addUrl ; resultado | error ;";
+        return feedback;
+    }
+
+    public static String addUrlRec(HashMap<String, String> hashPacket) {
+
+        String feedback = null;
+
+        String tmp = WebCrawler.indexaRecursiva(hashPacket.get("url"));
+
+        feedback = tmp;
         return feedback;
     }
 
@@ -413,6 +423,8 @@ class WaitPackets implements Runnable {
                         Multicast_Server.sendFeedback(socket, group, Multicast_Server.tabelaPalavras());
                     }else if (hashPacket.get("type").equals("loadUser")) {
                         Multicast_Server.sendFeedback(socket, group, Multicast_Server.loadUser(hashPacket));
+                    }else if (hashPacket.get("type").equals("addUrlRec")) {
+                        Multicast_Server.sendFeedback(socket, group, Multicast_Server.addUrlRec(hashPacket));
                     }
 
 

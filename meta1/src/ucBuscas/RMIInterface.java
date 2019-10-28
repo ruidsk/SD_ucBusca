@@ -40,4 +40,6 @@ public interface RMIInterface extends Remote {
     String tabelaPalavras() throws RemoteException;
 
     String loadUser(String username) throws RemoteException;
+
+    String addUrlRec(String url) throws RemoteException;
 }
