@@ -18,10 +18,19 @@ public class Multicast_Server {
     private static MulticastSocket socket = null;
 
 
+    /**
+     * construtor
+     */
     public Multicast_Server() {
         super();
     }
 
+    /**
+     * faz o load dos ficheiros
+     * @return
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public static HashMap<String, String> loadLoginData() throws IOException, ClassNotFoundException {
         HashMap<String, String> tmp = null;
         try {
@@ -42,6 +51,12 @@ public class Multicast_Server {
         return tmp;
     }
 
+    /**
+     * enviar todos os useres registados ao servidor rmi
+     * @return
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public static String note_help() throws IOException, ClassNotFoundException {
         HashMap<String, String> tmp = loadLoginData();
         String aux = "";
@@ -54,6 +69,10 @@ public class Multicast_Server {
         return aux;
     }
 
+    /**
+     * carrega os administradores
+     * @return
+     */
     public static HashMap<String, Boolean> admin_load() {
         HashMap<String, Boolean> tmp = null;
         try {
@@ -72,6 +91,11 @@ public class Multicast_Server {
         return tmp;
     }
 
+    /**
+     * verifica se o user e password estão corretos e permite ou não o login
+     * @param login
+     * @return
+     */
     public static String login_user(HashMap<String, String> login) {
         String feedback = null;
 
@@ -92,6 +116,13 @@ public class Multicast_Server {
         return feedback;
     }
 
+    /**
+     * da permissão de administrador a um utilizador
+     * @param tmp
+     * @return
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public static String give_admin(HashMap<String, String> tmp) throws IOException, ClassNotFoundException {
 
         String feedback = null;
@@ -123,6 +154,11 @@ public class Multicast_Server {
         return feedback;
     }
 
+    /**
+     * verifica se o utilizdor é administrador
+     * @param tmp
+     * @return
+     */
     public static String check_admin(HashMap<String, String> tmp) {
         HashMap<String, Boolean> aux = admin_load();
 
@@ -140,6 +176,11 @@ public class Multicast_Server {
         return feedback;
     }
 
+    /**
+     * envia uma notificação
+     * @param user
+     * @return
+     */
     public static String send_notification(String user) {
         String feedback = null;
 
@@ -148,6 +189,13 @@ public class Multicast_Server {
         return feedback;
     }
 
+    /**
+     * regista um novo utilizador
+     * @param login
+     * @return
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public static String register_user(HashMap<String, String> login) throws IOException, ClassNotFoundException {
 
         String feedback = null;
@@ -193,6 +241,12 @@ public class Multicast_Server {
         return feedback;
     }
 
+    /**
+     *
+     * @param socket
+     * @param group
+     * @param feedback
+     */
     public static void sendFeedback(MulticastSocket socket, InetAddress group, String feedback) {
         String message = multicastName + ": " + feedback;
         System.out.println("\tEnviar -> " + message);
@@ -205,6 +259,10 @@ public class Multicast_Server {
         }
     }
 
+    /**
+     * @param str
+     * @return
+     */
     public static HashMap<String, String> strToHash(String str) {
         Properties props = new Properties();
         try {
@@ -222,6 +280,12 @@ public class Multicast_Server {
         return null;
     }
 
+    /**
+     * função que depois de recebido o protocolo, envia um um feedback em conformidade com
+     * o resultado enviado da funçao chamada em WebCrawler
+     * @param tmp
+     * @return
+     */
     public static String addUrl(HashMap<String, String> tmp) {
 
         String feedback = null;
@@ -233,6 +297,12 @@ public class Multicast_Server {
         return feedback;
     }
 
+    /**
+     * função que depois de recebido o protocolo, envia um um feedback em conformidade com
+     *  o resultado enviado da funçao chamada em WebCrawler
+     * @param hashPacket
+     * @return
+     */
     public static String addUrlRec(HashMap<String, String> hashPacket) {
 
         String feedback = null;
@@ -243,6 +313,12 @@ public class Multicast_Server {
         return feedback;
     }
 
+    /**
+     * função que depois de recebido o protocolo, envia um um feedback em conformidade com
+     * o resultado enviado da funçao chamada em WebCrawler
+     * @param hashPacket
+     * @return
+     */
     public static String checkWords(HashMap<String, String> hashPacket) {
         String feedback = null;
 
@@ -252,6 +328,11 @@ public class Multicast_Server {
         return feedback;
     }
 
+    /**
+     * função que depois de recebido o protocolo, envia um um feedback em conformidade com
+     * o resultado enviado da funçao chamada em WebCrawler
+     * @return
+     */
     public static String tabelaLigacoes() {
         String feedback = null;
 
@@ -261,6 +342,12 @@ public class Multicast_Server {
         return feedback;
     }
 
+    /**
+     * função que depois de recebido o protocolo, envia um um feedback em conformidade com
+     * o resultado enviado da funçao chamada em WebCrawler
+     * @return
+     * @throws IOException
+     */
     public static String load() throws IOException {
         String feedback = null;
 
@@ -270,6 +357,13 @@ public class Multicast_Server {
         return feedback;
     }
 
+    /**
+     * função que depois de recebido o protocolo, envia um um feedback em conformidade com
+     * o resultado enviado da funçao chamada em WebCrawler
+     * @param hashPacket
+     * @return
+     * @throws IOException
+     */
     public static String loadUser(HashMap<String, String> hashPacket) throws IOException {
         String feedback = null;
 
@@ -279,6 +373,13 @@ public class Multicast_Server {
         return feedback;
     }
 
+    /**
+     * função que depois de recebido o protocolo, envia um um feedback em conformidade com
+     * o resultado enviado da funçao chamada em WebCrawler
+     * @param hashPacket
+     * @return
+     * @throws IOException
+     */
     public static String atualizaConsultas(HashMap<String, String> hashPacket) throws IOException {
         String feedback = null;
 
@@ -290,6 +391,13 @@ public class Multicast_Server {
         return feedback;
     }
 
+    /**
+     * função que depois de recebido o protocolo, envia um um feedback em conformidade com
+     * o resultado enviado da funçao chamada em WebCrawler
+     * @param hashPacket
+     * @return
+     * @throws IOException
+     */
     public static String mostraConsultas(HashMap<String, String> hashPacket) throws IOException {
         String feedback = null;
 
@@ -299,6 +407,13 @@ public class Multicast_Server {
         return feedback;
     }
 
+    /**
+     * função que depois de recebido o protocolo, envia um um feedback em conformidade com
+     * o resultado enviado da funçao chamada em WebCrawler
+     * @param hashPacket
+     * @return
+     * @throws IOException
+     */
     public static String ligacoesALinks(HashMap<String, String> hashPacket) throws IOException {
         String feedback = null;
 
@@ -308,6 +423,11 @@ public class Multicast_Server {
         return feedback;
     }
 
+    /**
+     * função que depois de recebido o protocolo, envia um um feedback em conformidade com
+     * o resultado enviado da funçao chamada em WebCrawler
+     * @return
+     */
     public static String tabelaPalavras() {
         String feedback = null;
 
@@ -318,6 +438,13 @@ public class Multicast_Server {
     }
 
 
+    /**
+     * inicia a thread que fica à escuta
+     * @param args
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws ClassNotFoundException
+     */
     public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException {
 
         Multicast_Server server_multicast = new Multicast_Server();
@@ -368,6 +495,9 @@ class WaitPackets implements Runnable {
     }
 
 
+    /**
+     * thread que espera mensagens do multicast group
+     */
     @Override
     public void run() {
 

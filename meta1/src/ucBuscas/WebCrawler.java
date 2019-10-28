@@ -21,6 +21,12 @@ public class WebCrawler {
     private static HashMap<String, HashSet<String>> mapUrls = new HashMap<String, HashSet<String>>();
 
     private static String diretoria = "D:\\trabalhos - FCTUC - DEI\\---------\\SD\\SD_ucBusca\\meta1\\backups";
+
+    /**
+     * @param ws
+     * @return true or false
+     * função para indexar um url
+     */
     public static boolean main(String ws) {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         Document doc = null;
@@ -99,6 +105,11 @@ public class WebCrawler {
         return true;
     }
 
+    /**
+     * @param text
+     * @param url
+     * função para contar o número de palavras por site bem como adicionar a palavra ao hashmap
+     */
     private static void countWords(String text, String url) {
         Map<String, Integer> countMap = new TreeMap<>();
         BufferedReader reader = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(text.getBytes(StandardCharsets.UTF_8))));
@@ -148,12 +159,21 @@ public class WebCrawler {
         }*/
     }
 
+    /**
+     * @return links2
+     * funçao não usada ainda que retorna os links
+     */
     public static List<String> getLinks() {
 
         return links2;
     }
 
 
+    /**
+     * @param url
+     * @return string com o numero de sites visitados
+     * função que itera N_paginas a visitar e indexa os urls visitados
+     */
     public static String indexaRecursiva(String url) {
         int count = 0;
         String ws = url;
@@ -197,6 +217,11 @@ public class WebCrawler {
         return nextUrl;
     }
 
+    /**
+     * @param palavras
+     * @return urls
+     * funçao que pesquisa as palavras na hash e retorna os sites onde a palavra aparece
+     */
     public static String checkWords(String palavras) {
         String[] words = palavras.split("[ ,;:.?!(){}\\[\\]<>']+");
         String tmp;
@@ -239,6 +264,11 @@ public class WebCrawler {
         return urls;
     }
 
+    /**
+     * @param key
+     * @return lista de urls
+     * função que recebe uma key e devolde os urls associados a key
+     */
     public static String obtemUrls(String key) {
         String[] aux = new String[0], aux2 = new String[100];
         String listEnd = "\n";
@@ -259,6 +289,11 @@ public class WebCrawler {
         return listEnd;
     }
 
+    /**
+     * @param key
+     * @return arrey de sites
+     * recebe uma key de map e retorna os sites associados a esta lista em forma de lista
+     */
     public static ArrayList<String> obtemUrls2(String key) {
         String[] aux = new String[0], aux2 = new String[100];
         ArrayList<String> listEnd = new ArrayList<String>();
@@ -279,6 +314,11 @@ public class WebCrawler {
         return listEnd;
     }
 
+    /**
+     * funçao que carrega os sites pesquisados anteriormente que estão guardados num txt
+     * @return sucesso ou erro
+     * @throws IOException
+     */
     public static String load() throws IOException {
         File file = new File("backups/hash.txt");
         file.createNewFile();
@@ -311,6 +351,12 @@ public class WebCrawler {
 
     }
 
+    /**
+     * funçao que carrega as pesquisas realizadas anteriormente pelo userque estão guardados num txt
+     * @param user
+     * @return
+     * @throws IOException
+     */
     public static String loadUser(String user) throws IOException {
         File file = new File("backups/" + user + "_hist.txt");
         file.createNewFile();
@@ -348,6 +394,10 @@ public class WebCrawler {
 
     }
 
+    /**
+     * função que guarda os dados pesquisados num ficheiro txt
+     * @param ws
+     */
     public static void faz_backup(String ws) {
         File file = new File("backups/hash.txt");
         if (file.exists() && file.isFile()) {
@@ -368,7 +418,14 @@ public class WebCrawler {
         // ler_dados();
     }
 
-    //Consultar lista de pesquisas feitas pelo próprio utilizador
+    /**
+     * Consultar lista de pesquisas feitas pelo próprio utilizador
+     * @param user
+     * @param text
+     * @return sucesso ou erro
+     * @throws IOException
+     */
+
     public static boolean atualizaConsultas(String user, String text) throws IOException {
         File file = new File("backups/" + user + "_hist.txt");
         file.createNewFile();
@@ -387,6 +444,12 @@ public class WebCrawler {
         return true;
     }
 
+    /**
+     * mostra as consultas realizadas pelo utilizador
+     * @param user
+     * @return
+     * @throws IOException
+     */
     public static String mostraConsultas(String user) throws IOException {
         File file = new File("backups/" + user + "_hist.txt");
         file.createNewFile();
@@ -417,7 +480,11 @@ public class WebCrawler {
         return result;
     }
 
-    //Resultados ordenados por número de ligações para cada página
+    /**
+     * Resultados ordenados por número de ligações para cada página
+     * @return
+     */
+
     public static String tabelaLigacoes() {
         int maiorI = 0;
         String auxS = "";
@@ -446,6 +513,11 @@ public class WebCrawler {
         return resultado;
     }
 
+    /**
+     * recebe uma key url e vai a hash mapUrls e devolve os urls que estão associados a essa key
+     * @param key
+     * @return
+     */
     public static String obtemUrlsFromUrls(String key) {
         String[] aux = new String[0], aux2 = new String[10000];
         String listEnd = "\n";
@@ -466,6 +538,11 @@ public class WebCrawler {
         return listEnd;
     }
 
+    /**
+     * mostra os urls associados a um url
+     * @param ws
+     * @return
+     */
     public static String ligacoesALinks(String ws){
         String resultado= "\n";
         if (!ws.startsWith("http://") && !ws.startsWith("https://"))
@@ -480,6 +557,10 @@ public class WebCrawler {
     }
 
 
+    /**
+     * apresenta as palavras ordenadas por ordem de número de vezes que foi pesquisada
+     * @return
+     */
     public static String tabelaPalavras() {
 
         int maiorI = 0;
