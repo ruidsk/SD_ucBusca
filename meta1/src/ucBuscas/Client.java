@@ -47,9 +47,9 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
         rmi_interface.load();
         do {
 
-            System.out.println("1. ENTRAR");
-            System.out.println("2. REGISTAR");
-            System.out.println("0. SAIR");
+            System.out.println("1. Entrar");
+            System.out.println("2. Registar");
+            System.out.println("0. Sair");
             System.out.println("Selecione o número que deseja: ");
             Scanner input = new Scanner(System.in);
             do {
@@ -142,13 +142,13 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
             try {
                 aux = rmi_interface.check_admin(username);
                 if (aux.contains("success")) {
-                    System.out.println("10. Entrar em movo administrador");
+                    System.out.println("10. Entrar em modo administrador");
                 }
             } catch (NullPointerException | RemoteException np) {
                 rmi_interface = connect();
                 rmi_interface.load_online();
             }
-            System.out.println("0. logout");
+            System.out.println("0. Logout");
             System.out.println("Selecione o número que deseja: ");
             Scanner input = new Scanner(System.in);
             do {
@@ -214,7 +214,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
                     break;
 
                 case 3:
-                    System.out.println("\nIntroduza as palavras, separadas por espaços.");
+                    System.out.println("\nIntroduza as palavras, separadas por espaços");
                     String text = input.nextLine();
 
                     String[] tmp_split;
@@ -274,10 +274,9 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
         String aux = null;
         do {
             System.out.println("\n\n-----ADMIN MENU------");
-            System.out.println("\n1. adicionar novo admin");
-            System.out.println("2. coisas");
-            System.out.println("3. Adicionar url");
-            System.out.println("0. menu principal");
+            System.out.println("\n1. Adicionar novo admin");
+            System.out.println("2. Adicionar url");
+            System.out.println("0. Voltar ao menu principal");
             System.out.println("Selecione o número que deseja: ");
             Scanner input = new Scanner(System.in);
             do {
@@ -293,7 +292,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
             switch (a) {
 
                 case 1:
-                    System.out.println("introduza o username do novo admin: ");
+                    System.out.println("Introduza o username do novo admin: ");
                     String user = input.next();
                         /*System.out.println("Password: ");
                         String password = input.next();*/
@@ -320,25 +319,6 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
                     break;
 
                 case 2:
-                       /* System.out.println("Username: ");
-                        username = input.nextLine();
-                        System.out.println("Password: ");
-                        password = input.nextLine();
-                        do {
-                            try {
-                                exception = false;
-                                aux = rmi_interface.regista(username, password);
-                                System.out.println("o servidor respondeu : "+aux);
-                            } catch (RemoteException |NullPointerException enp) {
-                                rmi_interface=connect();
-                                rmi_interface.load_online();
-                                exception = true;
-                            }
-                        } while (exception);*/
-
-                    break;
-
-                case 3:
                     System.out.println("Introduza o URL: ");
                     String url = input.next();
                     System.out.println("\n");
@@ -356,8 +336,24 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
                         }
                     } while (exception);
 
-                    break;
 
+                       /* System.out.println("Username: ");
+                        username = input.nextLine();
+                        System.out.println("Password: ");
+                        password = input.nextLine();
+                        do {
+                            try {
+                                exception = false;
+                                aux = rmi_interface.regista(username, password);
+                                System.out.println("o servidor respondeu : "+aux);
+                            } catch (RemoteException |NullPointerException enp) {
+                                rmi_interface=connect();
+                                rmi_interface.load_online();
+                                exception = true;
+                            }
+                        } while (exception);*/
+
+                    break;
 
                 case 0:
                     System.out.println("Saindo...");
