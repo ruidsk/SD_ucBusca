@@ -242,8 +242,52 @@ public class Multicast_Server {
         return feedback;
     }
 
+    public static String tabelaLigacoes() {
+        String feedback = null;
+
+        String tmp = WebCrawler.tabelaLigacoes();
+
+        feedback = tmp;
+        return feedback;
+    }
+
+    public static String load() throws IOException {
+        String feedback = null;
+
+        String tmp = WebCrawler.load();
+
+        feedback = tmp;
+        return feedback;
+    }
+
+    public static String atualizaConsultas(HashMap<String, String> hashPacket) throws IOException {
+        String feedback = null;
 
 
+        if (WebCrawler.atualizaConsultas(hashPacket.get("nome"),hashPacket.get("consulta")))
+            feedback = "success";
+        else
+            feedback = "error";
+        return feedback;
+    }
+
+    public static String mostraConsultas(HashMap<String, String> hashPacket) throws IOException {
+        String feedback = null;
+
+        String tmp = WebCrawler.mostraConsultas(hashPacket.get("user"));
+
+        feedback = tmp;
+        return feedback;
+    }
+
+    public static String ligacoesALinks(HashMap<String, String> hashPacket) throws IOException {
+        String feedback = null;
+
+        String tmp = WebCrawler.ligacoesALinks(hashPacket.get("ws"));
+
+        feedback = tmp;
+        return feedback;
+    }
 
     public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException {
 
@@ -273,6 +317,7 @@ public class Multicast_Server {
             System.out.println("Excepcao (IO): " + e);
         }
     }
+
 
 
 }
@@ -333,6 +378,17 @@ class WaitPackets implements Runnable {
                         Multicast_Server.sendFeedback(socket, group, Multicast_Server.addUrl(hashPacket));
                     }else if (hashPacket.get("type").equals("help_note")) {
                         Multicast_Server.sendFeedback(socket, group, Multicast_Server.note_help());
+
+                    }else if (hashPacket.get("type").equals("tabelaLigacoes")) {
+                        Multicast_Server.sendFeedback(socket, group, Multicast_Server.tabelaLigacoes());
+                    }else if (hashPacket.get("type").equals("load")) {
+                        Multicast_Server.sendFeedback(socket, group, Multicast_Server.load());
+                    }else if (hashPacket.get("type").equals("atualizaConsultas")) {
+                        Multicast_Server.sendFeedback(socket, group, Multicast_Server.atualizaConsultas(hashPacket));
+                    }else if (hashPacket.get("type").equals("mostraConsultas")) {
+                        Multicast_Server.sendFeedback(socket, group, Multicast_Server.mostraConsultas(hashPacket));
+                    }else if (hashPacket.get("type").equals("ligacoesALinks")) {
+                        Multicast_Server.sendFeedback(socket, group, Multicast_Server.ligacoesALinks(hashPacket));
                     }
 
 
