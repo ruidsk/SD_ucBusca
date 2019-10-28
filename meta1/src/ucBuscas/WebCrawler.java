@@ -17,7 +17,8 @@ public class WebCrawler {
     private static List<String> paginas_A_Visitar = new LinkedList<String>();
     private static List<String> links2 = new LinkedList<String>();
     private static HashMap<String, HashSet<String>> map = new HashMap<String, HashSet<String>>();
-    private static ArrayList<String> hash = new ArrayList<>(); //backup
+    private static HashMap<String, HashSet<String>> mapUrls = new HashMap<String, HashSet<String>>();
+
 
     public static boolean main(String ws) {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
@@ -61,6 +62,20 @@ public class WebCrawler {
                         continue;
                     }
                     //map.put(ws,link.text());
+                    if (mapUrls.containsKey(ws)) {
+                        mapUrls.get(ws).add(link.attr("href"));
+                    } else {
+                        HashSet<String> aux = new HashSet<>();
+                        aux.add(link.attr("href"));
+                        mapUrls.put(ws, aux);
+                    }
+                    if (mapUrls.containsKey(link.attr("href"))) {
+                        mapUrls.get(link.attr("href")).add(ws);
+                    } else {
+                        HashSet<String> aux = new HashSet<>();
+                        aux.add(ws);
+                        mapUrls.put(link.attr("href"), aux);
+                    }
                     links2.add(link.absUrl("href"));
                     NlinksPSite.put(ws, NlinksPSite.get(ws) + 1);
                     System.out.println("Link: " + link.attr("href"));
