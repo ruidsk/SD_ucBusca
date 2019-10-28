@@ -43,8 +43,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
         int a = 0;
         boolean exception;
         String aux = null;
-        System.out.println("\nA carregar dados...\n\n\n");
-        rmi_interface.load();
+
         do {
 
             System.out.println("1. Entrar");
@@ -132,6 +131,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
     public String menuPrincipal(String username, Client c) throws RemoteException {
 
         rmi_interface.loadUser(username);
+
         int a = 0;
         boolean exception;
         String aux = null;
