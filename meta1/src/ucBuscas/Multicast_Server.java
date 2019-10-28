@@ -226,7 +226,7 @@ public class Multicast_Server {
 
         String feedback = null;
 
-        if (WebCrawler.indexaRecursiva(tmp.get("nome")))
+        if (WebCrawler.main(tmp.get("nome")))
             feedback = "type | addUrl ; resultado | success ;";
         else
             feedback = "type | addUrl ; resultado | error ;";
