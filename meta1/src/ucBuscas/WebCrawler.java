@@ -315,6 +315,36 @@ public class WebCrawler {
         return true;
     }
 
+    public static String mostraConsultas(String user) throws IOException {
+        File file = new File("C:\\Users\\davidvazcortesao\\Desktop\\SD_ucBusca\\SD\\backups\\" + user + "_hist.txt");
+        file.createNewFile();
+        BufferedReader br = null;
+        String result="";
+        try {
+            br = new BufferedReader(new FileReader(file));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return "failure";
+        }
+
+        String temp;
+        int i = 0;
+        try {
+            while (((temp = br.readLine()) != null)) {
+                i++;
+                if (i > 100) {
+                    break;
+                } else {
+                    result=result+temp+"\n";
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "failure";
+        }
+        return result;
+    }
+
     //Resultados ordenados por número de ligações para cada página
     public static String tabelaLigacoes() {
         int maiorI = 0;

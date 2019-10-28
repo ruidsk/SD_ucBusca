@@ -199,6 +199,15 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
         return feedback;
     }
 
+    public String mostraConsultas(String user) throws RemoteException {
+        String feedback = null;
+        HashMap<String, String> tmpInput = new HashMap<>();
+        String protocolo = "type | mostraConsultas ; user | " + user;
+        tmpInput = split(protocolo);
+        feedback = toMulticast(tmpInput);
+        return feedback;
+    }
+
 
     public static HashMap<String, String> split(String protocolo) {
         HashMap<String, String> tmpHash = new HashMap<>();
