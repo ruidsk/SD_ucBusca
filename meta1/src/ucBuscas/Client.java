@@ -429,7 +429,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
 
             try {
 
-                h = (RMIInterface) LocateRegistry.getRegistry("10.211.55.3",port).lookup("ucBusca");
+                h = (RMIInterface) LocateRegistry.getRegistry(port).lookup("ucBusca");
 
                 //david -> 194.210.37.29
                 //david MV -> 10.211.55.3
