@@ -10,10 +10,11 @@ import java.rmi.registry.Registry;
 import java.rmi.server.*;
 import java.util.*;
 
+/**
+ *
+ */
 public class Server extends UnicastRemoteObject implements RMIInterface {
-    /**
-     *
-     */
+
 
     final static String INET_ADDR = "224.3.2.1";
     final static int PORT = 4321;
