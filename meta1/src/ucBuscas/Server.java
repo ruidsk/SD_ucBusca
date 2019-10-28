@@ -225,7 +225,7 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
     }
 
     public static String toMulticast(HashMap<String, String> tmpHash) throws RemoteException {
-        int MAX_LEN = 1000;
+        int MAX_LEN = 10000;
         MulticastSocket socket = null;
         InetAddress group = null;
 
@@ -259,7 +259,7 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
 
             //Espera por resposta
 
-            byte[] buffer = new byte[1000];
+            byte[] buffer = new byte[MAX_LEN];
             DatagramPacket reply = new DatagramPacket(buffer, buffer.length, datagram.getAddress(), datagram.getPort());
 
 
