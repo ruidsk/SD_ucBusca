@@ -260,6 +260,17 @@ public class Multicast_Server {
         return feedback;
     }
 
+    public static String atualizaConsultas(HashMap<String, String> hashPacket) throws IOException {
+        String feedback = null;
+
+
+        if (WebCrawler.atualizaConsultas(hashPacket.get("nome"),hashPacket.get("consulta")))
+            feedback = "success";
+        else
+            feedback = "error";
+        return feedback;
+    }
+
     public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException {
 
         Multicast_Server server_multicast = new Multicast_Server();
@@ -354,6 +365,8 @@ class WaitPackets implements Runnable {
                         Multicast_Server.sendFeedback(socket, group, Multicast_Server.tabelaLigacoes());
                     }else if (hashPacket.get("type").equals("load")) {
                         Multicast_Server.sendFeedback(socket, group, Multicast_Server.load());
+                    }else if (hashPacket.get("type").equals("atualizaConsultas")) {
+                        Multicast_Server.sendFeedback(socket, group, Multicast_Server.atualizaConsultas(hashPacket));
                     }
 
 

@@ -27,4 +27,6 @@ public interface RMIInterface extends Remote {
     String tabelaLigacoes() throws RemoteException;
 
     String load() throws RemoteException;
+
+    String atualizaConsultas(String username, String text) throws RemoteException;
 }

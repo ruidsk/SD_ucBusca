@@ -296,6 +296,25 @@ public class WebCrawler {
         // ler_dados();
     }
 
+    //Consultar lista de pesquisas feitas pelo próprio utilizador
+    public static boolean atualizaConsultas(String user, String text) throws IOException {
+        File file = new File("C:\\Users\\davidvazcortesao\\Desktop\\SD_ucBusca\\SD\\backups\\" + user + "hash.txt");
+        file.createNewFile();
+        BufferedReader br = null;
+        try {
+            FileWriter filew = new FileWriter(file, true);
+            BufferedWriter bw = new BufferedWriter(filew);
+            bw.append(text);
+            bw.newLine();
+            bw.close();
+            filew.close();
+        } catch (IOException e) {
+            System.out.println("Não foi possível escrever no file");
+            return false;
+        }
+        return true;
+    }
+
     //Resultados ordenados por número de ligações para cada página
     public static String tabelaLigacoes() {
         int maiorI = 0;
@@ -316,7 +335,7 @@ public class WebCrawler {
                     auxS = key;
                 }
             }
-            if(aux!=0) {
+            if (aux != 0) {
                 resultado = resultado + "\n" + auxS + "\t" + aux;
             }
             maiorI = aux;
@@ -324,6 +343,7 @@ public class WebCrawler {
 
         return resultado;
     }
+
 
 }
 

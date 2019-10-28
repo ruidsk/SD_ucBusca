@@ -87,7 +87,7 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
 
     public String regista(String username, String password) throws RemoteException {
         String feedback = null;
-        System.out.println("ahsdasjd");
+//        System.out.println("ahsdasjd");
         HashMap<String, String> tmpInput = new HashMap<>();
         String protocolo = "type | registar ; nome | " + username + " ; password | " + password;
         tmpInput = split(protocolo);
@@ -186,6 +186,16 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
         String protocolo = "type | load ; palavras | ";
         tmpInput = split(protocolo);
         feedback = toMulticast(tmpInput);
+        return feedback;
+    }
+
+    public String atualizaConsultas(String user, String text) throws RemoteException {
+        String feedback = null;
+        HashMap<String, String> tmpInput = new HashMap<>();
+        String protocolo = "type | atualizaConsultas ; nome | " + user + " ; consulta | " + text;
+        tmpInput = split(protocolo);
+        feedback = toMulticast(tmpInput);
+
         return feedback;
     }
 

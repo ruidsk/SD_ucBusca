@@ -197,6 +197,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
 
                     String[] tmp_split;
                     tmp = rmi_interface.checkWords(text);
+                    rmi_interface.atualizaConsultas(username,text);
                     tmp_split = tmp.split(":",2);
 
                     if (tmp.length()==22) {
