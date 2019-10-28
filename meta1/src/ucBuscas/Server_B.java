@@ -137,6 +137,16 @@ public class Server_B extends UnicastRemoteObject implements RMIInterface {
         return null;
     }
 
+    @Override
+    public String tabelaPalavras() throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public String loadUser(String username) throws RemoteException {
+        return null;
+    }
+
     public void load_online() throws RemoteException {
         HashMap<String, ClientInterface> tmp = new HashMap<>();
         try {

@@ -11,7 +11,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 public class WebCrawler {
-    static Map<String, Integer> NlinksPSite = new TreeMap<>();
+    static Map<String, Integer> NlinksPSite = new TreeMap<>();  //links e numero de ligacoes
+    static Map<String, Integer> Npalavras = new TreeMap<>(); //palavras e numero de vezes que são pesquisadas
     private static int N_paginas_A_visitar = 2;
     private static Set<String> paginasVisitadas = new HashSet<String>();
     private static List<String> paginas_A_Visitar = new LinkedList<String>();
@@ -203,6 +204,16 @@ public class WebCrawler {
         System.out.println(map);
         resultado = obtemUrls2(words[0]);
         for (String word : words) {
+
+            if (!Npalavras.containsKey(word)) {
+                Npalavras.put(word, 1);
+
+            }
+            else {
+                Npalavras.put(word, Npalavras.get(word) + 1);
+
+            }
+            System.out.println(Npalavras);
             if (map.containsKey(word)) {
                 System.out.println("\nSites: " + obtemUrls(word));
                 aux = obtemUrls2(word);
@@ -292,6 +303,46 @@ public class WebCrawler {
             return "failure";
         }
         return "success";
+
+
+
+    }
+
+    public static String loadUser(String user) throws IOException {
+        File file = new File("backups/" + user + "_hist.txt");
+        file.createNewFile();
+        BufferedReader br = null;
+        String result="";
+        try {
+            br = new BufferedReader(new FileReader(file));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return "failure";
+        }
+
+        String temp;
+        int i = 0;
+        try {
+            while (((temp = br.readLine()) != null)) {
+                i++;
+                if (i > 100) {
+                    break;
+                } else {
+                    if (!Npalavras.containsKey(temp)) {
+                        Npalavras.put(temp, 1);
+
+                    }
+                    else {
+                        Npalavras.put(temp, Npalavras.get(temp) + 1);
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "failure";
+        }
+        return result;
+
     }
 
     public static void faz_backup(String ws) {
@@ -426,6 +477,36 @@ public class WebCrawler {
     }
 
 
+    public static String tabelaPalavras() {
+
+        int maiorI = 0;
+        String auxS = "";
+        String lastKey="";
+        String resultado = "\n";
+        for (String key : Npalavras.keySet()) {
+            if (Npalavras.get(key) > maiorI) {
+                maiorI = Npalavras.get(key);
+                auxS = key;
+            }
+        }
+        resultado = resultado +"1. "+ auxS + "\t" + maiorI;
+        for (int i = 2; i < 11; i++) {
+            int aux = 0;
+            for (String key : Npalavras.keySet()) {
+                if (Npalavras.get(key) > aux && Npalavras.get(key) < maiorI ||maiorI==1) {
+                    aux = Npalavras.get(key);
+                    auxS = key;
+                }
+            }
+            if (!lastKey.equals(auxS) && aux != 0) {
+                resultado = resultado + "\n"+i+". " + auxS + "\t" + aux;
+                lastKey=auxS;
+            }
+            maiorI = aux;
+        }
+
+        return resultado;
+    }
 }
 
 

@@ -33,4 +33,8 @@ public interface RMIInterface extends Remote {
     String mostraConsultas(String username) throws RemoteException;
 
     String ligacoesALinks(String text) throws RemoteException;
+
+    String tabelaPalavras() throws RemoteException;
+
+    String loadUser(String username) throws RemoteException;
 }

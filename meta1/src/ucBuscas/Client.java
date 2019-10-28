@@ -131,6 +131,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
 
     public String menuPrincipal(String username, Client c) throws RemoteException {
 
+        rmi_interface.loadUser(username);
         int a = 0;
         boolean exception;
         String aux = null;
@@ -140,6 +141,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
             System.out.println("2. Resultados ordenados por número de ligações para cada página");
             System.out.println("3. Pesquisar páginas que contenham um conjunto de palavras");
             System.out.println("4. Consultar lista de páginas com ligações para uma página específica");
+            System.out.println("5. Consultar palavras mais pesquisadas");
             try {
                 aux = rmi_interface.check_admin(username);
                 if (aux.contains("success")) {
@@ -184,9 +186,9 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
 
 
                     tmp = rmi_interface.tabelaLigacoes();
-//                    System.out.println("size:" + tmp.length());
+                    //System.out.println("size:" + tmp.length());
                     tmp_split = tmp.split(":", 2);
-                    if (tmp.length() < 50) {
+                    if (tmp.length() < 27) {
                         System.out.println("Não existem sites na base de dados");
                     } else {
                         System.out.println("\n\nOs sites com mais links são:");
@@ -240,6 +242,20 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
                     tmp = rmi_interface.ligacoesALinks(text);
                     tmp_split = tmp.split(":", 2);
                     System.out.println(tmp_split[1]);
+
+                    break;
+
+                case 5:
+
+                    tmp = rmi_interface.tabelaPalavras();
+                    //System.out.println("size:" + tmp.length());
+                    tmp_split = tmp.split(":", 2);
+                    if (tmp.length() < 27) {
+                        System.out.println("Não existem palavras pesquisadas!");
+                    } else {
+                        System.out.println("\n\nAs palavras mais pesquisadas são:");
+                        System.out.println(tmp_split[1]);
+                    }
 
                     break;
 

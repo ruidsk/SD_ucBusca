@@ -260,6 +260,15 @@ public class Multicast_Server {
         return feedback;
     }
 
+    public static String loadUser(HashMap<String, String> hashPacket) throws IOException {
+        String feedback = null;
+
+        String tmp = WebCrawler.loadUser(hashPacket.get("user"));
+
+        feedback = tmp;
+        return feedback;
+    }
+
     public static String atualizaConsultas(HashMap<String, String> hashPacket) throws IOException {
         String feedback = null;
 
@@ -288,6 +297,16 @@ public class Multicast_Server {
         feedback = tmp;
         return feedback;
     }
+
+    public static String tabelaPalavras() {
+        String feedback = null;
+
+        String tmp = WebCrawler.tabelaPalavras();
+
+        feedback = tmp;
+        return feedback;
+    }
+
 
     public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException {
 
@@ -389,7 +408,12 @@ class WaitPackets implements Runnable {
                         Multicast_Server.sendFeedback(socket, group, Multicast_Server.mostraConsultas(hashPacket));
                     }else if (hashPacket.get("type").equals("ligacoesALinks")) {
                         Multicast_Server.sendFeedback(socket, group, Multicast_Server.ligacoesALinks(hashPacket));
+                    }else if (hashPacket.get("type").equals("tabelaPalavras")) {
+                        Multicast_Server.sendFeedback(socket, group, Multicast_Server.tabelaPalavras());
+                    }else if (hashPacket.get("type").equals("loadUser")) {
+                        Multicast_Server.sendFeedback(socket, group, Multicast_Server.loadUser(hashPacket));
                     }
+
 
 
                 }
