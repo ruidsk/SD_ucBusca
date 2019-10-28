@@ -10,6 +10,9 @@ import java.net.MalformedURLException;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
+/**
+ * navegador que usa jsoup
+ */
 public class WebCrawler {
     static Map<String, Integer> NlinksPSite = new TreeMap<>();  //links e numero de ligacoes
     static Map<String, Integer> Npalavras = new TreeMap<>(); //palavras e numero de vezes que são pesquisadas
@@ -120,7 +123,7 @@ public class WebCrawler {
             try {
                 if ((line = reader.readLine()) == null)
                     break;
-                String[] words = line.split("[ ,;:.?!“”(){}\\[\\]<>']+");
+                String[] words = line.split("[ ,;:.?!(){}\\[\\]<>']+");
                 for (String word : words) {
                     word = word.toLowerCase();
                     if ("".equals(word)) {
