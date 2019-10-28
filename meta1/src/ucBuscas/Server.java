@@ -30,6 +30,16 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
 
         System.out.println(online.keySet());
     }
+
+    public String showOnline2Admin() throws RemoteException{
+        String aux = "";
+
+        for(String x : online.keySet()){
+            aux+=x+"\n";
+        }
+        return aux;
+    }
+
     public void load_online()  throws RemoteException{
         HashMap<String, ClientInterface> tmp = new HashMap<>();
         //System.out.println("ansdnajsdn");
@@ -66,6 +76,8 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
 
         // aqui gravar en ficheiro para os rmi acederem quando cair um
     }
+
+
     public void disconnect(String username) throws RemoteException{
         online.remove(username);
         save_online();
@@ -225,7 +237,7 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
     }
 
     public static String toMulticast(HashMap<String, String> tmpHash) throws RemoteException {
-        int MAX_LEN = 10000;
+        int MAX_LEN = 100000;
         MulticastSocket socket = null;
         InetAddress group = null;
 

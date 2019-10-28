@@ -1,5 +1,5 @@
 package ucBuscas;
-
+import java.io.*;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.server.UnicastRemoteObject;
@@ -185,8 +185,9 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
 //                    System.out.println("size:" + tmp.length());
                     String[] tmp_split;
                     tmp_split = tmp.split(":", 2);
-                    if (tmp.length() < 50) {
-                        System.out.println("Não existem sites na base de dados");
+                    if (tmp.length()<27) {
+
+                        System.out.println("\nNão existem sites na base de dados");
                     } else {
                         System.out.println("\n\nOs sites com mais links são:");
                         System.out.println(tmp_split[1]);
@@ -288,6 +289,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
             System.out.println("\n\n-----ADMIN MENU------");
             System.out.println("\n1. Adicionar novo admin");
             System.out.println("2. Adicionar url");
+            System.out.println("3. Mostrar utilizadores online");
             System.out.println("0. Voltar ao menu principal");
             System.out.println("Selecione o número que deseja: ");
             Scanner input = new Scanner(System.in);
@@ -367,6 +369,22 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
 
                     break;
 
+                case 3:
+                    do {
+                        try {
+                            exception = false;
+                            aux = rmi_interface.showOnline2Admin();
+                            System.out.println("\t\t- ONLINE USERS -\n"+ aux);
+
+                        } catch (NullPointerException | RemoteException np) {
+                            rmi_interface = connect();
+                            rmi_interface.load_online();
+                            exception = true;
+                        }
+                    } while (exception);
+
+
+                    break;
                 case 0:
                     System.out.println("Saindo...");
                     menuPrincipal(username, c);
@@ -394,15 +412,16 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
 
             try {
 
-                h = (RMIInterface) LocateRegistry.getRegistry(port).lookup("ucBusca");
+                h = (RMIInterface) LocateRegistry.getRegistry("10.211.55.3",port).lookup("ucBusca");
 
                 //david -> 194.210.37.29
+                //david MV -> 10.211.55.3
                 //me -> 192.168.56.1
 
                 return h;
             } catch (Exception e) {
                 h = null;
-                System.out.println("no\n");
+                //System.out.println("no\n");
                 if (port == 7000) {
                     port = 7001;
                 } else if (port == 7001) {

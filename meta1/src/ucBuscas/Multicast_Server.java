@@ -325,7 +325,7 @@ public class Multicast_Server {
 /* thread que responde às mensagens do RMI_SEVER*/
 
 class WaitPackets implements Runnable {
-    private static final int MAX_LEN = 1000;
+    private static final int MAX_LEN = 100000;
     private MulticastSocket socket;
     private InetAddress group;
     private int port;
