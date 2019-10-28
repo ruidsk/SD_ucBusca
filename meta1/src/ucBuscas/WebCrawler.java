@@ -32,49 +32,51 @@ public class WebCrawler {
             if (!ws.startsWith("http://") && !ws.startsWith("https://"))
                 ws = "http://".concat(ws);
 
-
-            try {
-                // Attempt to connect and get the document
-                doc = Jsoup.connect(ws).get();  // Documentation: https://jsoup.org/
-                System.out.println("**Sucesso** Recebeu do html");
-            } catch (MalformedURLException e) {
-                System.out.println("**Failure** Retrieved something other than HTML");
-                return false;
-
-            }
             if (!NlinksPSite.containsKey(ws)) {
-                NlinksPSite.put(ws, 0);
-            }
-            // Title
-            System.out.println(doc.title() + "\n");
+                try {
+                    // Attempt to connect and get the document
+                    doc = Jsoup.connect(ws).get();  // Documentation: https://jsoup.org/
+                    System.out.println("**Sucesso** Recebeu do html");
+                } catch (MalformedURLException e) {
+                    System.out.println("**Failure** Retrieved something other than HTML");
+                    return false;
 
-            // Get all links
-            Elements links = doc.select("a[href]");
-            for (Element link : links) {
-                // Ignore bookmarks within the page
-                if (link.attr("href").startsWith("#")) {
-                    continue;
+                }
+                if (!NlinksPSite.containsKey(ws)) {
+                    NlinksPSite.put(ws, 0);
+                }
+                // Title
+                System.out.println(doc.title() + "\n");
+
+                // Get all links
+                Elements links = doc.select("a[href]");
+                for (Element link : links) {
+                    // Ignore bookmarks within the page
+                    if (link.attr("href").startsWith("#")) {
+                        continue;
+                    }
+
+                    // Shall we ignore local links? Otherwise we have to rebuild them for future parsing
+                    if (!link.attr("href").startsWith("http")) {
+                        continue;
+                    }
+                    //map.put(ws,link.text());
+                    links2.add(link.absUrl("href"));
+                    NlinksPSite.put(ws, NlinksPSite.get(ws) + 1);
+                    System.out.println("Link: " + link.attr("href"));
+                    System.out.println("Text: " + link.text() + "\n");
                 }
 
-                // Shall we ignore local links? Otherwise we have to rebuild them for future parsing
-                if (!link.attr("href").startsWith("http")) {
-                    continue;
-                }
-                //map.put(ws,link.text());
-                links2.add(link.absUrl("href"));
-                NlinksPSite.put(ws, NlinksPSite.get(ws) + 1);
-                System.out.println("Link: " + link.attr("href"));
-                System.out.println("Text: " + link.text() + "\n");
+                // Get website text and count words
+                String text = doc.text(); // We can use doc.body().text() if we only want to get text from <body></body>
+                countWords(text, ws);
             }
-
-            // Get website text and count words
-            String text = doc.text(); // We can use doc.body().text() if we only want to get text from <body></body>
-            countWords(text, ws);
         } catch (IOException e) {
             //e.printStackTrace();
             return false;
             //System.out.println("**Failure** Retrieving links!");
         }
+
         return true;
     }
 
@@ -245,13 +247,15 @@ public class WebCrawler {
         return listEnd;
     }
 
-    public static void ler_dados() {
-        File file = new File("C:\\Users\\davidvazcortesao\\Desktop\\SD_ucBusca\\SD\\backups\\hash.txt.txt");
+    public static String load() throws IOException {
+        File file = new File("C:\\Users\\davidvazcortesao\\Desktop\\SD_ucBusca\\SD\\backups\\hash.txt");
+        file.createNewFile();
         BufferedReader br = null;
         try {
             br = new BufferedReader(new FileReader(file));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+            return "failure";
         }
 
         String temp;
@@ -267,11 +271,13 @@ public class WebCrawler {
             }
         } catch (IOException e) {
             e.printStackTrace();
+            return "failure";
         }
+        return "success";
     }
 
     public static void faz_backup(String ws) {
-        File file = new File("C:\\Users\\davidvazcortesao\\Desktop\\SD_ucBusca\\SD\\backups\\hash.txt.txt");
+        File file = new File("C:\\Users\\davidvazcortesao\\Desktop\\SD_ucBusca\\SD\\backups\\hash.txt");
         if (file.exists() && file.isFile()) {
             try {
                 FileWriter filew = new FileWriter(file, true);
@@ -295,7 +301,6 @@ public class WebCrawler {
         int maiorI = 0;
         String auxS = "";
         String resultado = "\n";
-
         for (String key : NlinksPSite.keySet()) {
             if (NlinksPSite.get(key) > maiorI) {
                 maiorI = NlinksPSite.get(key);
@@ -311,8 +316,10 @@ public class WebCrawler {
                     auxS = key;
                 }
             }
+            if(aux!=0) {
+                resultado = resultado + "\n" + auxS + "\t" + aux;
+            }
             maiorI = aux;
-            resultado = resultado + "\n" + auxS + "\t" + maiorI;
         }
 
         return resultado;

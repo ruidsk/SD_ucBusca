@@ -25,4 +25,6 @@ public interface RMIInterface extends Remote {
     void show_online() throws RemoteException;
 
     String tabelaLigacoes() throws RemoteException;
+
+    String load() throws RemoteException;
 }

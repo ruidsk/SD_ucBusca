@@ -180,6 +180,16 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
     }
 
 
+    public String load() throws RemoteException {
+        String feedback = null;
+        HashMap<String, String> tmpInput = new HashMap<>();
+        String protocolo = "type | load ; palavras | ";
+        tmpInput = split(protocolo);
+        feedback = toMulticast(tmpInput);
+        return feedback;
+    }
+
+
     public static HashMap<String, String> split(String protocolo) {
         HashMap<String, String> tmpHash = new HashMap<>();
         Arrays.stream(protocolo.split(";")).map(s -> s.split("\\|")).forEach(i -> tmpHash.put(i[0].trim(), i[1].trim()));

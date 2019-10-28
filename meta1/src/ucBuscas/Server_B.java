@@ -31,6 +31,17 @@ public class Server_B extends UnicastRemoteObject implements RMIInterface {
 
         System.out.println(online.keySet());
     }
+
+    @Override
+    public String tabelaLigacoes() throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public String load() throws RemoteException {
+        return null;
+    }
+
     public void load_online()  throws RemoteException{
         HashMap<String, ClientInterface> tmp = new HashMap<>();
         try{

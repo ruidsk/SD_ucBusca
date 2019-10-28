@@ -24,6 +24,8 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
         int a = 0;
         boolean exception;
         String aux = null;
+        System.out.println("\nA carregar dados...\n\n\n");
+        rmi_interface.load();
         do {
 
             System.out.println("1. ENTRAR");
@@ -37,10 +39,10 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
                     a = Integer.parseInt(input.nextLine());
                 } catch (NumberFormatException e) {
                     exception = true;
-                    System.out.println("Número inválido. Tente outra vez!");
+                    System.out.println("\nNúmero inválido. Tente outra vez!");
                 }
             } while (exception);
-
+            System.out.println("\n");
             switch (a) {
 
                 case 1:
@@ -114,8 +116,8 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
         boolean exception;
         String aux = null;
         do {
-            System.out.println("\n-----MENU----- user: " + username);
-            System.out.println("1. entrar em modo administrador");
+            System.out.println("\n\n-----MENU----- user: " + username);
+            System.out.println("\n1. entrar em modo administrador");
             System.out.println("2. Resultados ordenados por número de ligações para cada página");
             System.out.println("3. Pesquisar páginas que contenham um conjunto de palavras");
             System.out.println("0. logout");
@@ -153,11 +155,17 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
                     break;
 
                 case 2:
-                    System.out.println("\n\nOs sites mais visitados são:");
-                    String tmp=rmi_interface.tabelaLigacoes();
-                    System.out.println(tmp);
-                    System.out.println("\nSize é: "+tmp.length());
 
+
+                    String tmp=rmi_interface.tabelaLigacoes();
+                    System.out.println("size:"+ tmp.length());
+                    if(tmp.length()<50){
+                        System.out.println("Não existem sites na base de dados");
+                    }
+                    else{
+                        System.out.println("\n\nOs sites mais visitados são:");
+                        System.out.println(tmp);
+                    }
 
 //                    if (tmp.length()==22) {
 //                        System.out.println("\nNão existem urls com as palavras!");
@@ -227,8 +235,8 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
         boolean exception;
         String aux = null;
         do {
-            System.out.println("-----ADMIN MENU------");
-            System.out.println("1. adicionar novo admin");
+            System.out.println("\n\n-----ADMIN MENU------");
+            System.out.println("\n1. adicionar novo admin");
             System.out.println("2. coisas");
             System.out.println("3. Adicionar url");
             System.out.println("0. menu principal");
@@ -293,8 +301,9 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
                     break;
 
                 case 3:
-                    System.out.println("Introduza o URL ");
+                    System.out.println("Introduza o URL: ");
                     String url = input.next();
+                    System.out.println("\n");
                     do {
                         try {
                             exception = false;
