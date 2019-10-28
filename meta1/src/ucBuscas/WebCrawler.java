@@ -266,7 +266,7 @@ public class WebCrawler {
     }
 
     public static String load() throws IOException {
-        File file = new File("C:\\Users\\davidvazcortesao\\Desktop\\SD_ucBusca\\SD\\backups\\hash.txt");
+        File file = new File("backups/hash.txt");
         file.createNewFile();
         BufferedReader br = null;
         try {
@@ -295,7 +295,7 @@ public class WebCrawler {
     }
 
     public static void faz_backup(String ws) {
-        File file = new File("C:\\Users\\davidvazcortesao\\Desktop\\SD_ucBusca\\SD\\backups\\hash.txt");
+        File file = new File("backups/hash.txt");
         if (file.exists() && file.isFile()) {
             try {
                 FileWriter filew = new FileWriter(file, true);
@@ -316,7 +316,7 @@ public class WebCrawler {
 
     //Consultar lista de pesquisas feitas pelo próprio utilizador
     public static boolean atualizaConsultas(String user, String text) throws IOException {
-        File file = new File("C:\\Users\\davidvazcortesao\\Desktop\\SD_ucBusca\\SD\\backups\\" + user + "_hist.txt");
+        File file = new File("backups/" + user + "_hist.txt");
         file.createNewFile();
         BufferedReader br = null;
         try {
@@ -334,7 +334,7 @@ public class WebCrawler {
     }
 
     public static String mostraConsultas(String user) throws IOException {
-        File file = new File("C:\\Users\\davidvazcortesao\\Desktop\\SD_ucBusca\\SD\\backups\\" + user + "_hist.txt");
+        File file = new File("backups/" + user + "_hist.txt");
         file.createNewFile();
         BufferedReader br = null;
         String result="";
