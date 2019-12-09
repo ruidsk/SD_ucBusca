@@ -42,8 +42,8 @@ public class WebCrawler {
             //String ws = bf.readLine();
             if (!ws.startsWith("http://") && !ws.startsWith("https://"))
                 ws = "http://".concat(ws);
+            if(!map.containsKey(ws)) {
 
-            if (!NlinksPSite.containsKey(ws)) {
                 try {
                     // Attempt to connect and get the document
                     doc = Jsoup.connect(ws).get();  // Documentation: https://jsoup.org/
@@ -73,15 +73,7 @@ public class WebCrawler {
                     }
                     //map.put(ws,link.text());
 
-                    if (mapUrls.containsKey(ws)) {
 
-                        mapUrls.get(ws).add(link.attr("href"));
-                    } else {
-
-                        HashSet<String> aux = new HashSet<>();
-                        aux.add(link.attr("href"));
-                        mapUrls.put(ws, aux);
-                    }
                     if (mapUrls.containsKey(link.attr("href"))) {
                         mapUrls.get(link.attr("href")).add(ws);
                     } else {
@@ -94,7 +86,7 @@ public class WebCrawler {
                     System.out.println("Link: " + link.attr("href"));
                     System.out.println("Text: " + link.text() + "\n");
                 }
-
+                //faz_backup(ws);
                 // Get website text and count words
                 String text = doc.text(); // We can use doc.body().text() if we only want to get text from <body></body>
                 countWords(text, ws);
@@ -197,8 +189,8 @@ public class WebCrawler {
             count++;
         }
         N_paginas_A_visitar += 2;
-        faz_backup(ws);
-        System.out.println("\n**Done** Visited " + count + " web page(s)");
+        System.out.println("\n**Done** Visited " + count + " web page(s)\n");
+
 
         resultado=String.valueOf(count);
 
@@ -228,37 +220,41 @@ public class WebCrawler {
     public static String checkWords(String palavras) {
         String[] words = palavras.split("[ ,;:.?!(){}\\[\\]<>']+");
         String tmp;
+        int iterador;
         String urls = "\n ";
         ArrayList<String> resultado = new ArrayList<String>();
         ArrayList<String> aux = new ArrayList<String>();
         int existe = 0;
-        System.out.println(map);
+        //System.out.println(map);
         resultado = obtemUrls2(words[0]);
         for (String word : words) {
-
+            //System.out.println("antes:"+word);
+            word = word.toLowerCase();
+            //System.out.println("depois:"+word);
+            //System.out.println("Vai pesquisar: "+ word);
             if (!Npalavras.containsKey(word)) {
                 Npalavras.put(word, 1);
-
             }
             else {
                 Npalavras.put(word, Npalavras.get(word) + 1);
-
             }
-            System.out.println(Npalavras);
+            //System.out.println(Npalavras);
             if (map.containsKey(word)) {
-                System.out.println("\nSites: " + obtemUrls(word));
+                System.out.println("\nSites: " + resultado);
                 aux = obtemUrls2(word);
-                for (int j = 0; j < resultado.size(); j++) {
+                //System.out.println("Size do resultado"+ resultado.size());
+                for (int j = 1; j < resultado.size(); j++) {
                     existe = 0;
                     for (int i = 0; i < aux.size(); i++) {
-                        if (aux.get(i).equals(resultado.get(j))) {
+                        if (aux.get(i).equals(resultado.get(j-1))) {
                             existe = 1;
                         }
                     }
                     if (existe == 0) {
-                        resultado.remove(j);
+                        resultado.set(j-1,null);
                     }
                 }
+                resultado.removeAll(Collections.singleton(null));
                 urls = String.valueOf(resultado);
 //                tmp = obtemUrls(word);
 //                urls= urls + tmp + " ";
