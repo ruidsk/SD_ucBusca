@@ -86,7 +86,7 @@ public class WebCrawler {
                     System.out.println("Link: " + link.attr("href"));
                     System.out.println("Text: " + link.text() + "\n");
                 }
-                //faz_backup(ws);
+                faz_backup(ws);
                 // Get website text and count words
                 String text = doc.text(); // We can use doc.body().text() if we only want to get text from <body></body>
                 countWords(text, ws);
@@ -337,7 +337,7 @@ public class WebCrawler {
                 if (i > 100) {
                     break;
                 } else {
-                    main(temp);
+                    loadmain(temp);
                 }
             }
         } catch (IOException e) {
@@ -348,6 +348,81 @@ public class WebCrawler {
 
 
 
+    }
+
+    /**
+     * @param ws
+     * @return true or false
+     * função para indexar um url
+     */
+    public static boolean loadmain(String ws) {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        Document doc = null;
+
+
+        // Read website
+        // System.out.print("Website: ");
+        try {
+
+            //String ws = bf.readLine();
+            if (!ws.startsWith("http://") && !ws.startsWith("https://"))
+                ws = "http://".concat(ws);
+            if(!map.containsKey(ws)) {
+
+                try {
+                    // Attempt to connect and get the document
+                    doc = Jsoup.connect(ws).get();  // Documentation: https://jsoup.org/
+                    System.out.println("**Sucesso** Recebeu do html");
+                } catch (MalformedURLException e) {
+                    System.out.println("**Failure** Retrieved something other than HTML");
+                    return false;
+
+                }
+                if (!NlinksPSite.containsKey(ws)) {
+                    NlinksPSite.put(ws, 0);
+                }
+                // Title
+                System.out.println(doc.title() + "\n");
+
+                // Get all links
+                Elements links = doc.select("a[href]");
+                for (Element link : links) {
+                    // Ignore bookmarks within the page
+                    if (link.attr("href").startsWith("#")) {
+                        continue;
+                    }
+
+                    // Shall we ignore local links? Otherwise we have to rebuild them for future parsing
+                    if (!link.attr("href").startsWith("http")) {
+                        continue;
+                    }
+                    //map.put(ws,link.text());
+
+
+                    if (mapUrls.containsKey(link.attr("href"))) {
+                        mapUrls.get(link.attr("href")).add(ws);
+                    } else {
+                        HashSet<String> aux = new HashSet<>();
+                        aux.add(ws);
+                        mapUrls.put(link.attr("href"), aux);
+                    }
+                    links2.add(link.absUrl("href"));
+                    NlinksPSite.put(ws, NlinksPSite.get(ws) + 1);
+                    System.out.println("Link: " + link.attr("href"));
+                    System.out.println("Text: " + link.text() + "\n");
+                }
+
+                // Get website text and count words
+                String text = doc.text(); // We can use doc.body().text() if we only want to get text from <body></body>
+                countWords(text, ws);
+            }
+        } catch (IOException e) {
+            //e.printStackTrace();
+            return false;
+            //System.out.println("**Failure** Retrieving links!");
+        }
+
+        return true;
     }
 
     /**
