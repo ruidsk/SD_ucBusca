@@ -1,6 +1,8 @@
 package ucBuscas;
 
 
+import rmiserver.RMIInterface;
+
 import java.io.*;
 import java.net.*;
 import java.net.UnknownHostException;
@@ -141,6 +143,11 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
         return feedback;
     }
 
+    @Override
+    public String funciona() throws RemoteException {
+        return null;
+    }
+
     /**
      * @param username
      * @param password
@@ -157,6 +164,11 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
         feedback = toMulticast(tmpInput);
 
         return feedback;
+    }
+
+    @Override
+    public ArrayList<String> getAllUsers() throws RemoteException {
+        return null;
     }
 
     /**
@@ -448,24 +460,11 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
 
     // =========================================================
     // =========================================================
-    public static void main(String args[]) throws UnknownHostException {
-        System.out.println(InetAddress.getLocalHost());
-        System.getProperties().put("java.security.policy","al.policy");
-        if(System.getSecurityManager() == null){
-            System.setSecurityManager(new SecurityManager());
-        }
+    public static void main(String args[]) throws UnknownHostException, RemoteException {
 
-        try {
-            Server h = new Server();
-            Registry r = LocateRegistry.createRegistry(7000);
-            r.rebind("ucBusca", h);
-            System.out.println("\n\n\n\tucBusca Server A ready.\n");
-
-
-
-        } catch (RemoteException re) {
-            System.out.println("Exception in SERVER_A.main: " + re);
-        }
+        RMIInterface s = new Server();
+        LocateRegistry.createRegistry(1099).rebind("server", s);
+        System.out.println("Server ready...");
     }
 
 }

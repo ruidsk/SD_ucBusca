@@ -1,5 +1,6 @@
 package ucBuscas;
-import java.io.*;
+import rmiserver.RMIInterface;
+
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.server.UnicastRemoteObject;
@@ -100,7 +101,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
                             aux = rmi_interface.login(username, password);
 
                             if (aux.equals("Servidor Multicast: type | logged ; resultado | success ;")) {
-                                rmi_interface.subscribe(username, (ClientInterface) c);
+                                //rmi_interface.subscribe(username, (ClientInterface) c);
                                 menuPrincipal(username, c);
                             } else if (aux.contains("fail")) {
                                 System.out.println("\nuser/password incorreto\n");
@@ -494,17 +495,16 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
      * função que garante a ligação entre o cliente e os servidores RMI
      */
     public RMIInterface connect() {
-        int port = 7000;
+        int port = 1099;
 
         long time = System.currentTimeMillis() + 30000;
         RMIInterface h = null;
-
 
         do {
 
             try {
 
-                h = (RMIInterface) LocateRegistry.getRegistry(port).lookup("ucBusca");
+                h = (RMIInterface) LocateRegistry.getRegistry(port).lookup("server");
 
                 //david -> 194.210.37.29
                 //david MV -> 10.211.55.3
