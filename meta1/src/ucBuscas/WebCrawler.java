@@ -9,21 +9,24 @@ import java.io.*;
 import java.net.MalformedURLException;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
+import static java.util.stream.Collectors.*;
+import static java.util.Map.Entry.*;
+
 
 /**
  * navegador que usa jsoup
  */
 public class WebCrawler {
-    static Map<String, Integer> NlinksPSite = new TreeMap<>();  //links e numero de ligacoes
+    static HashMap<String, Integer> NlinksPSite = new HashMap<>();  //links e numero de ligacoes
     static Map<String, Integer> Npalavras = new TreeMap<>(); //palavras e numero de vezes que são pesquisadas
     private static int N_paginas_A_visitar = 10;
     private static Set<String> paginasVisitadas = new HashSet<String>();
     private static List<String> paginas_A_Visitar = new LinkedList<String>();
+    private static HashMap<String, String> titulo = new HashMap<>();
+    private static HashMap<String, String> descricao = new HashMap<>();
     private static List<String> links2 = new LinkedList<String>();
     private static HashMap<String, HashSet<String>> map = new HashMap<String, HashSet<String>>();
     private static HashMap<String, HashSet<String>> mapUrls = new HashMap<String, HashSet<String>>();
-
-    private static String diretoria = "D:\\trabalhos - FCTUC - DEI\\---------\\SD\\SD_ucBusca\\meta1\\backups";
 
     /**
      * @param ws
@@ -56,6 +59,26 @@ public class WebCrawler {
                 if (!NlinksPSite.containsKey(ws)) {
                     NlinksPSite.put(ws, 0);
                 }
+
+                if (!titulo.containsKey(ws)) {
+                    titulo.put(ws, doc.title());
+                }
+
+                if(!descricao.containsKey(ws)){
+                    String paragrafos = doc.body().text();
+                    try{
+                        String p = paragrafos.substring(0, 50);
+                        if (!descricao.containsKey(ws)){
+                            descricao.put(ws, p);
+                        }
+                    }catch(Exception e){
+                        String p = "Sem descrição";
+                        if (!descricao.containsKey(ws)){
+                            descricao.put(ws, p);
+                        }
+                    }
+                }
+
                 // Title
                 System.out.println(doc.title() + "\n");
 
@@ -219,8 +242,6 @@ public class WebCrawler {
      */
     public static String checkWords(String palavras) {
         String[] words = palavras.split("[ ,;:.?!(){}\\[\\]<>']+");
-        String tmp;
-        int iterador;
         String urls = "\n ";
         ArrayList<String> resultado = new ArrayList<String>();
         ArrayList<String> aux = new ArrayList<String>();
@@ -255,38 +276,34 @@ public class WebCrawler {
                     }
                 }
                 resultado.removeAll(Collections.singleton(null));
-                urls = String.valueOf(resultado);
-//                tmp = obtemUrls(word);
-//                urls= urls + tmp + " ";
-            }
-        }
-        return urls;
-    }
 
-    /**
-     * @param key
-     * @return lista de urls
-     * função que recebe uma key e devolde os urls associados a key
-     */
-    public static String obtemUrls(String key) {
-        String[] aux = new String[0], aux2 = new String[100];
-        String listEnd = "\n";
-        Iterator it = map.entrySet().iterator();
-        while (it.hasNext()) {
-            HashMap.Entry word = (HashMap.Entry) it.next();
-            if (word.getKey().equals(key)) {
-                aux = word.getValue().toString().split(", ");
-                for (int j = 0; j < aux.length; j++) {
-                    aux2[j] = Arrays.toString(new String[]{aux[j]});
-                    aux2[j] = aux2[j].replace("[", "");
-                    aux2[j] = aux2[j].replace("]", "");
-                    //System.out.println(aux2[j].toString());
-                    listEnd = listEnd + aux2[j].toString() + " \n";
+
+
+                Map<String, Integer> sorted = NlinksPSite
+                        .entrySet()
+                        .stream()
+                        .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
+                        .collect( toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
+
+
+
+                    Iterator it = sorted.entrySet().iterator();
+                    while (it.hasNext()) {
+                        HashMap.Entry chave = (HashMap.Entry) it.next();
+                        for (String s : resultado) {
+                        if (chave.getKey().equals(s)) {
+                            urls = urls + "Site:" + s + " (" + NlinksPSite.get(s) + ")" + "\n" + "Título: " + titulo.get(s) + "\n" +
+                                    "Descrição: " + descricao.get(s) + "\n\n\n";
+
+                        }
+                    }
                 }
             }
         }
-        return listEnd;
+
+        return urls;
     }
+
 
     /**
      * @param key
@@ -378,9 +395,30 @@ public class WebCrawler {
                     return false;
 
                 }
+
                 if (!NlinksPSite.containsKey(ws)) {
                     NlinksPSite.put(ws, 0);
                 }
+
+                if (!titulo.containsKey(ws)) {
+                    titulo.put(ws, doc.title());
+                }
+
+                if(!descricao.containsKey(ws)){
+                    String paragrafos = doc.body().text();
+                    try{
+                        String p = paragrafos.substring(0, 50);
+                        if (!descricao.containsKey(ws)){
+                            descricao.put(ws, p);
+                        }
+                    }catch(Exception e){
+                        String p = "Sem descrição";
+                        if (!descricao.containsKey(ws)){
+                            descricao.put(ws, p);
+                        }
+                    }
+                }
+
                 // Title
                 System.out.println(doc.title() + "\n");
 
@@ -666,34 +704,3 @@ public class WebCrawler {
         return resultado;
     }
 }
-
-
-/*
-    public void search(String url, String searchWord)
-    {
-        while(this.paginasVisitadas.size() < N_paginas_A_visitar)
-        {
-            String currentUrl;
-            WebCrawler2 leg = new WebCrawler2();
-            if(this.paginas_A_Visitar.isEmpty())
-            {
-                currentUrl = url;
-                this.paginasVisitadas.add(url);
-            }
-            else
-            {
-                currentUrl = this.nextUrl();
-            }
-            leg.crawl(currentUrl);
-            boolean success = leg.searchForWord(searchWord);
-            if(success)
-            {
-                System.out.println(String.format("**Success** Word %s found at %s", searchWord, currentUrl));
-                break;
-            }
-            this.paginas_A_Visitar.addAll(leg.getLinks());
-        }
-        System.out.println("\n**Done** Visited " + this.paginasVisitadas.size() + " web page(s)");
-    }
-
- */
