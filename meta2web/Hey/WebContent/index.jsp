@@ -1,19 +1,49 @@
-<%@ taglib prefix="s" uri="/struts-tags"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Hey!</title>
+	<title>UcBusca</title>
+	<link href="CSS/index.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<s:form action="login" method="post">
-		<s:text name="Username:" />
-		<s:textfield name="username" /><br>
-		<s:text name="Password:" />
-		<s:textfield name="username" /><br>
-		<s:submit value="Confirmar"/>
-	</s:form>
+<header>
+	<nav>
+		<ul id="nav_bar">
+			<li class="nav-links"><a href="index.jsp">Home</a></li>
+			<li class="nav-links"><a href="JSP/menuAdmin.jsp">Para testes: entrar Admin</a></li>
+			<li class="nav-links"><a href="JSP/menuUser.jsp">Entrar User</a></li>
+			<li id="sign_in"><a href="JSP/Registo.jsp">Registo</a></li>
+			<li id="login"><a href="JSP/Login.jsp">Login</a></li>
+		</ul>
+	</nav>
+</header>
+
+<!-- IMG -->
+<div class="ucBusca">
+	<a href="#" id="ucBusca_logo"><img src="Assets/Logo.png"/></a>
+</div>
+<c:choose>
+	<c:when test="${session.get(\"ERROR_LOG\") != null}">
+		<p style="color:red;text-align:center;" >${session.ERROR_LOG}</p>
+		<c:set target="${session}" property="ERROR_LOG" value="${null}"/>
+	</c:when>
+	<c:otherwise>
+	</c:otherwise>
+</c:choose>
+<!-- FORM SEARCH -->
+<form action="Pesquisa">
+	<div class="form">
+
+		<label for="form-search"></label>
+		<input type="text" id="form-search" placeholder="Introduzir pesquisa">
+
+	</div>
+
+	<!-- BUTTONS -->
+	<div class="buttons">
+		<input type="submit" value="Search" id="uc_search">
+	</div>
+</form>
+
 </body>
 </html>

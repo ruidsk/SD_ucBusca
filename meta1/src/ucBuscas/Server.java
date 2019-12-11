@@ -1,6 +1,7 @@
 package ucBuscas;
 
 
+import rmiserver.ClientInterface;
 import rmiserver.RMIInterface;
 
 import java.io.*;
@@ -8,7 +9,6 @@ import java.net.*;
 import java.net.UnknownHostException;
 import java.rmi.*;
 import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
 import java.rmi.server.*;
 import java.util.*;
 
@@ -21,7 +21,7 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
     final static String INET_ADDR = "224.3.2.1";
     final static int PORT = 4321;
     static String name = "RMI Server";
-    static HashMap<String,ClientInterface> online = new HashMap<>();
+    static HashMap<String, ClientInterface> online = new HashMap<>();
     private static final long serialVersionUID = 1L;
     HashMap<String,String> nome_nota = new HashMap<>();
 
@@ -36,6 +36,10 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
     public void show_online()  throws RemoteException{
 
         System.out.println(online.keySet());
+    }
+    public HashMap<String, ClientInterface> online_user() throws RemoteException{
+
+        return online;
     }
 
     /**
@@ -145,7 +149,7 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
 
     @Override
     public String funciona() throws RemoteException {
-        return null;
+        return "asdasdasd";
     }
 
     /**

@@ -11,11 +11,10 @@
             <li class="nav-links"><a href="menuAdmin.jsp">Home</a></li>
             <li class="nav-links"><a href="addAdmin.jsp">Add admin</a></li>
             <li class="nav-links"><a href="indexUrl.jsp">Index urls</a></li>
-            <li class="nav-links"><a href="usersOnline.jsp">Users online</a></li>
             <li class="nav-links"><a href="historico.jsp">Histórico de pesquisas</a></li>
             <li class="nav-links"><a href="palavrasPesquisadas.jsp">Palavras mais pesquisadas</a></li>
             <li class="nav-links"><a href="listaLigacoes.jsp">Consultar lista de ligações</a></li>
-            <li id="sign_in"><a href="../index.jsp">Sair</a></li>
+            <li id="sign_in"><form action="logout" method="post" ><button type="submit">Sair</button></form></li>
         </ul>
     </nav>
 </header>

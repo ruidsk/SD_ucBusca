@@ -31,16 +31,25 @@ and should reside on the classpath of the webapp (generally /WEB-INF/classes). -
       <result>/index.jsp</result>
     </action>
 
-	<!-- 'login' action calls 'execute' in 'LoginAction' -->
+    <!-- 'login' action calls 'execute' in 'LoginAction' -->
     <action name="login" class="hey.action.LoginAction" method="execute">
-      <result name="success">/JSP/menuUser.jsp</result>
+        <result name="success">/JSP/menuUser.jsp</result>
+        <result name="admin">/JSP/menuAdmin.jsp</result>
         <result name="fail">/JSP/Login.jsp</result>
     </action>
-      
+
     <action name="Registo" class="hey.action.LoginAction" method="registar">
         <result name="success">/JSP/Login.jsp</result>
         <result name="fail">/JSP/Registo.jsp</result>
     </action>
+
+    <action name="logout" class="hey.action.LoginAction" method="logout">
+        <result name="success">/JSP/Login.jsp</result>
+    </action>
+
+      <action name="fail" class="hey.action.LoginAction" method="fail">
+          <result name = "success">/index.jsp</result>
+      </action>
 
 
 

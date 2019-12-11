@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -22,17 +23,16 @@
 
 
 <h1>Utilizadores Online</h1>
-
+${hey.model.heyBean.showOnline}
     <table width="400" align="center">
-        <tr>
-            <th>Username</th>
-        </tr>
-        <tr>
-            <td>David</td>
-        </tr>
-        <tr>
-            <td>Rui</td>
-        </tr>
+
+        <c:forEach var = "i" items="${heyBean.show_online}">
+            <tr>
+            <c:out value = "${i}"/>
+            </tr>
+        </c:forEach>
+
+
     </table>
 
 

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -17,10 +18,16 @@
            </ul>
     </nav>
 </header>
+    <c:choose>
+        <c:when test="${session.get(\"ERROR_LOG\") != null}">
+            <p style="color:red;text-align:center;" >${session.ERROR_LOG}</p>
+            <c:set target="${session}" property="ERROR_LOG" value="${null}"/>
+        </c:when>
+        <c:otherwise>
+        </c:otherwise>
+    </c:choose>
 
-    <c:when test="${session.ERROR_LOG != null}">
-        <p>${session.ERROR_LOG}</p>
-    </c:when>
+
 
 <form action="login" class="login-form" method="post">
     <h1>Login</h1>
