@@ -14,6 +14,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	private static final long serialVersionUID = 4L;
 	private Map<String, Object> session;
 	private String username = null, password = null;
+	private String palavras = null;
 
 	@Override
 	public String execute() throws RemoteException {
@@ -50,7 +51,26 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		return "fail";
 
 	}
-	
+
+	public String checkWords() throws RemoteException{
+		String tmp = this.getHeyBean().checkWords(palavras);
+		String[] tmp_split = tmp.split(":", 2);
+		System.out.println("palavras:"+palavras);
+		if (tmp.length() == 22) {
+			System.out.println("\nNão existem urls com as palavras!");
+			return "fail";
+		} else {
+			System.out.println("\nOs urls são: " + tmp_split[1]);
+			session.put("checkWords",tmp_split[1]);
+			return "success";
+
+		}
+	}
+
+	public void setPalavras(String palavras) {
+		this.palavras = palavras; // will you sanitize this input? maybe use a prepared statement?
+	}
+
 	public void setUsername(String username) {
 		this.username = username; // will you sanitize this input? maybe use a prepared statement?
 	}

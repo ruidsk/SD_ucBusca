@@ -292,8 +292,8 @@ public class WebCrawler {
                         HashMap.Entry chave = (HashMap.Entry) it.next();
                         for (String s : resultado) {
                         if (chave.getKey().equals(s)) {
-                            urls = urls + "Site:" + s + " (" + NlinksPSite.get(s) + ")" + "\n" + "Título: " + titulo.get(s) + "\n" +
-                                    "Descrição: " + descricao.get(s) + "\n\n\n";
+                            urls = urls + "Site: " + s + " (" + NlinksPSite.get(s) + ")" + "|XXX|" + "Título: " + titulo.get(s) + "|XXX|" +
+                                    "Descrição: " + descricao.get(s) + "|XXX|.|XXX|";
 
                         }
                     }

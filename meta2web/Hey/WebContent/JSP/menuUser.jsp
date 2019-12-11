@@ -24,11 +24,11 @@
 </div>
 
 <!-- FORM SEARCH -->
-<form action="Pesquisa">
+<form action="checkWords" method="post">
     <div class="form">
 
         <label for="form-search"></label>
-        <input type="text" id="form-search" placeholder="Introduzir pesquisa">
+        <input type="text" name="palavras" id="form-search" placeholder="Introduzir pesquisa">
 
     </div>
 

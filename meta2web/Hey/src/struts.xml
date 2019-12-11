@@ -43,6 +43,12 @@ and should reside on the classpath of the webapp (generally /WEB-INF/classes). -
     </action>
 
 
+      <action name="checkWords" class="hey.action.LoginAction" method="checkWords">
+          <result name="success">/JSP/mostraSites.jsp</result>
+          <result name="fail">/JSP/menuUser.jsp</result>
+      </action>
+
+
 
 
   </package>

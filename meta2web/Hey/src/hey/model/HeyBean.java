@@ -21,7 +21,8 @@ public class HeyBean {
 	public HeyBean() {
 
 		try {
-			server = (RMIInterface) LocateRegistry.getRegistry().lookup("server");
+
+			server = (RMIInterface) LocateRegistry.getRegistry("10.211.55.3").lookup("server");
 		}
 		catch(NotBoundException| RemoteException e) {
 			e.printStackTrace(); // what happens *after* we reach this line?
@@ -41,6 +42,10 @@ public class HeyBean {
 	}
 	public String checkLogin(String username, String password) throws RemoteException{
 		return server.login(username,password);
+	}
+
+	public String checkWords(String palavras) throws RemoteException{
+		return server.checkWords(palavras);
 	}
 	/*public boolean getUserMatchesPassword() throws RemoteException {
 		return server.userMatchesPassword(this.username, this.password);
