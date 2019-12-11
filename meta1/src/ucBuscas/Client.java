@@ -1,4 +1,5 @@
 package ucBuscas;
+import rmiserver.ClientInterface;
 import rmiserver.RMIInterface;
 
 import java.rmi.RemoteException;
@@ -56,7 +57,9 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
     }
 
     /**
-     * @param c
+     * @param
+     *
+     *
      * @return
      * @throws RemoteException
      * função menu é onde são imprimidas as opções que o utilizador tem e pode escolher o que quer fazer
@@ -101,7 +104,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
                             aux = rmi_interface.login(username, password);
 
                             if (aux.equals("Servidor Multicast: type | logged ; resultado | success ;")) {
-                                //rmi_interface.subscribe(username, (ClientInterface) c);
+                                rmi_interface.subscribe(username, c);
                                 menuPrincipal(username, c);
                             } else if (aux.contains("fail")) {
                                 System.out.println("\nuser/password incorreto\n");

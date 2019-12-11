@@ -28,7 +28,15 @@ public class LoginAction extends ActionSupport implements SessionAware {
 				this.getHeyBean().setPassword(this.password);
 				session.put("username", username);
 				session.put("loggedin", true);
-				return SUCCESS;
+				aux = this.getHeyBean().checkAdmin(username);
+				if (aux.contains("success")) {
+					session.put("admin",true);
+					return "admin";
+				}else{
+					session.put("admin",false);
+					return SUCCESS;
+				}
+
 			} else if (aux.contains("fail")) {
 				session.put("ERROR_LOG", "wrong username/password");
 				System.out.println("\nuser/password incorreto\n");
@@ -47,9 +55,19 @@ public class LoginAction extends ActionSupport implements SessionAware {
 				return SUCCESS;
 			}
 		}
-
 		return "fail";
+	}
+	public String logout() throws RemoteException {
+		this.getHeyBean().disconnect((String) session.get("username"));
+		session.clear();
 
+		return SUCCESS;
+	}
+	public String fail() {
+
+		session.put("ERROR_LOG", "não pode aceder a essa página");
+
+		return SUCCESS;
 	}
 
 	public String checkWords() throws RemoteException{
@@ -79,7 +97,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		this.password = password; // what about this input? 
 	}
 	
-	public HeyBean getHeyBean() {
+	public HeyBean getHeyBean() throws RemoteException {
 
 		if(!session.containsKey("heyBean"))
 			this.setHeyBean(new HeyBean());
@@ -89,6 +107,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	public void setHeyBean(HeyBean heyBean) {
 		this.session.put("heyBean", heyBean);
 	}
+
 
 	@Override
 	public void setSession(Map<String, Object> session) {

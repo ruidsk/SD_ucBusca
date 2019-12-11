@@ -3,6 +3,8 @@ package rmiserver;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Set;
 
 public interface RMIInterface extends Remote {
     public String regista(String username, String password) throws RemoteException;
@@ -11,13 +13,13 @@ public interface RMIInterface extends Remote {
 
     String login(String username, String password) throws RemoteException;
 
+    public ArrayList<String> getAllUsers() throws RemoteException;
+
     String give_admin(String username) throws RemoteException;
 
     String check_admin(String username) throws RemoteException;
 
-    public ArrayList<String> getAllUsers() throws RemoteException;
-
-    //public void subscribe(String username, ClientInterface client) throws RemoteException;
+    public void subscribe(String username, ClientInterface client) throws RemoteException;
 
     public void disconnect(String username) throws RemoteException;
 
@@ -28,6 +30,8 @@ public interface RMIInterface extends Remote {
     public void load_online() throws RemoteException;
 
     void show_online() throws RemoteException;
+
+    public HashMap<String, ClientInterface> online_user() throws RemoteException;
 
     String showOnline2Admin() throws RemoteException;
 
