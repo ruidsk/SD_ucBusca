@@ -53,6 +53,25 @@ public class HeyBean extends UnicastRemoteObject implements ClientInterface {
 		return server.checkWords(palavras);
 	}
 
+	public String addUrl(String site) throws RemoteException {
+		return server.addUrl(site);
+	}
+
+	public String addUrlRec(String site) throws RemoteException{
+		return server.addUrlRec(site);
+	}
+
+	public String mostraConsultas(){
+		String resp ="";
+		try{
+			resp = server.mostraConsultas(username);
+		} catch (RemoteException e){
+			e.printStackTrace();
+		}
+		return resp;
+	}
+
+
 	/*
 	 * public boolean getUserMatchesPassword() throws RemoteException { return
 	 * server.userMatchesPassword(this.username, this.password); }

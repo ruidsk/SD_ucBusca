@@ -22,7 +22,16 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../jsoup-1.12.1.jar!/" />
+          <root url="jar://Z:/jsoup-1.12.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Desktop/jsoup-1.12.1.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

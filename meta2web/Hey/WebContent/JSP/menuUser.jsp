@@ -38,7 +38,6 @@
     <!-- BUTTONS -->
     <div class="buttons">
         <input type="submit" value="Procura palavras" id="uc_search">
-        <input type="submit" value="Procura link">
     </div>
 </form>
 

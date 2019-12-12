@@ -11,6 +11,7 @@
             <li class="nav-links"><a href="menuAdmin.jsp">Home</a></li>
             <li class="nav-links"><a href="addAdmin.jsp">Add admin</a></li>
             <li class="nav-links"><a href="indexUrl.jsp">Index urls</a></li>
+            <li class="nav-links"><a href="indexUrlRec.jsp">Index iterativo urls</a></li>
             <li class="nav-links"><a href="historico.jsp">Histórico de pesquisas</a></li>
             <li class="nav-links"><a href="palavrasPesquisadas.jsp">Palavras mais pesquisadas</a></li>
             <li class="nav-links"><a href="listaLigacoes.jsp">Consultar lista de ligações</a></li>
@@ -20,7 +21,7 @@
 </header>
 
 <!-- FORM -->
-<form action="admin" class="login-form">
+<form action="admin" class="login-form" method="post">
     <h1>Selecione o utilizador a atribuir título de administrador:</h1>
 
     <div class="txtb">
