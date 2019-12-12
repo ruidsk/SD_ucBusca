@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <html>
 <head>
     <title>busca.UcBusca</title>
@@ -11,6 +12,7 @@
             <li class="nav-links"><a href="menuAdmin.jsp">Home</a></li>
             <li class="nav-links"><a href="addAdmin.jsp">Add admin</a></li>
             <li class="nav-links"><a href="indexUrl.jsp">Index urls</a></li>
+            <li class="nav-links"><a href="indexUrlRec.jsp">Index iterativo urls</a></li>
             <li class="nav-links"><a href="historico.jsp">Histórico de pesquisas</a></li>
             <li class="nav-links"><a href="palavrasPesquisadas.jsp">Palavras mais pesquisadas</a></li>
             <li class="nav-links"><a href="listaLigacoes.jsp">Consultar lista de ligações</a></li>
@@ -20,23 +22,11 @@
 </header>
 
 
-<h1>Palavras mais pesquisadas</h1>
+<h2 style="text-align: center">Palavras mais pesquisadas</h2>
 
-<table align="center">
-    <tr>
-        <th>Palavra</th>
-        <th>Número de pesquisas</th>
-    </tr>
-    /*ciclos a fazer estas tabelas é simples tá facil é pro 20*/
-    <tr>
-        <td>David</td>
-        <td>10</td>
-    </tr>
-    <tr>
-        <td>Rui</td>
-        <td>8</td>
-    </tr>
-</table>
+<p style="text-align: center;white-space: pre-wrap;">
+    ${heyBean.tabelaPalavras()}
+</p>
 
 
 </body>

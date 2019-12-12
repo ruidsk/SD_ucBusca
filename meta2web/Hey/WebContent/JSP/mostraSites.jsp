@@ -10,7 +10,7 @@
 <header>
     <nav>
         <ul id="nav_bar">
-            <li class="nav-links"><a href="menuUser.jsp">Home</a></li>
+            <li class="nav-links"><a href="menuAdmin.jsp">Home</a></li>
             <li id="sign_in"><a href="../index.jsp">Sair</a></li>
         </ul>
     </nav>
@@ -25,7 +25,7 @@
 
 <p>
     <c:forTokens items = "${session.checkWords}" delims = "|XXX|" var = "name">
-        <a href= <c:out value = "${name}"/>> <p> </a>
+        <c:out value = "${name}"/> <p>
     </c:forTokens>
 
 </p>
