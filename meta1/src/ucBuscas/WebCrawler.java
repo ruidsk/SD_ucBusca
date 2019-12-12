@@ -19,7 +19,7 @@ import static java.util.Map.Entry.*;
 public class WebCrawler {
     static HashMap<String, Integer> NlinksPSite = new HashMap<>();  //links e numero de ligacoes
     static Map<String, Integer> Npalavras = new TreeMap<>(); //palavras e numero de vezes que são pesquisadas
-    private static int N_paginas_A_visitar = 10;
+    private static int N_paginas_A_visitar = 20;
     private static Set<String> paginasVisitadas = new HashSet<String>();
     private static List<String> paginas_A_Visitar = new LinkedList<String>();
     private static HashMap<String, String> titulo = new HashMap<>();
@@ -55,9 +55,6 @@ public class WebCrawler {
                     System.out.println("**Failure** Retrieved something other than HTML");
                     return false;
 
-                }
-                if (!NlinksPSite.containsKey(ws)) {
-                    NlinksPSite.put(ws, 0);
                 }
 
                 if (!titulo.containsKey(ws)) {
@@ -105,7 +102,11 @@ public class WebCrawler {
                         mapUrls.put(link.attr("href"), aux);
                     }
                     links2.add(link.absUrl("href"));
-                    NlinksPSite.put(ws, NlinksPSite.get(ws) + 1);
+                    if (!NlinksPSite.containsKey(link.attr("href"))) {
+                        NlinksPSite.put(ws, 1);
+                    } else {
+                        NlinksPSite.put(link.attr("href"), NlinksPSite.get(link.attr("href")) + 1);
+                    }
                     System.out.println("Link: " + link.attr("href"));
                     System.out.println("Text: " + link.text() + "\n");
                 }
@@ -397,9 +398,6 @@ public class WebCrawler {
 
                 }
 
-                if (!NlinksPSite.containsKey(ws)) {
-                    NlinksPSite.put(ws, 0);
-                }
 
                 if (!titulo.containsKey(ws)) {
                     titulo.put(ws, doc.title());
@@ -446,7 +444,12 @@ public class WebCrawler {
                         mapUrls.put(link.attr("href"), aux);
                     }
                     links2.add(link.absUrl("href"));
-                    NlinksPSite.put(ws, NlinksPSite.get(ws) + 1);
+
+                    if (!NlinksPSite.containsKey(link.attr("href"))) {
+                        NlinksPSite.put(ws, 1);
+                    } else {
+                        NlinksPSite.put(link.attr("href"), NlinksPSite.get(link.attr("href")) + 1);
+                    }
                     System.out.println("Link: " + link.attr("href"));
                     System.out.println("Text: " + link.text() + "\n");
                 }
@@ -619,8 +622,10 @@ public class WebCrawler {
      */
 
     public static String tabelaLigacoes() {
+        List<String> pesquisa = new ArrayList<String>();
         int maiorI = 0;
         String auxS = "";
+        String lastKey="";
         String resultado = "\n";
         for (String key : NlinksPSite.keySet()) {
             if (NlinksPSite.get(key) > maiorI) {
@@ -628,22 +633,29 @@ public class WebCrawler {
                 auxS = key;
             }
         }
-        resultado = resultado +"1. "+ auxS + "\t" + maiorI;
-        for (int i = 2; i < 11; i++) {
+
+
+        resultado = resultado +"1.\t "+ auxS + "\t \t" + maiorI;
+        pesquisa.add(auxS);
+        for (int i = 2; i < 12; i++) {
             int aux = 0;
             for (String key : NlinksPSite.keySet()) {
-                if (NlinksPSite.get(key) > aux && NlinksPSite.get(key) < maiorI) {
-                    aux = NlinksPSite.get(key);
-                    auxS = key;
+                if (NlinksPSite.get(key) >= aux && NlinksPSite.get(key) <= maiorI ||maiorI==1) {
+                    if (!pesquisa.contains(key)) {
+                        aux = NlinksPSite.get(key);
+                        auxS = key;
+                    }
                 }
             }
-            if (aux != 0) {
-                resultado = resultado + "\n"+i+". " + auxS + "\t" + aux;
+            if (!pesquisa.contains(auxS)) {
+                pesquisa.add(auxS);
+                resultado = resultado + "\n"+i+".\t " + auxS + "\t \t" + aux;
             }
             maiorI = aux;
         }
 
         return resultado;
+
     }
 
     /**
