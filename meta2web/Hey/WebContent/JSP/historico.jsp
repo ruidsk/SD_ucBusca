@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <html>
 
 <head>
@@ -28,8 +29,6 @@
 
         <h2>Histórico de pesquisas</h2>
 
-        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Procurar no histórico.."
-            title="Type in a name">
 
         <p style="text-align: center;white-space: pre-wrap;">
             <c:forTokens items="${heyBean.mostraConsultas()}" delims="" var="name">

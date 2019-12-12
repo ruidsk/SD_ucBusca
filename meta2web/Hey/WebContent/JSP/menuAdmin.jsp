@@ -39,10 +39,6 @@
     </div>
 
 
-    <c:when test="${session.checkWords != null}">
-        <p>Welcome, ${session.checkWords}. Say HEY to someone.</p>
-    </c:when>
-
     <!-- FORM SEARCH -->
     <form action="Pesquisa">
         <div class="form">
