@@ -22,46 +22,15 @@
 </header>
 
 
-<div class="mostraCentrado" style="text-align: center;">
 
-<h2>Histórico de pesquisas</h2>
 
-    <p>
-        <c:forTokens items = "${HeyBean.mostraConsultas()}" delims = "|" var = "name">
-            <c:out value = "${name}"/>     <li>
+<h2 style="text-align: center">Histórico de pesquisas</h2>
+
+    <p style="text-align: center">
+        <c:forTokens items = "${heyBean.mostraConsultas()}" delims = "|XXX|" var = "name">
+            <c:out value = "${name}"/>     <p style="text-align: center">
         </c:forTokens>
     </p>
-
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Procurar no histórico.." title="Type in a name">
-
-<ul id="myUL">
-
-    <li><c:forTokens items = "${HeyBean.mostraConsultas()}" delims = "|" var = "name">
-            <c:out value = "${name}"/>     <li>
-        </c:forTokens>
-    </li>
-</ul>
-
-</div>
-
-<script>
-    function myFunction() {
-        var input, filter, ul, li, a, i, txtValue;
-        input = document.getElementById("myInput");
-        filter = input.value.toUpperCase();
-        ul = document.getElementById("myUL");
-        li = ul.getElementsByTagName("li");
-        for (i = 0; i < li.length; i++) {
-            a = li[i].getElementsByTagName("a")[0];
-            txtValue = a.textContent || a.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                li[i].style.display = "";
-            } else {
-                li[i].style.display = "none";
-            }
-        }
-    }
-</script>
 
 </body>
 </html>

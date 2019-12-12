@@ -1,14 +1,11 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <html>
 <head>
     <title>busca.UcBusca</title>
-    <link href="../CSS/index.css" rel="stylesheet" type="text/css">
+    <link href="../CSS/historico.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<header><p>Welcome, ${session.username}
-    ${heyBean.showOnline}
-</p></header>
 <header>
     <nav>
         <ul id="nav_bar">
@@ -21,26 +18,16 @@
     </nav>
 </header>
 
-<!-- IMG -->
-<div class="ucBusca">
-    <a href="#" id="ucBusca_logo"><img src="../Assets/Logo.png"/></a>
-</div>
 
-<!-- FORM SEARCH -->
-<form action="checkWords" method="post">
-    <div class="form">
 
-        <label for="form-search"></label>
-        <input type="text" name="palavras" id="form-search" placeholder="Introduzir pesquisa">
 
-    </div>
+<h2 style="text-align: center">Histórico de pesquisas</h2>
 
-    <!-- BUTTONS -->
-    <div class="buttons">
-        <input type="submit" value="Procura palavras" id="uc_search">
-    </div>
-</form>
+<p style="text-align: center">
+    <c:forTokens items = "${heyBean.mostraConsultas()}" delims = "|XXX|" var = "name">
+        <c:out value = "${name}"/>     <p style="text-align: center">
+    </c:forTokens>
+</p>
 
 </body>
 </html>
-

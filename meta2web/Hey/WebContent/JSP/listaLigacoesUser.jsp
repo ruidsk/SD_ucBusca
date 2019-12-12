@@ -1,14 +1,10 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>busca.UcBusca</title>
-    <link href="../CSS/index.css" rel="stylesheet" type="text/css">
+    <link href="../CSS/palavrasPesquisadas.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<header><p>Welcome, ${session.username}
-    ${heyBean.showOnline}
-</p></header>
 <header>
     <nav>
         <ul id="nav_bar">
@@ -21,26 +17,24 @@
     </nav>
 </header>
 
-<!-- IMG -->
-<div class="ucBusca">
-    <a href="#" id="ucBusca_logo"><img src="../Assets/Logo.png"/></a>
-</div>
 
-<!-- FORM SEARCH -->
-<form action="checkWords" method="post">
-    <div class="form">
+<h1>Lista de ligações</h1>
 
-        <label for="form-search"></label>
-        <input type="text" name="palavras" id="form-search" placeholder="Introduzir pesquisa">
+<table align="center">
+    <tr>
+        <th>Site</th>
+        <th>Ligações</th>
+    </tr>
+    <tr>
+        <td>uc.pt</td>
+        <td>80</td>
+    </tr>
+    <tr>
+        <td>sapo.pt</td>
+        <td>60</td>
+    </tr>
+</table>
 
-    </div>
-
-    <!-- BUTTONS -->
-    <div class="buttons">
-        <input type="submit" value="Procura palavras" id="uc_search">
-    </div>
-</form>
 
 </body>
 </html>
-

@@ -105,6 +105,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		return "success";
 	}
 
+
 	public void setSite(String site){
 		this.site = site;
 	}

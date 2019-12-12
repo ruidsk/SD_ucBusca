@@ -1,14 +1,10 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>busca.UcBusca</title>
-    <link href="../CSS/index.css" rel="stylesheet" type="text/css">
+    <link href="../CSS/palavrasPesquisadas.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<header><p>Welcome, ${session.username}
-    ${heyBean.showOnline}
-</p></header>
 <header>
     <nav>
         <ul id="nav_bar">
@@ -21,26 +17,25 @@
     </nav>
 </header>
 
-<!-- IMG -->
-<div class="ucBusca">
-    <a href="#" id="ucBusca_logo"><img src="../Assets/Logo.png"/></a>
-</div>
 
-<!-- FORM SEARCH -->
-<form action="checkWords" method="post">
-    <div class="form">
+<h1>Palavras mais pesquisadas</h1>
 
-        <label for="form-search"></label>
-        <input type="text" name="palavras" id="form-search" placeholder="Introduzir pesquisa">
+<table align="center">
+    <tr>
+        <th>Palavra</th>
+        <th>Número de pesquisas</th>
+    </tr>
+    /*ciclos a fazer estas tabelas é simples tá facil é pro 20*/
+    <tr>
+        <td>David</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Rui</td>
+        <td>8</td>
+    </tr>
+</table>
 
-    </div>
-
-    <!-- BUTTONS -->
-    <div class="buttons">
-        <input type="submit" value="Procura palavras" id="uc_search">
-    </div>
-</form>
 
 </body>
 </html>
-

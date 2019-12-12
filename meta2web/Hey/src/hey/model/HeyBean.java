@@ -50,6 +50,7 @@ public class HeyBean extends UnicastRemoteObject implements ClientInterface {
 	}
 
 	public String checkWords(String palavras) throws RemoteException {
+		server.atualizaConsultas(username,palavras);
 		return server.checkWords(palavras);
 	}
 
@@ -65,8 +66,19 @@ public class HeyBean extends UnicastRemoteObject implements ClientInterface {
 		String resp ="";
 		try{
 			resp = server.mostraConsultas(username);
+
 		} catch (RemoteException e){
 			e.printStackTrace();
+		}
+		String[] tmp_split;
+		tmp_split = resp.split(":", 2);
+		if (resp.length() < 21) {
+			System.out.println("Não existem pesquisas na base de dados");
+			resp="Não existem pesquisas na base de dados";
+		} else {
+			System.out.println("\n\nAs pesquisas realizadas são:");
+			System.out.println(tmp_split[1]);
+			resp=(tmp_split[1]);
 		}
 		return resp;
 	}
