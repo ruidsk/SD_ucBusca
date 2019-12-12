@@ -7,11 +7,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="29dcf806-e01e-4a39-81d0-709cdd313373" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/WebContent/JSP/mostraSitesUser.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebContent/JSP/historico.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/JSP/historico.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebContent/JSP/menuAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/JSP/menuAdmin.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/hey/hey.war" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/hey/hey.war" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/out/production/Hey/struts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hey/struts.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hey/model/HeyBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hey/model/HeyBean.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +24,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Class" />
+        <option value="jsf" />
         <option value="Jsp File" />
       </list>
     </option>
@@ -48,7 +53,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.applicationServers" />
@@ -279,11 +284,22 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="560" y="265" key="#Inspections" timestamp="1576121041317">
+      <screen x="0" y="0" width="1920" height="1200" />
+    </state>
+    <state x="560" y="265" key="#Inspections/0.0.1920.1200@0.0.1920.1200" timestamp="1576121041317" />
+    <state x="560" y="265" width="811" height="669" key="#Project_Structure" timestamp="1576113462692">
+      <screen x="0" y="0" width="1920" height="1200" />
+    </state>
+    <state x="560" y="265" width="811" height="669" key="#Project_Structure/0.0.1920.1200@0.0.1920.1200" timestamp="1576113462692" />
     <state x="528" y="387" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1576064916298">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state x="528" y="387" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1200@0.0.1920.1200" timestamp="1576064916298" />
     <state x="562" y="403" key="#com.intellij.execution.impl.EditConfigurationsDialog/47.23.1873.1177@47.23.1873.1177" timestamp="1576006502054" />
+    <state x="698" y="354" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1576121430244">
+      <screen x="0" y="0" width="1920" height="1200" />
+    </state>
     <state x="698" y="354" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1200@0.0.1920.1200" timestamp="1576121430244" />
     <state width="1294" height="379" key="GridCell.Tab.0.bottom" timestamp="1576174756141">
       <screen x="0" y="0" width="1920" height="1200" />
@@ -396,5 +412,6 @@
     <state x="1157" y="234" key="refactoring.ChangeSignatureDialog" timestamp="1576154102217">
       <screen x="47" y="23" width="1873" height="1177" />
     </state>
+    <state x="1157" y="234" key="refactoring.ChangeSignatureDialog/47.23.1873.1177@47.23.1873.1177" timestamp="1576154102217" />
   </component>
 </project>

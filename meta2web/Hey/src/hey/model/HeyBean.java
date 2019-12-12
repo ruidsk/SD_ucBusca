@@ -50,6 +50,7 @@ public class HeyBean extends UnicastRemoteObject implements ClientInterface {
 	}
 
 	public String checkWords(String palavras) throws RemoteException {
+		server.atualizaConsultas(username,palavras);
 		return server.checkWords(palavras);
 	}
 
@@ -57,52 +58,53 @@ public class HeyBean extends UnicastRemoteObject implements ClientInterface {
 		return server.addUrl(site);
 	}
 
-	public String addUrlRec(String site) throws RemoteException {
+	public String addUrlRec(String site) throws RemoteException{
 		return server.addUrlRec(site);
 	}
 
-	public String mostraConsultas() {
-		String resp = "";
-		try {
+	public String mostraConsultas(){
+		String resp ="";
+		try{
 			resp = server.mostraConsultas(username);
 
-		} catch (RemoteException e) {
+		} catch (RemoteException e){
 			e.printStackTrace();
 		}
 		String[] tmp_split;
 		tmp_split = resp.split(":", 2);
 		if (resp.length() < 21) {
 			System.out.println("Não existem pesquisas na base de dados");
-			resp = "Não existem pesquisas na base de dados";
+			resp="Não existem pesquisas na base de dados";
 		} else {
 			System.out.println("\n\nAs pesquisas realizadas são:");
 			System.out.println(tmp_split[1]);
-			resp = (tmp_split[1]);
+			resp=(tmp_split[1]);
 		}
 		return resp;
 	}
 
 	public String tabelaPalavras() throws RemoteException {
 		server.loadUser(username);
-		String tmp = "";
-		try {
+		String tmp ="";
+		try{
 			tmp = server.tabelaPalavras();
 
-		} catch (RemoteException e) {
+		} catch (RemoteException e){
 			e.printStackTrace();
 		}
 		String[] tmp_split;
 		tmp_split = tmp.split(":", 2);
 		if (tmp.length() < 27) {
 			System.out.println("Não existem palavras pesquisadas!");
-			tmp = "Não existem palavras pesquisadas!";
+			tmp="Não existem palavras pesquisadas!";
 		} else {
 			System.out.println("\n\nAs palavras mais pesquisadas são:");
 			System.out.println(tmp_split[1]);
-			tmp = tmp_split[1];
+			tmp=tmp_split[1];
 		}
 		return tmp;
 	}
+
 
 	/*
 	 * public boolean getUserMatchesPassword() throws RemoteException { return
