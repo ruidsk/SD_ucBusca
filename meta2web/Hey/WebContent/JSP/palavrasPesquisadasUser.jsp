@@ -18,23 +18,11 @@
 </header>
 
 
-<h1>Palavras mais pesquisadas</h1>
+<h2 style="text-align: center">Palavras mais pesquisadas</h2>
 
-<table align="center">
-    <tr>
-        <th>Palavra</th>
-        <th>Número de pesquisas</th>
-    </tr>
-    /*ciclos a fazer estas tabelas é simples tá facil é pro 20*/
-    <tr>
-        <td>David</td>
-        <td>10</td>
-    </tr>
-    <tr>
-        <td>Rui</td>
-        <td>8</td>
-    </tr>
-</table>
+<p style="text-align: center;white-space: pre-wrap;">
+    ${heyBean.tabelaPalavras()}
+</p>
 
 
 </body>

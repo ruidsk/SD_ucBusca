@@ -26,9 +26,9 @@
 
 <h2 style="text-align: center">Histórico de pesquisas</h2>
 
-    <p style="text-align: center">
-        <c:forTokens items = "${heyBean.mostraConsultas()}" delims = "|XXX|" var = "name">
-            <c:out value = "${name}"/>     <p style="text-align: center">
+    <p style="text-align: center;white-space: pre-wrap;">
+        <c:forTokens items = "${heyBean.mostraConsultas()}" delims = "" var = "name">
+            <c:out value = "${name}"/>     <p style="text-align: center;white-space: pre-wrap;">
         </c:forTokens>
     </p>
 

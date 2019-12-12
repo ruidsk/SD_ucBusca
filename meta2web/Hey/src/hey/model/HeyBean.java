@@ -83,6 +83,28 @@ public class HeyBean extends UnicastRemoteObject implements ClientInterface {
 		return resp;
 	}
 
+	public String tabelaPalavras() throws RemoteException {
+		server.loadUser(username);
+		String tmp ="";
+		try{
+			tmp = server.tabelaPalavras();
+
+		} catch (RemoteException e){
+			e.printStackTrace();
+		}
+		String[] tmp_split;
+		tmp_split = tmp.split(":", 2);
+		if (tmp.length() < 27) {
+			System.out.println("Não existem palavras pesquisadas!");
+			tmp="Não existem palavras pesquisadas!";
+		} else {
+			System.out.println("\n\nAs palavras mais pesquisadas são:");
+			System.out.println(tmp_split[1]);
+			tmp=tmp_split[1];
+		}
+		return tmp;
+	}
+
 
 	/*
 	 * public boolean getUserMatchesPassword() throws RemoteException { return
