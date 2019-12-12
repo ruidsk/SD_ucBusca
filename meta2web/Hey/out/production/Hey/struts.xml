@@ -56,6 +56,7 @@ and should reside on the classpath of the webapp (generally /WEB-INF/classes). -
           <result name="success">/JSP/mostraSites.jsp</result>
       </action>
 
+
       <action name="facelogin" class="hey.action.FacebookLoginAction" method="execute">
           <result type="redirect">${authorizationUrl}</result>
       </action>
@@ -93,6 +94,10 @@ and should reside on the classpath of the webapp (generally /WEB-INF/classes). -
 
       <action name="addUrlRec" class="hey.action.LoginAction" method="addUrlRec">
           <result name="success">/JSP/indexUrlRec.jsp</result>
+      </action>
+
+      <action name="adicionarAdmin" class="hey.action.LoginAction" method="adicionarAdmin">
+          <result name="success">/JSP/addAdmin.jsp</result>
       </action>
 
 

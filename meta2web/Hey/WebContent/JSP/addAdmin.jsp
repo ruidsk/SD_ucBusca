@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>busca.UcBusca</title>
@@ -24,35 +25,28 @@
 </header>
 
 <!-- FORM -->
-<form action="admin" class="login-form" method="post">
-    <h1>Selecione o utilizador a atribuir título de administrador:</h1>
+<h2 style="text-align: center">Adicionar um novo administrador</h2>
 
-    <div class="txtb">
-    <input list="users" id="user" name="user" />
+<form action="adicionarAdmin" method="post">
+    <div class="form">
 
-    <datalist id="users">
-        <option value="Rui">
-        <option value="David">
-        <option value="Jesus">
-    </datalist>
+        <label for="form-search"></label>
+        <input type="text" name="palavras" id="form-search" placeholder="Introduzir username">
+
     </div>
 
-    <div class="txtb">
-    <input type="submit" value="Alterar">
+    <!-- BUTTONS -->
+    <div class="buttons" style="text-align: center">
+        <input type="submit" value="Atribuir" id="uc_search">
     </div>
 </form>
 
-<script type="text/javascript">
-    $(".txtb input").on("focus", function () {
-        $(this).addClass("focus");
-    });
 
-    $(".txtb input").on("blur", function () {
-        if ($(this).val() == "")
-            $(this).removeClass("focus");
-    });
+<!-- FORM SEARCH -->
 
-</script>
+<p style="text-align: center">
+    ${session.adicionarAdmin}
+</p>
 
 </body>
 </html>

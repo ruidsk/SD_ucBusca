@@ -60,6 +60,10 @@ public class HeyBean extends UnicastRemoteObject implements ClientInterface {
 		return server.ligacoesALinks(site);
 	}
 
+	public String adicionarAdmin(String nome) throws RemoteException{
+		return server.give_admin(nome);
+	}
+
 	public String addUrl(String site) throws RemoteException {
 		return server.addUrl(site);
 	}

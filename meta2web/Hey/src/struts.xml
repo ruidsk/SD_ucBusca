@@ -96,6 +96,13 @@ and should reside on the classpath of the webapp (generally /WEB-INF/classes). -
           <result name="success">/JSP/indexUrlRec.jsp</result>
       </action>
 
+      <action name="adicionarAdmin" class="hey.action.LoginAction" method="adicionarAdmin">
+          <result name="success">/JSP/addAdmin.jsp</result>
+          
+      <action name="showOnline">
+          <result type="redirect">/JSP/usersOnline.jsp</result>
+      </action>
+
 
 
 

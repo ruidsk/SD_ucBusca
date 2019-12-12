@@ -111,6 +111,21 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		return "success";
 	}
 
+	public String adicionarAdmin() throws RemoteException{
+		String aux = this.getHeyBean().adicionarAdmin(palavras);
+		if (aux.startsWith("Servidor Multicast: type | give ; resultado | success ;")) {
+			System.out.println("administrador atribuido a :" + palavras);
+			session.put("adicionarAdmin","Administrador atribuido a :" + palavras);
+		} else if (aux.contains("fail")) {
+			System.out.println("erro a atribuir admin");
+			session.put("adicionarAdmin","Utilizador não existe!");
+		} else if (aux.contains("already")) {
+			System.out.println("Esse user já é admin");
+			session.put("adicionarAdmin","esse user já é admin");
+		}
+		return "success";
+	}
+
 	public String pesquisarSiteUser() throws RemoteException{
 		String tmp = this.getHeyBean().pesquisarSite(site);
 		String[] tmp_split = tmp.split(":", 2);
