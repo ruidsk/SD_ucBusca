@@ -3,8 +3,9 @@
 <html>
 <head>
     <title>busca.UcBusca</title>
-    <link href="http://localhost:8080/hey/SS/usersOnline.css" rel="stylesheet" type="text/css">
+    <link href="http://localhost:8080/hey/CSS/usersOnline.css" rel="stylesheet" type="text/css">
 </head>
+
 <body>
 <header>
     <nav>
@@ -24,17 +25,22 @@
 
 
 <h1>Utilizadores Online</h1>
-${heyBean.showOnline}
-    <table width="400" align="center">
+        <div style="align-items: center;">
+            <table>
 
-        <c:forEach var = "i" items="${heyBean.show_online}">
-            <tr>
-            <c:out value = "${i.key}"/>
-            </tr>
-        </c:forEach>
+                <c:forEach var = "i" items="${heyBean.showOnline}">
+
+                    <tr>
+                        <c:out value = "${i.key}" />
+                    </tr>
+
+                </c:forEach>
+
+            </table>
+        </div>
 
 
-    </table>
+
 
 
 </body>
