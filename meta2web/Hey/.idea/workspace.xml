@@ -12,7 +12,7 @@
       <change beforePath="$PROJECT_DIR$/WebContent/JSP/historico.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/JSP/historico.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebContent/JSP/menuAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/JSP/menuAdmin.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/hey/hey.war" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/hey/hey.war" afterDir="false" />
-<<<<<<< HEAD
+
       <change beforePath="$PROJECT_DIR$/out/production/Hey/struts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hey/struts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hey/model/HeyBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hey/model/HeyBean.java" afterDir="false" />
     </list>
