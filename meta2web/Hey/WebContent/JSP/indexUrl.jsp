@@ -1,5 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -13,7 +11,6 @@
             <li class="nav-links"><a href="menuAdmin.jsp">Home</a></li>
             <li class="nav-links"><a href="addAdmin.jsp">Add admin</a></li>
             <li class="nav-links"><a href="indexUrl.jsp">Index urls</a></li>
-            <li class="nav-links"><a href="indexUrlRec.jsp">Index iterativo urls</a></li>
             <li class="nav-links"><a href="historico.jsp">Histórico de pesquisas</a></li>
             <li class="nav-links"><a href="palavrasPesquisadas.jsp">Palavras mais pesquisadas</a></li>
             <li class="nav-links"><a href="listaLigacoes.jsp">Consultar lista de ligações</a></li>
@@ -28,22 +25,19 @@
 </div>
 
 <!-- FORM SEARCH -->
-<form action="addUrl" method="post">
-    <div class="form">
-
+<form action="Indexar">
+<div class="form">
+    <form>
         <label for="form-search"></label>
-        <input type="text" name="site" id="form-search" placeholder="Introduzir url a indexar">
-    </div>
+        <input type="text" id="form-search" placeholder="Introduzir url a indexar">
+    </form>
+</div>
 
-    <!-- BUTTONS -->
-    <div class="buttons">
-        <input type="submit" value="Indexar sites" id="uc_indexar">
-    </div>
+<!-- BUTTONS -->
+<div class="buttons">
+    <input type="submit" value="Indexar">
+</div>
 </form>
-
-<p style="text-align: center">
-    ${session.addUrl}
-</p>
 
 </body>
 </html>

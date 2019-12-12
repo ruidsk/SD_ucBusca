@@ -15,7 +15,6 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	private Map<String, Object> session;
 	private String username = null, password = null;
 	private String palavras = null;
-	private String site = null;
 
 	@Override
 	public String execute() throws RemoteException {
@@ -77,37 +76,13 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		System.out.println("palavras:"+palavras);
 		if (tmp.length() == 22) {
 			System.out.println("\nNão existem urls com as palavras!");
-			session.put("checkWords","Não existem urls com as palavras!");
-			return "success";
+			return "fail";
 		} else {
 			System.out.println("\nOs urls são: " + tmp_split[1]);
 			session.put("checkWords",tmp_split[1]);
 			return "success";
 
 		}
-	}
-
-	public String addUrl() throws RemoteException{
-		String aux = this.getHeyBean().addUrl(site);
-		if (aux.startsWith("Servidor Multicast: type | addUrl ; resultado | success ;")) {
-			System.out.println(site + " adicionado com sucesso!");
-			session.put("addUrl",site +" adicionado com sucesso!");
-		}
-
-		return "success";
-	}
-
-	public String addUrlRec() throws RemoteException{
-		String aux = this.getHeyBean().addUrlRec(site);
-		String[] tmp_split = aux.split(":", 2);
-		System.out.println("\nForam adicionados "+ tmp_split[1] + " sites!");
-		session.put("addUrlRec","Foram adicionados "+ tmp_split[1] + " sites!");
-		return "success";
-	}
-
-
-	public void setSite(String site){
-		this.site = site;
 	}
 
 	public void setPalavras(String palavras) {

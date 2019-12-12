@@ -25,7 +25,7 @@
 
 <p>
     <c:forTokens items = "${session.checkWords}" delims = "|XXX|" var = "name">
-        <c:out value = "${name}"/> <p>
+        <a href= <c:out value = "${name}"/>> <p> </a>
     </c:forTokens>
 
 </p>

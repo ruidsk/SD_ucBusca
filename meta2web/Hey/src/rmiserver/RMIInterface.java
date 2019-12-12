@@ -23,9 +23,9 @@ public interface RMIInterface extends Remote {
 
     public void disconnect(String username) throws RemoteException;
 
-    public String checkWords(String text) throws RemoteException;
+    public String addUrl(String url) throws RemoteException;
 
-    public String addUrl(String site) throws RemoteException;
+    public String checkWords(String text) throws RemoteException;
 
     public void load_online() throws RemoteException;
 
@@ -50,6 +50,4 @@ public interface RMIInterface extends Remote {
     String loadUser(String username) throws RemoteException;
 
     String addUrlRec(String url) throws RemoteException;
-
-
 }

@@ -241,6 +241,12 @@ public class WebCrawler {
      * funçao que pesquisa as palavras na hash e retorna os sites onde a palavra aparece
      */
     public static String checkWords(String palavras) {
+        if (!Npalavras.containsKey(palavras)) {
+            Npalavras.put(palavras, 1);
+        }
+        else {
+            Npalavras.put(palavras, Npalavras.get(palavras) + 1);
+        }
         String[] words = palavras.split("[ ,;:.?!(){}\\[\\]<>']+");
         String urls = "\n ";
         ArrayList<String> resultado = new ArrayList<String>();
@@ -253,12 +259,6 @@ public class WebCrawler {
             word = word.toLowerCase();
             //System.out.println("depois:"+word);
             //System.out.println("Vai pesquisar: "+ word);
-            if (!Npalavras.containsKey(word)) {
-                Npalavras.put(word, 1);
-            }
-            else {
-                Npalavras.put(word, Npalavras.get(word) + 1);
-            }
             //System.out.println(Npalavras);
             if (map.containsKey(word)) {
                 System.out.println("\nSites: " + resultado);
@@ -336,6 +336,7 @@ public class WebCrawler {
      * @throws IOException
      */
     public static String load() throws IOException {
+        loadNpalavras();
         File file = new File("backups/hash.txt");
         file.createNewFile();
         BufferedReader br = null;
@@ -463,14 +464,15 @@ public class WebCrawler {
         return true;
     }
 
+
+
     /**
      * funçao que carrega as pesquisas realizadas anteriormente pelo userque estão guardados num txt
-     * @param user
      * @return
      * @throws IOException
      */
-    public static String loadUser(String user) throws IOException {
-        File file = new File("backups/" + user + "_hist.txt");
+    public static String loadNpalavras() throws IOException {
+        File file = new File("backups/Npalavras.txt");
         file.createNewFile();
         BufferedReader br = null;
         String result="";
@@ -539,7 +541,26 @@ public class WebCrawler {
      */
 
     public static boolean atualizaConsultas(String user, String text) throws IOException {
+        atualizaNpalavras(text);
         File file = new File("backups/" + user + "_hist.txt");
+        file.createNewFile();
+        BufferedReader br = null;
+        try {
+            FileWriter filew = new FileWriter(file, true);
+            BufferedWriter bw = new BufferedWriter(filew);
+            bw.append(text);
+            bw.newLine();
+            bw.close();
+            filew.close();
+        } catch (IOException e) {
+            System.out.println("Não foi possível escrever no file");
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean atualizaNpalavras(String text) throws IOException {
+        File file = new File("backups/Npalavras.txt");
         file.createNewFile();
         BufferedReader br = null;
         try {
@@ -674,7 +695,7 @@ public class WebCrawler {
      * @return
      */
     public static String tabelaPalavras() {
-
+        List<String> pesquisa = new ArrayList<String>();
         int maiorI = 0;
         String auxS = "";
         String lastKey="";
@@ -686,6 +707,7 @@ public class WebCrawler {
             }
         }
         resultado = resultado +"1. "+ auxS + "\t" + maiorI;
+        pesquisa.add(auxS);
         for (int i = 2; i < 11; i++) {
             int aux = 0;
             for (String key : Npalavras.keySet()) {
@@ -694,9 +716,9 @@ public class WebCrawler {
                     auxS = key;
                 }
             }
-            if (!lastKey.equals(auxS) && aux != 0) {
+            if (!pesquisa.contains(auxS)) {
+                pesquisa.add(auxS);
                 resultado = resultado + "\n"+i+". " + auxS + "\t" + aux;
-                lastKey=auxS;
             }
             maiorI = aux;
         }
