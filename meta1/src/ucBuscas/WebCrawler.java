@@ -706,17 +706,21 @@ public class WebCrawler {
                 auxS = key;
             }
         }
+
+
         resultado = resultado +"1. "+ auxS + "\t" + maiorI;
         pesquisa.add(auxS);
         for (int i = 2; i < 11; i++) {
             int aux = 0;
             for (String key : Npalavras.keySet()) {
-                if (Npalavras.get(key) > aux && Npalavras.get(key) < maiorI ||maiorI==1) {
-                    aux = Npalavras.get(key);
-                    auxS = key;
+                if (Npalavras.get(key) >= aux && Npalavras.get(key) <= maiorI ||maiorI==1) {
+                    if (!pesquisa.contains(key)) {
+                        aux = Npalavras.get(key);
+                        auxS = key;
+                    }
                 }
             }
-            if (!pesquisa.contains(auxS)) {
+                if (!pesquisa.contains(auxS)) {
                 pesquisa.add(auxS);
                 resultado = resultado + "\n"+i+". " + auxS + "\t" + aux;
             }
