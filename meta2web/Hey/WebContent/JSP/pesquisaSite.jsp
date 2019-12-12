@@ -1,10 +1,13 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <html>
+
 <head>
     <title>busca.UcBusca</title>
-    <link href="../CSS/palavrasPesquisadas.css" rel="stylesheet" type="text/css">
+    <link href="../CSS/index.css" rel="stylesheet" type="text/css">
 </head>
+
 <body>
 <header>
     <nav>
@@ -24,13 +27,30 @@
     </nav>
 </header>
 
+<!-- IMG -->
+<div class="ucBusca">
+    <a href="#" id="ucBusca_logo"><img src="../Assets/Logo.png" /></a>
+</div>
 
-<h2 style="text-align: center">Palavras mais pesquisadas</h2>
+<h2 style="text-align: center">Pesquisar sites que dão acesso a site</h2>
 
-<p style="text-align: center;white-space: pre-wrap;">
-    ${heyBean.tabelaPalavras()}
-</p>
+<!-- FORM SEARCH -->
+<form action="pesquisarSite" method="post">
+    <div class="form">
+
+        <label for="form-search"></label>
+        <input type="text" name="site" id="form-search" placeholder="Introduzir url a pesquisar">
+
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="buttons">
+        <input type="submit" value="Procura urls" id="uc_search">
+    </div>
+</form>
+
 
 
 </body>
+
 </html>

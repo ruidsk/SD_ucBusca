@@ -9,6 +9,7 @@
     <nav>
         <ul id="nav_bar">
             <li class="nav-links"><a href="menuUser.jsp">Home</a></li>
+            <li class="nav-links"><a href="printSitesUser.jsp">Sites</a></li>
             <li class="nav-links"><a href="historicoUser.jsp">Histórico de pesquisas</a></li>
             <li class="nav-links"><a href="listaLigacoesUser.jsp">Consultar lista de ligações</a></li>
             <li class="nav-links"><a href="palavrasPesquisadasUser.jsp">Palavras mais pesquisadas</a></li>
@@ -18,22 +19,11 @@
 </header>
 
 
-<h1>Lista de ligações</h1>
+<h2 style="text-align: center">Links e número de sites que lhe dão acesso:</h2>
 
-<table align="center">
-    <tr>
-        <th>Site</th>
-        <th>Ligações</th>
-    </tr>
-    <tr>
-        <td>uc.pt</td>
-        <td>80</td>
-    </tr>
-    <tr>
-        <td>sapo.pt</td>
-        <td>60</td>
-    </tr>
-</table>
+<p style="text-align: center;white-space: pre-wrap;">
+    ${heyBean.tabelaLigacoes()}
+</p>
 
 
 </body>

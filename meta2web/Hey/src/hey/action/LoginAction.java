@@ -87,6 +87,30 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		}
 	}
 
+	public String checkWordsUser() throws RemoteException{
+		String tmp = this.getHeyBean().checkWords(palavras);
+		String[] tmp_split = tmp.split(":", 2);
+		System.out.println("palavras:"+palavras);
+		if (tmp.length() == 22) {
+			System.out.println("\nNão existem urls com as palavras!");
+			session.put("checkWords","Não existem urls com as palavras!");
+			return "success";
+		} else {
+			System.out.println("\nOs urls são: " + tmp_split[1]);
+			session.put("checkWords",tmp_split[1]);
+			return "success";
+
+		}
+	}
+
+	public String pesquisarSite() throws RemoteException{
+		String tmp = this.getHeyBean().pesquisarSite(site);
+		String[] tmp_split = tmp.split(":", 2);
+		System.out.println(tmp_split[1]);
+		session.put("pesquisarSite",tmp_split[1]);
+		return "success";
+	}
+
 	public String addUrl() throws RemoteException{
 		String aux = this.getHeyBean().addUrl(site);
 		if (aux.startsWith("Servidor Multicast: type | addUrl ; resultado | success ;")) {

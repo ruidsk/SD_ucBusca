@@ -9,34 +9,26 @@
     <nav>
         <ul id="nav_bar">
             <li class="nav-links"><a href="menuAdmin.jsp">Home</a></li>
+            <li class="nav-links"><a href="pesquisaSite.jsp">Sites</a></li>
             <li class="nav-links"><a href="addAdmin.jsp">Add admin</a></li>
             <li class="nav-links"><a href="indexUrl.jsp">Index urls</a></li>
-            <li class="nav-links"><a href="indexUrlRec.jsp">Index urls</a></li>
-            <li class="nav-links"><a href="historico.jsp">Histórico de pesquisas</a></li>
-            <li class="nav-links"><a href="palavrasPesquisadas.jsp">Palavras mais pesquisadas</a></li>
-            <li class="nav-links"><a href="listaLigacoes.jsp">Consultar lista de ligações</a></li>
-            <li id="sign_in"><form action="logout" method="post" ><button type="submit">Sair</button></form></li>
+            <li class="nav-links"><a href="indexUrlRec.jsp">Index iterativo</a></li>
+            <li class="nav-links"><a href="historico.jsp">Histórico</a></li>
+            <li class="nav-links"><a href="palavrasPesquisadas.jsp">Mais pesquisadas</a></li>
+            <li class="nav-links"><a href="listaLigacoes.jsp">Lista de ligações</a></li>
+            <li id="sign_in">
+                <form action="logout" method="post"><button type="submit">Sair</button></form>
+            </li>
         </ul>
     </nav>
 </header>
 
 
-<h1>Lista de ligações</h1>
+<h2 style="text-align: center">Links e número de sites que lhe dão acesso:</h2>
 
-<table align="center">
-    <tr>
-        <th>Site</th>
-        <th>Ligações</th>
-    </tr>
-    <tr>
-        <td>uc.pt</td>
-        <td>80</td>
-    </tr>
-    <tr>
-        <td>sapo.pt</td>
-        <td>60</td>
-    </tr>
-</table>
+<p style="text-align: center;white-space: pre-wrap;">
+    ${heyBean.tabelaLigacoes()}
+</p>
 
 
 </body>

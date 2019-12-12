@@ -54,6 +54,11 @@ public class HeyBean extends UnicastRemoteObject implements ClientInterface {
 		return server.checkWords(palavras);
 	}
 
+	public String pesquisarSite(String site) throws RemoteException {
+		server.atualizaConsultas(username,site);
+		return server.ligacoesALinks(site);
+	}
+
 	public String addUrl(String site) throws RemoteException {
 		return server.addUrl(site);
 	}
@@ -99,6 +104,22 @@ public class HeyBean extends UnicastRemoteObject implements ClientInterface {
 			tmp="Não existem palavras pesquisadas!";
 		} else {
 			System.out.println("\n\nAs palavras mais pesquisadas são:");
+			System.out.println(tmp_split[1]);
+			tmp=tmp_split[1];
+		}
+		return tmp;
+	}
+
+	public String tabelaLigacoes() throws RemoteException{
+		String tmp = server.tabelaLigacoes();
+		String[] tmp_split;
+		tmp_split = tmp.split(":", 2);
+		if (tmp.length()<27) {
+
+			System.out.println("\nNão existem sites na base de dados");
+			tmp = "\nNão existem sites na base de dados";
+		} else {
+			System.out.println("\n\nOs sites com mais links são:");
 			System.out.println(tmp_split[1]);
 			tmp=tmp_split[1];
 		}

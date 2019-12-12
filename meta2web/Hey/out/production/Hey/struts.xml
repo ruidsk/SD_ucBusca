@@ -56,6 +56,14 @@ and should reside on the classpath of the webapp (generally /WEB-INF/classes). -
           <result name="success">/JSP/mostraSites.jsp</result>
       </action>
 
+      <action name="checkWordsUser" class="hey.action.LoginAction" method="checkWordsUser">
+          <result name="success">/JSP/mostraSitesUser.jsp</result>
+      </action>
+
+      <action name="pesquisarSite" class="hey.action.LoginAction" method="pesquisarSite">
+          <result name="success">/JSP/printSites.jsp</result>
+      </action>
+
       <action name="addUrl" class="hey.action.LoginAction" method="addUrl">
           <result name="success">/JSP/indexUrl.jsp</result>
       </action>

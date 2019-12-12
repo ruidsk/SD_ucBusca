@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>busca.UcBusca</title>
-    <link href="../CSS/palavrasPesquisadas.css" rel="stylesheet" type="text/css">
+    <link href="../CSS/index.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <header>
@@ -24,13 +24,19 @@
     </nav>
 </header>
 
+<!-- IMG -->
+<div class="ucBusca">
+    <a href="#" id="ucBusca_logo"><img src="../Assets/Logo.png"/></a>
+</div>
 
-<h2 style="text-align: center">Palavras mais pesquisadas</h2>
+<!-- FORM SEARCH -->
 
 <p style="text-align: center;white-space: pre-wrap;">
-    ${heyBean.tabelaPalavras()}
-</p>
+    <c:forTokens items = "${session.pesquisarSite}" delims = "" var = "name">
+        <c:out value = "${name}"/> <p style="text-align: center;white-space: pre-wrap;">
+    </c:forTokens>
 
+</p>
 
 </body>
 </html>
