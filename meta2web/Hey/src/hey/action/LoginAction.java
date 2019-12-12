@@ -111,6 +111,14 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		return "success";
 	}
 
+	public String pesquisarSiteUser() throws RemoteException{
+		String tmp = this.getHeyBean().pesquisarSite(site);
+		String[] tmp_split = tmp.split(":", 2);
+		System.out.println(tmp_split[1]);
+		session.put("pesquisarSite",tmp_split[1]);
+		return "success";
+	}
+
 	public String addUrl() throws RemoteException{
 		String aux = this.getHeyBean().addUrl(site);
 		if (aux.startsWith("Servidor Multicast: type | addUrl ; resultado | success ;")) {
