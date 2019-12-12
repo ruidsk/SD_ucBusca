@@ -19,10 +19,10 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="@types/abstract-leveldown" level="application" />
-    <orderEntry type="module-library" exported="">
+    <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../jsoup-1.12.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../jsoup-1.12.1.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

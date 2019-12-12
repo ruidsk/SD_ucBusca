@@ -19,7 +19,7 @@ import static java.util.Map.Entry.*;
 public class WebCrawler {
     static HashMap<String, Integer> NlinksPSite = new HashMap<>();  //links e numero de ligacoes
     static Map<String, Integer> Npalavras = new TreeMap<>(); //palavras e numero de vezes que são pesquisadas
-    private static int N_paginas_A_visitar = 10;
+    private static int N_paginas_A_visitar = 20;
     private static Set<String> paginasVisitadas = new HashSet<String>();
     private static List<String> paginas_A_Visitar = new LinkedList<String>();
     private static HashMap<String, String> titulo = new HashMap<>();
@@ -55,9 +55,6 @@ public class WebCrawler {
                     System.out.println("**Failure** Retrieved something other than HTML");
                     return false;
 
-                }
-                if (!NlinksPSite.containsKey(ws)) {
-                    NlinksPSite.put(ws, 0);
                 }
 
                 if (!titulo.containsKey(ws)) {
@@ -105,7 +102,11 @@ public class WebCrawler {
                         mapUrls.put(link.attr("href"), aux);
                     }
                     links2.add(link.absUrl("href"));
-                    NlinksPSite.put(ws, NlinksPSite.get(ws) + 1);
+                    if (!NlinksPSite.containsKey(link.attr("href"))) {
+                        NlinksPSite.put(ws, 1);
+                    } else {
+                        NlinksPSite.put(link.attr("href"), NlinksPSite.get(link.attr("href")) + 1);
+                    }
                     System.out.println("Link: " + link.attr("href"));
                     System.out.println("Text: " + link.text() + "\n");
                 }
@@ -241,6 +242,12 @@ public class WebCrawler {
      * funçao que pesquisa as palavras na hash e retorna os sites onde a palavra aparece
      */
     public static String checkWords(String palavras) {
+        if (!Npalavras.containsKey(palavras)) {
+            Npalavras.put(palavras, 1);
+        }
+        else {
+            Npalavras.put(palavras, Npalavras.get(palavras) + 1);
+        }
         String[] words = palavras.split("[ ,;:.?!(){}\\[\\]<>']+");
         String urls = "\n ";
         ArrayList<String> resultado = new ArrayList<String>();
@@ -253,12 +260,6 @@ public class WebCrawler {
             word = word.toLowerCase();
             //System.out.println("depois:"+word);
             //System.out.println("Vai pesquisar: "+ word);
-            if (!Npalavras.containsKey(word)) {
-                Npalavras.put(word, 1);
-            }
-            else {
-                Npalavras.put(word, Npalavras.get(word) + 1);
-            }
             //System.out.println(Npalavras);
             if (map.containsKey(word)) {
                 System.out.println("\nSites: " + resultado);
@@ -336,6 +337,7 @@ public class WebCrawler {
      * @throws IOException
      */
     public static String load() throws IOException {
+        loadNpalavras();
         File file = new File("backups/hash.txt");
         file.createNewFile();
         BufferedReader br = null;
@@ -396,9 +398,6 @@ public class WebCrawler {
 
                 }
 
-                if (!NlinksPSite.containsKey(ws)) {
-                    NlinksPSite.put(ws, 0);
-                }
 
                 if (!titulo.containsKey(ws)) {
                     titulo.put(ws, doc.title());
@@ -445,7 +444,12 @@ public class WebCrawler {
                         mapUrls.put(link.attr("href"), aux);
                     }
                     links2.add(link.absUrl("href"));
-                    NlinksPSite.put(ws, NlinksPSite.get(ws) + 1);
+
+                    if (!NlinksPSite.containsKey(link.attr("href"))) {
+                        NlinksPSite.put(ws, 1);
+                    } else {
+                        NlinksPSite.put(link.attr("href"), NlinksPSite.get(link.attr("href")) + 1);
+                    }
                     System.out.println("Link: " + link.attr("href"));
                     System.out.println("Text: " + link.text() + "\n");
                 }
@@ -463,14 +467,15 @@ public class WebCrawler {
         return true;
     }
 
+
+
     /**
      * funçao que carrega as pesquisas realizadas anteriormente pelo userque estão guardados num txt
-     * @param user
      * @return
      * @throws IOException
      */
-    public static String loadUser(String user) throws IOException {
-        File file = new File("backups/" + user + "_hist.txt");
+    public static String loadNpalavras() throws IOException {
+        File file = new File("backups/Npalavras.txt");
         file.createNewFile();
         BufferedReader br = null;
         String result="";
@@ -539,7 +544,26 @@ public class WebCrawler {
      */
 
     public static boolean atualizaConsultas(String user, String text) throws IOException {
+        atualizaNpalavras(text);
         File file = new File("backups/" + user + "_hist.txt");
+        file.createNewFile();
+        BufferedReader br = null;
+        try {
+            FileWriter filew = new FileWriter(file, true);
+            BufferedWriter bw = new BufferedWriter(filew);
+            bw.append(text);
+            bw.newLine();
+            bw.close();
+            filew.close();
+        } catch (IOException e) {
+            System.out.println("Não foi possível escrever no file");
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean atualizaNpalavras(String text) throws IOException {
+        File file = new File("backups/Npalavras.txt");
         file.createNewFile();
         BufferedReader br = null;
         try {
@@ -598,8 +622,10 @@ public class WebCrawler {
      */
 
     public static String tabelaLigacoes() {
+        List<String> pesquisa = new ArrayList<String>();
         int maiorI = 0;
         String auxS = "";
+        String lastKey="";
         String resultado = "\n";
         for (String key : NlinksPSite.keySet()) {
             if (NlinksPSite.get(key) > maiorI) {
@@ -607,22 +633,29 @@ public class WebCrawler {
                 auxS = key;
             }
         }
-        resultado = resultado +"1. "+ auxS + "\t" + maiorI;
-        for (int i = 2; i < 11; i++) {
+
+
+        resultado = resultado +"1.\t "+ auxS + "\t \t" + maiorI;
+        pesquisa.add(auxS);
+        for (int i = 2; i < 12; i++) {
             int aux = 0;
             for (String key : NlinksPSite.keySet()) {
-                if (NlinksPSite.get(key) > aux && NlinksPSite.get(key) < maiorI) {
-                    aux = NlinksPSite.get(key);
-                    auxS = key;
+                if (NlinksPSite.get(key) >= aux && NlinksPSite.get(key) <= maiorI ||maiorI==1) {
+                    if (!pesquisa.contains(key)) {
+                        aux = NlinksPSite.get(key);
+                        auxS = key;
+                    }
                 }
             }
-            if (aux != 0) {
-                resultado = resultado + "\n"+i+". " + auxS + "\t" + aux;
+            if (!pesquisa.contains(auxS)) {
+                pesquisa.add(auxS);
+                resultado = resultado + "\n"+i+".\t " + auxS + "\t \t" + aux;
             }
             maiorI = aux;
         }
 
         return resultado;
+
     }
 
     /**
@@ -674,7 +707,7 @@ public class WebCrawler {
      * @return
      */
     public static String tabelaPalavras() {
-
+        List<String> pesquisa = new ArrayList<String>();
         int maiorI = 0;
         String auxS = "";
         String lastKey="";
@@ -685,18 +718,23 @@ public class WebCrawler {
                 auxS = key;
             }
         }
+
+
         resultado = resultado +"1. "+ auxS + "\t" + maiorI;
+        pesquisa.add(auxS);
         for (int i = 2; i < 11; i++) {
             int aux = 0;
             for (String key : Npalavras.keySet()) {
-                if (Npalavras.get(key) > aux && Npalavras.get(key) < maiorI ||maiorI==1) {
-                    aux = Npalavras.get(key);
-                    auxS = key;
+                if (Npalavras.get(key) >= aux && Npalavras.get(key) <= maiorI ||maiorI==1) {
+                    if (!pesquisa.contains(key)) {
+                        aux = Npalavras.get(key);
+                        auxS = key;
+                    }
                 }
             }
-            if (!lastKey.equals(auxS) && aux != 0) {
+                if (!pesquisa.contains(auxS)) {
+                pesquisa.add(auxS);
                 resultado = resultado + "\n"+i+". " + auxS + "\t" + aux;
-                lastKey=auxS;
             }
             maiorI = aux;
         }

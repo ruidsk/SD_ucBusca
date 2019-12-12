@@ -183,7 +183,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
      */
     public String menuPrincipal(String username, Client c) throws RemoteException {
 
-        rmi_interface.loadUser(username);
+
 
         int a = 0;
         boolean exception;

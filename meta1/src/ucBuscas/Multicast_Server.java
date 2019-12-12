@@ -357,21 +357,6 @@ public class Multicast_Server {
         return feedback;
     }
 
-    /**
-     * função que depois de recebido o protocolo, envia um um feedback em conformidade com
-     * o resultado enviado da funçao chamada em WebCrawler
-     * @param hashPacket
-     * @return
-     * @throws IOException
-     */
-    public static String loadUser(HashMap<String, String> hashPacket) throws IOException {
-        String feedback = null;
-
-        String tmp = WebCrawler.loadUser(hashPacket.get("user"));
-
-        feedback = tmp;
-        return feedback;
-    }
 
     /**
      * função que depois de recebido o protocolo, envia um um feedback em conformidade com
@@ -551,8 +536,6 @@ class WaitPackets implements Runnable {
                         Multicast_Server.sendFeedback(socket, group, Multicast_Server.ligacoesALinks(hashPacket));
                     }else if (hashPacket.get("type").equals("tabelaPalavras")) {
                         Multicast_Server.sendFeedback(socket, group, Multicast_Server.tabelaPalavras());
-                    }else if (hashPacket.get("type").equals("loadUser")) {
-                        Multicast_Server.sendFeedback(socket, group, Multicast_Server.loadUser(hashPacket));
                     }else if (hashPacket.get("type").equals("addUrlRec")) {
                         Multicast_Server.sendFeedback(socket, group, Multicast_Server.addUrlRec(hashPacket));
                     }

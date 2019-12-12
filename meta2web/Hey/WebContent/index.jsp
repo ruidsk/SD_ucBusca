@@ -34,17 +34,17 @@
 		</c:otherwise>
 	</c:choose>
 	<!-- FORM SEARCH -->
-	<form action="Pesquisa">
+	<form action="checkWords" method="post">
 		<div class="form">
 
 			<label for="form-search"></label>
-			<input type="text" id="form-search" placeholder="Introduzir pesquisa">
+			<input type="text" name="palavras" id="form-search" placeholder="Introduzir pesquisa">
 
 		</div>
 
 		<!-- BUTTONS -->
 		<div class="buttons">
-			<input type="submit" value="Search" id="uc_search">
+			<input type="submit" value="Procura palavras" id="uc_search">
 		</div>
 	</form>
 

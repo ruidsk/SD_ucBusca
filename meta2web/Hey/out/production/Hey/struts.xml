@@ -14,9 +14,9 @@ and should reside on the classpath of the webapp (generally /WEB-INF/classes). -
   <constant name="struts.ui.theme" value="simple" />
 
   <package name="hey" extends="struts-default">
-	
+
 	<default-action-ref name="index" />
-	
+
 	<global-results>
 		<result name="error">/error.jsp</result>
 	</global-results>
@@ -54,7 +54,6 @@ and should reside on the classpath of the webapp (generally /WEB-INF/classes). -
 
       <action name="checkWords" class="hey.action.LoginAction" method="checkWords">
           <result name="success">/JSP/mostraSites.jsp</result>
-          <result name="fail">/JSP/menuUser.jsp</result>
       </action>
 
       <action name="facelogin" class="hey.action.FacebookLoginAction" method="execute">
@@ -74,6 +73,30 @@ and should reside on the classpath of the webapp (generally /WEB-INF/classes). -
           <result name="success">/JSP/Login.jsp</result>
           <result name="login">index.jsp</result>
       </action>
+
+
+      <action name="checkWordsUser" class="hey.action.LoginAction" method="checkWordsUser">
+          <result name="success">/JSP/mostraSitesUser.jsp</result>
+      </action>
+
+      <action name="pesquisarSite" class="hey.action.LoginAction" method="pesquisarSite">
+          <result name="success">/JSP/printSites.jsp</result>
+      </action>
+
+      <action name="pesquisarSiteUser" class="hey.action.LoginAction" method="pesquisarSiteUser">
+          <result name="success">/JSP/printSitesUser.jsp</result>
+      </action>
+
+      <action name="addUrl" class="hey.action.LoginAction" method="addUrl">
+          <result name="success">/JSP/indexUrl.jsp</result>
+      </action>
+
+      <action name="addUrlRec" class="hey.action.LoginAction" method="addUrlRec">
+          <result name="success">/JSP/indexUrlRec.jsp</result>
+      </action>
+
+
+
 
 
 
