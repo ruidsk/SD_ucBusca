@@ -170,6 +170,7 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
         return feedback;
     }
 
+
     @Override
     public ArrayList<String> getAllUsers() throws RemoteException {
         return null;

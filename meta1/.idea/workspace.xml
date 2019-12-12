@@ -10,15 +10,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e1188d7-9534-4bf1-a54d-9312ba68b991" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../meta2web/Hey/.idea/libraries/Java_EE_6_Java_EE_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../meta2web/Hey/.idea/libraries/asm_3_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../meta2web/Hey/.idea/libraries/compress_lzf_1_0_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../meta2web/Hey/.idea/libraries/javax_xml_bind.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../meta2web/Hey/.idea/libraries/json_20190722.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../meta2web/Hey/.idea/libraries/json_simple_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../meta2web/Hey/.idea/libraries/src.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../meta2web/Hey/src/hey/action/FacebookCallbackAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../meta2web/Hey/src/hey/action/FacebookLoginAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../meta2web/Hey/src/hey/action/FacebookRegisterAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../meta2web/Hey/src/hey/action/FacebookRegistoCallbackAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../meta2web/Hey/src/hey/action/FacebookRemoveAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../meta2web/Hey/src/hey/model/FacebookBean.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backups/hash.txt" beforeDir="false" afterPath="$PROJECT_DIR$/backups/hash.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/meta1/ucBuscas/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/meta1/ucBuscas/Client.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/meta1/ucBuscas/ClientInterface.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/meta1/ucBuscas/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/meta1/ucBuscas/Server.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/meta1/ucBuscas/WebCrawler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/meta1/ucBuscas/WebCrawler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rmiserver/RMIInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rmiserver/RMIInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ucBuscas/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ucBuscas/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ucBuscas/ClientInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rmiserver/ClientInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ucBuscas/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ucBuscas/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../meta2web/Hey/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../meta2web/Hey/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../meta2web/Hey/Hey.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../meta2web/Hey/Hey.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../meta2web/Hey/WebContent/JSP/Login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../meta2web/Hey/WebContent/JSP/Login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../meta2web/Hey/WebContent/JSP/Registo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../meta2web/Hey/WebContent/JSP/Registo.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../meta2web/Hey/WebContent/JSP/addAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../meta2web/Hey/WebContent/JSP/addAdmin.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../meta2web/Hey/WebContent/JSP/historico.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../meta2web/Hey/WebContent/JSP/historico.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../meta2web/Hey/WebContent/JSP/indexUrl.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../meta2web/Hey/WebContent/JSP/indexUrl.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../meta2web/Hey/WebContent/JSP/listaLigacoes.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../meta2web/Hey/WebContent/JSP/listaLigacoes.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../meta2web/Hey/WebContent/JSP/menuAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../meta2web/Hey/WebContent/JSP/menuAdmin.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../meta2web/Hey/WebContent/JSP/menuUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../meta2web/Hey/WebContent/JSP/menuUser.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../meta2web/Hey/WebContent/JSP/mostraSites.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../meta2web/Hey/WebContent/JSP/mostraSites.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../meta2web/Hey/WebContent/JSP/palavrasPesquisadas.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../meta2web/Hey/WebContent/JSP/palavrasPesquisadas.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../meta2web/Hey/WebContent/JSP/usersOnline.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../meta2web/Hey/WebContent/JSP/usersOnline.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../meta2web/Hey/out/artifacts/hey/hey.war" beforeDir="false" afterPath="$PROJECT_DIR$/../meta2web/Hey/out/artifacts/hey/hey.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../meta2web/Hey/out/production/Hey/struts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../meta2web/Hey/out/production/Hey/struts.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../meta2web/Hey/src/hey/model/HeyBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/../meta2web/Hey/src/hey/model/HeyBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../meta2web/Hey/src/struts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../meta2web/Hey/src/struts.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -203,7 +231,8 @@
       <workItem from="1575970990954" duration="1896000" />
       <workItem from="1575984767189" duration="2969000" />
       <workItem from="1576001457775" duration="3770000" />
-      <workItem from="1576066457108" duration="11853000" />
+      <workItem from="1576066457108" duration="14804000" />
+      <workItem from="1576146386365" duration="9647000" />
     </task>
     <servers />
   </component>

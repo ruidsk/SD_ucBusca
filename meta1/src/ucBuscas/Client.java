@@ -94,9 +94,9 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
 
                 case 1:
                     System.out.println("Username: ");
-                    String username = input.next();
+                    String username = input.nextLine();
                     System.out.println("Password: ");
-                    String password = input.next();
+                    String password = input.nextLine();
 
                     do {
                         try {

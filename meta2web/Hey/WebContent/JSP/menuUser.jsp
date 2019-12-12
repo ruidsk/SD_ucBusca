@@ -3,11 +3,12 @@
 <html>
 <head>
     <title>busca.UcBusca</title>
-    <link href="../CSS/index.css" rel="stylesheet" type="text/css">
+    <link href="http://localhost:8080/hey/CSS/index.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+
 <header><p>Welcome, ${session.username}
-    ${heyBean.showOnline}
+
 </p></header>
 <header>
     <nav>
@@ -16,6 +17,7 @@
             <li class="nav-links"><a href="historico.jsp">Histórico de pesquisas</a></li>
             <li class="nav-links"><a href="listaLigacoes.jsp">Consultar lista de ligações</a></li>
             <li class="nav-links"><a href="palavrasPesquisadas.jsp">Palavras mais pesquisadas</a></li>
+            <li class="nav-links"><a href=<s:url action="associateface"/>>Associar conta ao facebook</a></li>
             <li id="sign_in"><form action="logout" method="post" ><button type="submit">Sair</button></form></li>
         </ul>
     </nav>
@@ -23,7 +25,7 @@
 
 <!-- IMG -->
 <div class="ucBusca">
-    <a href="#" id="ucBusca_logo"><img src="../Assets/Logo.png"/></a>
+    <a href="#" id="ucBusca_logo"><img src="http://localhost:8080/hey/Assets/Logo.png"/></a>
 </div>
 
 <!-- FORM SEARCH -->
@@ -32,7 +34,6 @@
 
         <label for="form-search"></label>
         <input type="text" name="palavras" id="form-search" placeholder="Introduzir pesquisa">
-
     </div>
 
     <!-- BUTTONS -->

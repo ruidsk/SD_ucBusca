@@ -7,19 +7,45 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="29dcf806-e01e-4a39-81d0-709cdd313373" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebContent/JSP/mostraSites.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Java_EE_6_Java_EE_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/asm_3_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/compress_lzf_1_0_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/javax_xml_bind.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/json_20190722.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/json_simple_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/src.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hey/action/FacebookCallbackAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hey/action/FacebookLoginAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hey/action/FacebookRegisterAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hey/action/FacebookRegistoCallbackAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hey/action/FacebookRemoveAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hey/model/FacebookBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../meta1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../meta1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../meta1/backups/hash.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../meta1/backups/hash.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../meta1/out/production/meta1/ucBuscas/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../meta1/out/production/meta1/ucBuscas/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../meta1/out/production/meta1/ucBuscas/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../meta1/out/production/meta1/ucBuscas/Server.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../meta1/out/production/meta1/ucBuscas/WebCrawler.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../meta1/out/production/meta1/ucBuscas/WebCrawler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../meta1/src/ucBuscas/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../meta1/src/ucBuscas/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../meta1/src/ucBuscas/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../meta1/src/ucBuscas/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hey.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Hey.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/JSP/Login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/JSP/Login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/JSP/Registo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/JSP/Registo.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/JSP/addAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/JSP/addAdmin.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/JSP/historico.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/JSP/historico.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/JSP/indexUrl.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/JSP/indexUrl.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/JSP/listaLigacoes.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/JSP/listaLigacoes.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebContent/JSP/menuAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/JSP/menuAdmin.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebContent/JSP/menuUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/JSP/menuUser.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/JSP/mostraSites.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/JSP/mostraSites.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/JSP/palavrasPesquisadas.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/JSP/palavrasPesquisadas.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/JSP/usersOnline.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/JSP/usersOnline.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/hey/hey.war" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/hey/hey.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Hey/META-INF/Hey.kotlin_module" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Hey/struts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hey/struts.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hey/action/LoginAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hey/action/LoginAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hey/model/HeyBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hey/model/HeyBean.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/struts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/struts.xml" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,21 +80,39 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="findjar.last.used.dir" value="$PROJECT_DIR$/src/org" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/javax.xml.bind.jar!/" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.applicationServers" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\trabalhos - FCTUC - DEI\---------\SD\SD_ucBusca\meta2web\Hey\src" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="rmiserver" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\trabalhos - FCTUC - DEI\---------\SD\SD_ucBusca\meta2web\Hey\src\hey\model" />
+      <recent name="D:\trabalhos - FCTUC - DEI\---------\SD\SD_ucBusca\meta2web\Hey\src\hey\action" />
       <recent name="D:\trabalhos - FCTUC - DEI\---------\SD\tudo idk\ficha 6\Ficha6_WebProgramming\Hey\WebContent" />
       <recent name="D:\trabalhos - FCTUC - DEI\---------\SD\tudo idk\ficha 6\Ficha6_WebProgramming\Hey" />
       <recent name="D:\trabalhos - FCTUC - DEI\---------\SD\tudo idk\ficha 6\Ficha6_WebProgramming\Hey\src\hey\action" />
     </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager" selected="Tomcat Server.Login.jsp">
     <configuration name="Registo.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8082/hey/JSP/Registo.jsp">
@@ -78,7 +122,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Login.jsp" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" temporary="true" APPLICATION_SERVER_NAME="Tomcat 8.5.47" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8089/hey/" />
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/hey/" />
       <option name="UPDATING_POLICY" value="hot-swap-classes" />
       <deployment>
         <artifact name="hey">
@@ -89,8 +133,7 @@
       </deployment>
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="Login_jsp_Hey" />
-        <option name="HTTP_PORT" value="8089" />
-        <option name="JNDI_PORT" value="1090" />
+        <option name="JNDI_PORT" value="1091" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -241,28 +284,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="Running" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-            </expand>
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -278,11 +299,26 @@
       <workItem from="1574864737969" duration="22000" />
       <workItem from="1575972587477" duration="25227000" />
       <workItem from="1576006469687" duration="7453000" />
+      <workItem from="1576094151077" duration="1459000" />
+      <workItem from="1576146391043" duration="19367000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="WindowStateProjectService">
     <state x="528" y="387" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1576064916298">

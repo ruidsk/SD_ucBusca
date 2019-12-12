@@ -34,7 +34,6 @@ and should reside on the classpath of the webapp (generally /WEB-INF/classes). -
     <!-- 'login' action calls 'execute' in 'LoginAction' -->
     <action name="login" class="hey.action.LoginAction" method="execute">
         <result name="success">/JSP/menuUser.jsp</result>
-
         <result name="admin">/JSP/menuAdmin.jsp</result>
         <result name="fail">/JSP/Login.jsp</result>
     </action>
@@ -56,6 +55,24 @@ and should reside on the classpath of the webapp (generally /WEB-INF/classes). -
       <action name="checkWords" class="hey.action.LoginAction" method="checkWords">
           <result name="success">/JSP/mostraSites.jsp</result>
           <result name="fail">/JSP/menuUser.jsp</result>
+      </action>
+
+      <action name="facelogin" class="hey.action.FacebookLoginAction" method="execute">
+          <result type="redirect">${authorizationUrl}</result>
+      </action>
+
+      <action name="callback" class="hey.action.FacebookCallbackAction" method="execute">
+          <result name="success">/JSP/menuUser.jsp</result>
+          <result name="admin">/JSP/menuAdmin.jsp</result>
+          <result name="login">index.jsp</result>
+      </action>
+
+      <action name="associateface" class="hey.action.FacebookRegisterAction" method="execute">
+          <result type="redirect">${authorizationUrl}</result>
+      </action>
+      <action name="callbackregisto" class="hey.action.FacebookRegistoCallbackAction" method="execute">
+          <result name="success">/JSP/Login.jsp</result>
+          <result name="login">index.jsp</result>
       </action>
 
 
