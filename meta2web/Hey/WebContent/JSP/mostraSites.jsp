@@ -1,5 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://localhost:8080/hey/JS/traduzir.js"></script>
+
 <html>
 <head>
     <title>busca.UcBusca</title>
@@ -28,16 +32,20 @@
 <!-- IMG -->
 <div class="ucBusca">
     <a href="#" id="ucBusca_logo"><img src="http://localhost:8080/hey/Assets/Logo.png"/></a>
+    <button onclick="traduzir()">Traduzir</button>
+    <button onclick="reconhece()">Reconhecer língua</button>
 </div>
+
+
 
 <!-- FORM SEARCH -->
 
-<p>
-    <c:forTokens items = "${session.checkWords}" delims = "|XXX|" var = "name">
-        <c:out value = "${name}"/> <p>
-    </c:forTokens>
+<textarea id ="text" style="font-size:20px;width:80%;height:90%;white-space: pre-wrap;border: none;" disabled>
+    ${session.checkWords}
+</textarea>
 
-</p>
+
+
 
 </body>
 </html>
