@@ -30,7 +30,7 @@ public class FacebookBean extends UnicastRemoteObject implements ClientInterface
 
 		try {
 
-			server = (RMIInterface) LocateRegistry.getRegistry().lookup("server");
+			server = (RMIInterface) LocateRegistry.getRegistry("10.211.55.3").lookup("server");
 		} catch (NotBoundException | RemoteException e) {
 			e.printStackTrace(); // what happens *after* we reach this line?
 		}
