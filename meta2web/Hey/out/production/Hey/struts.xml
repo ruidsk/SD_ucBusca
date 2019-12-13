@@ -99,6 +99,8 @@ and should reside on the classpath of the webapp (generally /WEB-INF/classes). -
       <action name="adicionarAdmin" class="hey.action.LoginAction" method="adicionarAdmin">
           <result name="success">/JSP/addAdmin.jsp</result>
       </action>
+
+
       <action name="showOnline">
           <result type="redirect">/JSP/usersOnline.jsp</result>
       </action>
