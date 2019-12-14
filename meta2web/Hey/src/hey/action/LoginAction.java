@@ -75,7 +75,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		String tmp = this.getHeyBean().checkWords(palavras);
 		String[] tmp_split = tmp.split(":", 2);
 		System.out.println("palavras:"+palavras);
-		if (tmp.length() == 22) {
+		if (tmp.length() == 20) {
 			System.out.println("\nNão existem urls com as palavras!");
 			session.put("checkWords","Não existem urls com as palavras!");
 			return "success";
