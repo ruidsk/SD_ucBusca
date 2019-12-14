@@ -17,6 +17,7 @@
 </c:choose>
 
 <body>
+
     <header>
         <nav>
             <ul id="nav_bar">
@@ -27,7 +28,8 @@
                 <li class="nav-links"><a href="indexUrlRec.jsp">Index iterativo</a></li>
                 <li class="nav-links"><a href="historico.jsp">Histórico</a></li>
                 <li class="nav-links"><a href="palavrasPesquisadas.jsp">Mais pesquisadas</a></li>
-                <li class="nav-links"><a href=<s:url action="showOnline"/>>mostar user online</a></li>
+                <li class="nav-links"><a href=<s:url action="facelogin"/>>Ligar ao facebook</a></li>
+                <li class="nav-links"><a href=<s:url action="showOnline"/>>Users online</a></li>
                 <li class="nav-links"><a href="listaLigacoes.jsp">Lista de ligações</a></li>
                 <li id="sign_in">
                     <form action="logout" method="post"><button type="submit">Sair</button></form>
@@ -56,7 +58,6 @@
             <input type="submit" value="Procura palavras" id="uc_search">
         </div>
     </form>
-
 
 
 </body>

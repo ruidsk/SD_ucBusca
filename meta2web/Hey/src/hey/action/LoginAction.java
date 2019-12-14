@@ -60,7 +60,9 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	}
 	public String logout() throws RemoteException {
 		this.getHeyBean().disconnect((String) session.get("username"));
-		session.clear();
+		session.put("loggedin",false);
+		session.put("username","");
+
 
 		return SUCCESS;
 	}

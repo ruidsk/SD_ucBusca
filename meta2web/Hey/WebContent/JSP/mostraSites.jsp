@@ -6,6 +6,8 @@
     <link href="http://localhost:8080/hey/CSS/index.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_PT/sdk.js#xfbml=1&version=v5.0&appId=574377749961850&autoLogAppEvents=1"></script>
 <header><p>Welcome, ${session.username}</p></header>
 <header>
     <nav>
@@ -16,6 +18,8 @@
             <li class="nav-links"><a href="indexUrl.jsp">Index urls</a></li>
             <li class="nav-links"><a href="indexUrlRec.jsp">Index iterativo</a></li>
             <li class="nav-links"><a href="historico.jsp">Histórico</a></li>
+            <li class="nav-links"><a href=<s:url action="facelogin"/>>Ligar ao facebook</a></li>
+
             <li class="nav-links"><a href="palavrasPesquisadas.jsp">Mais pesquisadas</a></li>
             <li class="nav-links"><a href="listaLigacoes.jsp">Lista de ligações</a></li>
             <li id="sign_in">
@@ -36,6 +40,7 @@
     <c:forTokens items = "${session.checkWords}" delims = "|XXX|" var = "name">
         <c:out value = "${name}"/> <p>
     </c:forTokens>
+<div class="fb-share-button" data-href="http://localhost:8080/hey/JSP/mostraSites.jsp" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A8080%2Fhey%2FJSP%2FmostraSites.jsp&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Partilhar</a></div>
 
 </p>
 

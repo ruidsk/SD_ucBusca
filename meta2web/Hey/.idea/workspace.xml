@@ -7,11 +7,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="29dcf806-e01e-4a39-81d0-709cdd313373" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../.idea/libraries/Java_EE_6_Java_EE_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../.idea/libraries/lib1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/webSocket/WebSocketAnnotation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../admins" beforeDir="false" afterPath="$PROJECT_DIR$/../../admins" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../backups/Npalavras.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../backups/Npalavras.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../backups/hash.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../backups/hash.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../backups/q_hist.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../backups/q_hist.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../fileone" beforeDir="false" afterPath="$PROJECT_DIR$/../../fileone" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../meta1/meta1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../meta1/meta1.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../meta1/src/ucBuscas/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../meta1/src/ucBuscas/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../meta1/src/ucBuscas/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../meta1/src/ucBuscas/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/javax_xml_bind.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/javax_xml_bind.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hey.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Hey.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/JSP/addAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/JSP/addAdmin.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/JSP/historico.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/JSP/historico.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/JSP/historicoUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/JSP/historicoUser.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/JSP/indexUrl.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/JSP/indexUrl.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/JSP/indexUrlRec.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/JSP/indexUrlRec.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/JSP/listaLigacoes.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/JSP/listaLigacoes.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/JSP/listaLigacoesUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/JSP/listaLigacoesUser.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/JSP/menuAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/JSP/menuAdmin.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/JSP/menuUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/JSP/menuUser.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/JSP/mostraSites.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/JSP/mostraSites.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/JSP/mostraSitesUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/JSP/mostraSitesUser.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/JSP/palavrasPesquisadas.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/JSP/palavrasPesquisadas.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/JSP/palavrasPesquisadasUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/JSP/palavrasPesquisadasUser.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/JSP/pesquisaSite.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/JSP/pesquisaSite.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/JSP/pesquisaSiteUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/JSP/pesquisaSiteUser.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/JSP/printSites.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/JSP/printSites.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/JSP/printSitesUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/JSP/printSitesUser.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/JSP/usersOnline.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/JSP/usersOnline.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/hey/hey.war" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/hey/hey.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Hey/struts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hey/struts.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hey/action/FacebookCallbackAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hey/action/FacebookCallbackAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hey/action/FacebookLoginAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hey/action/FacebookLoginAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hey/action/FacebookRegisterAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hey/action/FacebookRegisterAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hey/action/LoginAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hey/action/LoginAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hey/model/FacebookBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hey/model/FacebookBean.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hey/model/HeyBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hey/model/HeyBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../online" beforeDir="false" afterPath="$PROJECT_DIR$/../../online" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,7 +87,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="findjar.last.used.dir" value="$PROJECT_DIR$/src/org" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/javax.xml.bind.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -69,6 +107,18 @@
       <recent name="D:\trabalhos - FCTUC - DEI\---------\SD\tudo idk\ficha 6\Ficha6_WebProgramming\Hey" />
       <recent name="D:\trabalhos - FCTUC - DEI\---------\SD\tudo idk\ficha 6\Ficha6_WebProgramming\Hey\src\hey\action" />
     </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager" selected="Tomcat Server.Login.jsp">
     <configuration name="Registo.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8082/hey/JSP/Registo.jsp">
@@ -240,28 +290,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="Finished" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-            </expand>
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -280,6 +308,7 @@
       <workItem from="1576094151077" duration="1459000" />
       <workItem from="1576146391043" duration="19367000" />
       <workItem from="1576198774090" duration="256000" />
+      <workItem from="1576248641729" duration="17029000" />
     </task>
     <servers />
   </component>
