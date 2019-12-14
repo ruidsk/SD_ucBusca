@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <title></title>
-    <link href="http://localhost:8080/hey/CSS/Login.css" rel="stylesheet" type="text/css">
+    <link href="http://localhost:8080/hey/CSS/Login2.css" rel="stylesheet" type="text/css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
 </head>
 <body>

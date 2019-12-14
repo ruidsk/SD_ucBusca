@@ -8,7 +8,7 @@
 <html>
 <head>
     <title>Login</title>
-    <link href="http://localhost:8080/hey/CSS/Login.css" rel="stylesheet" type="text/css">
+    <link href="http://localhost:8080/hey/CSS/Login2.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
@@ -48,7 +48,7 @@
             PASSWORD:
             <input name="password" type="password">
         </div>
-        ENTRAR:
+
         <input type="submit" class="logbtn" value="Login">
 
     </form>
@@ -71,17 +71,7 @@
 
 
 
-<script type="text/javascript">
-    $(".txtb input").on("focus", function () {
-        $(this).addClass("focus");
-    });
 
-    $(".txtb input").on("blur", function () {
-        if ($(this).val() == "")
-            $(this).removeClass("focus");
-    });
-
-</script>
 
 
 </body>
