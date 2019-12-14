@@ -40,15 +40,15 @@
 
 
         <div class="txtb">
+            USERNAME:
             <input name="username" type="text">
-            <span data-placeholder="Username"></span>
         </div>
 
         <div class="txtb">
+            PASSWORD:
             <input name="password" type="password">
-            <span data-placeholder="Password"></span>
         </div>
-
+        ENTRAR:
         <input type="submit" class="logbtn" value="Login">
 
     </form>

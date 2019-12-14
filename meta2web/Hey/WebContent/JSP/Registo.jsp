@@ -22,13 +22,13 @@
         <h1>Registo</h1>
 
         <div class="txtb">
+            USERNAME:
             <input name="username" type="text">
-            <span data-placeholder="Username"></span>
         </div>
 
         <div class="txtb">
+            PASSWORD:
             <input name="password" type="password">
-            <span data-placeholder="Password"></span>
         </div>
 
 

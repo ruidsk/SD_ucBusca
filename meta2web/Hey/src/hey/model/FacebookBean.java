@@ -40,7 +40,8 @@ public class FacebookBean extends UnicastRemoteObject implements ClientInterface
 
 		try {
 
-			server = (RMIInterface) LocateRegistry.getRegistry().lookup("server");
+			server = (RMIInterface) LocateRegistry.getRegistry("10.211.55.3").lookup("server");
+			//"10.211.55.3"
 		} catch (NotBoundException | RemoteException e) {
 			e.printStackTrace(); // what happens *after* we reach this line?
 		}
@@ -114,6 +115,7 @@ public class FacebookBean extends UnicastRemoteObject implements ClientInterface
 
 	@Override
 	public void notification(String s) throws RemoteException {
+
 		System.out.println("sou facebook"+s);
 		//this.websocket.sendMessage(s+this.browserSession.getAttribute("username").toString());
 	}

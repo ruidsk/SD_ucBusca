@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -17,7 +18,7 @@
             <li class="nav-links"><a href="http://localhost:8080/hey/JSP/printSitesUser.jsp">Sites</a></li>
             <li class="nav-links"><a href="http://localhost:8080/hey/JSP/historicoUser.jsp">Histórico de pesquisas</a></li>
             <li class="nav-links"><a href="http://localhost:8080/hey/JSP/listaLigacoesUser.jsp">Consultar lista de ligações</a></li>
-              <li class="nav-links"><a href=<s:url action="facelogin"/>>Ligar ao facebook</a></li>
+            <li class="nav-links"><a href=<s:url action="facelogin"/>>Ligar ao facebook</a></li>
             <li class="nav-links"><a href="http://localhost:8080/hey/JSP/palavrasPesquisadasUser.jsp">Palavras mais pesquisadas</a></li>
             <li id="sign_in"><form action="logout" method="post" ><button type="submit">Sair</button></form></li>
         </ul>

@@ -17,8 +17,6 @@
     <nav>
         <ul id="nav_bar">
             <li class="nav-links"><a href="http://localhost:8080/hey/index.jsp">Home</a></li>
-            <li class="nav-links"><a href="http://localhost:8080/hey/JSP/menuAdmin.jsp">Para testes: entrar Admin</a></li>
-            <li class="nav-links"><a href="http://localhost:8080/hey/JSP/menuUser.jsp">Entrar User</a></li>
             <li id="sign_in"><a href="http://localhost:8080/hey/JSP/Registo.jsp">Registo</a></li>
             <li id="login"><a href="http://localhost:8080/hey/JSP/Login.jsp">Login</a></li>
         </ul>
