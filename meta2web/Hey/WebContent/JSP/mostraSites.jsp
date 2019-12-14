@@ -32,20 +32,38 @@
 <!-- IMG -->
 <div class="ucBusca">
     <a href="#" id="ucBusca_logo"><img src="http://localhost:8080/hey/Assets/Logo.png"/></a>
-    <button onclick="traduzir()">Traduzir</button>
-    <button onclick="reconhece()">Reconhecer língua</button>
 </div>
 
 
 
 <!-- FORM SEARCH -->
 
-<textarea id ="text" style="font-size:20px;width:80%;height:90%;white-space: pre-wrap;border: none;" disabled>
+
+
+<table id="tbNames" border="1" width="100%" style="text-align: center;">
+    <tr>
+        <th>Site</th>
+        <th>Acessos</th>
+        <th>Titulo</th>
+        <th>Descrição</th>
+        <th>Língua</th>
+        <th>Traduzir</th>
+    </tr>
+    <!-- <tr>
+           <td>
+               put value here
+           </td>
+       </tr>-->
+</table>
+
+<textarea id ="text" style="color:white;white-space: pre-wrap;border-top: 400px;" disabled>
     ${session.checkWords}
 </textarea>
 
-
-
+<script>
+    load();
+    load2();
+</script>
 
 </body>
 </html>
