@@ -60,7 +60,7 @@
     </div>
 
     <div class="bottom-text">
-        Não tens conta? <a href="Registo.jsp">Registo</a>
+        Não tens conta? <a href="http://localhost:8080/hey/JSP/Registo.jsp">Registo</a>
     </div>
 </div>
 

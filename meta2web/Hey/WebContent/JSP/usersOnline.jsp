@@ -61,6 +61,10 @@
 </head>
 
 <body>
+<c:choose>
+    <c:when test="${session.loggedin == true}">
+
+
 <div id="container"><div id="history"></div></div>
 <header>
     <nav>
@@ -99,6 +103,10 @@
 
 
 
-
+</c:when>
+<c:otherwise>
+    <p>Login necess�rio.</p>
+</c:otherwise>
+</c:choose>
 </body>
 </html>

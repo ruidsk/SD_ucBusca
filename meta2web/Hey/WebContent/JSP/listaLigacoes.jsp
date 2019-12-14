@@ -5,6 +5,10 @@
     <link href="http://localhost:8080/hey/CSS/palavrasPesquisadas.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<c:choose>
+    <c:when test="${session.loggedin == true}">
+
+
 <header>
     <nav>
         <ul id="nav_bar">
@@ -31,6 +35,10 @@
     ${heyBean.tabelaLigacoes()}
 </p>
 
-
+</c:when>
+<c:otherwise>
+    <p>Login necess�rio.</p>
+</c:otherwise>
+</c:choose>
 </body>
 </html>

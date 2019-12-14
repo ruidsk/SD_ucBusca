@@ -6,6 +6,10 @@
     <link href="../CSS/index.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<c:choose>
+    <c:when test="${session.loggedin == true}">
+
+
 <header>
     <nav>
         <ul id="nav_bar">
@@ -33,6 +37,10 @@
     </c:forTokens>
 
 </p>
-
+</c:when>
+<c:otherwise>
+    <p>Login necess�rio.</p>
+</c:otherwise>
+</c:choose>
 </body>
 </html>

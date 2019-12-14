@@ -11,6 +11,10 @@
     <link href="../CSS/index.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<c:choose>
+    <c:when test="${session.loggedin == true}">
+
+
 <header><p>Welcome, ${session.username}</p></header>
 <header>
     <nav>
@@ -56,7 +60,11 @@
     load();
     load2();
 </script>
-
+</c:when>
+<c:otherwise>
+    <p>Login necess�rio.</p>
+</c:otherwise>
+</c:choose>
 </body>
 </html>
 

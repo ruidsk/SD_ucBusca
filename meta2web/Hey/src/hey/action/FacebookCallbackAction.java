@@ -110,6 +110,7 @@ public class FacebookCallbackAction extends ActionSupport implements SessionAwar
 
 				}
 				else
+					session.put("ERROR_LOG", "Utilizador não registado");
 					return LOGIN;
 				} catch (RemoteException e) {
 					// TODO Auto-generated catch block

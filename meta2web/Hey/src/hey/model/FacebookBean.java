@@ -115,7 +115,7 @@ public class FacebookBean extends UnicastRemoteObject implements ClientInterface
 	@Override
 	public void notification(String s) throws RemoteException {
 		System.out.println("sou facebook"+s);
-		this.websocket.sendMessage(s+this.browserSession.getAttribute("username").toString());
+		//this.websocket.sendMessage(s+this.browserSession.getAttribute("username").toString());
 	}
 }
 	
