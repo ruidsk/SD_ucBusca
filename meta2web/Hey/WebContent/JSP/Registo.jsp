@@ -9,9 +9,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
 </head>
 <body>
-<c:choose>
-    <c:when test="${session.loggedin == true}">
-
 
 <header>
     <nav>
@@ -63,11 +60,7 @@
 
 </script>
 
-</c:when>
-<c:otherwise>
-    <p>Login necess�rio.</p>
-</c:otherwise>
-</c:choose>
+
 </body>
 </html>
 
