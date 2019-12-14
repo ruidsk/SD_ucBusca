@@ -49,7 +49,7 @@ public class FacebookRegisterAction extends ActionSupport implements SessionAwar
 	
 	public FacebookBean getFaceBean() throws RemoteException {
 		if(!session.containsKey("faceBean"))
-			this.setFacebookBean(new FacebookBean());
+			this.setFacebookBean(new FacebookBean(null,null));
 		return (FacebookBean) session.get("faceBean");
 	}
 

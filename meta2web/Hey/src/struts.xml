@@ -68,7 +68,7 @@ and should reside on the classpath of the webapp (generally /WEB-INF/classes). -
       <action name="callback" class="hey.action.FacebookCallbackAction" method="execute">
           <result name="success">/JSP/menuUser.jsp</result>
           <result name="admin">/JSP/menuAdmin.jsp</result>
-          <result name="login">index.jsp</result>
+          <result name="login">/JSP/Login.jsp</result>
       </action>
 
       <action name="associateface" class="hey.action.FacebookRegisterAction" method="execute">

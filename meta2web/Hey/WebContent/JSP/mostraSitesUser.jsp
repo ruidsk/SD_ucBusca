@@ -11,6 +11,10 @@
     <link href="../CSS/index.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<c:choose>
+    <c:when test="${session.loggedin == true}">
+
+
 <header><p>Welcome, ${session.username}</p></header>
 <header>
     <nav>
@@ -18,6 +22,7 @@
             <li class="nav-links"><a href="menuUser.jsp">Home</a></li>
             <li class="nav-links"><a href="historicoUser.jsp">Histórico de pesquisas</a></li>
             <li class="nav-links"><a href="listaLigacoesUser.jsp">Consultar lista de ligações</a></li>
+            <li class="nav-links"><a href=<s:url action="facelogin"/>>Ligar ao facebook</a></li>
             <li class="nav-links"><a href="palavrasPesquisadasUser.jsp">Palavras mais pesquisadas</a></li>
             <li id="sign_in"><form action="logout" method="post" ><button type="submit">Sair</button></form></li>
         </ul>
@@ -55,7 +60,11 @@
     load();
     load2();
 </script>
-
+</c:when>
+<c:otherwise>
+    <p>Login necess�rio.</p>
+</c:otherwise>
+</c:choose>
 </body>
 </html>
 

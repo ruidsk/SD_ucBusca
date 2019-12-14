@@ -25,7 +25,7 @@ public class HeyBean extends UnicastRemoteObject implements ClientInterface {
 
 		try {
 
-			server = (RMIInterface) LocateRegistry.getRegistry("10.211.55.3").lookup("server");
+			server = (RMIInterface) LocateRegistry.getRegistry().lookup("server");
 		} catch (NotBoundException | RemoteException e) {
 			e.printStackTrace(); // what happens *after* we reach this line?
 		}
@@ -159,7 +159,7 @@ public class HeyBean extends UnicastRemoteObject implements ClientInterface {
 
 	@Override
 	public void notification(String s) throws RemoteException {
-
+		System.out.println("-"+s+"-");
 	}
 
 }

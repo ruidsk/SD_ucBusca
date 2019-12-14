@@ -208,7 +208,6 @@ public class Server extends UnicastRemoteObject implements RMIInterface {
 
             for (Map.Entry<String,ClientInterface> nome : online.entrySet()) {
                 nome.getValue().notification("\n\tSERVER NOTIFICATION:\n\t"+username+" é o novo admin\n");
-
             }
 
 

@@ -1,6 +1,4 @@
-/**
- * Raul Barbosa 2014-11-07
- */
+
 package hey.action;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -60,7 +58,9 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	}
 	public String logout() throws RemoteException {
 		this.getHeyBean().disconnect((String) session.get("username"));
-		session.clear();
+		session.put("loggedin",false);
+		session.put("username","");
+
 
 		return SUCCESS;
 	}
