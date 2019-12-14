@@ -5,7 +5,7 @@
 
 <head>
     <title>busca.UcBusca</title>
-    <link href="../CSS/index.css" rel="stylesheet" type="text/css">
+    <link href="http://localhost:8080/hey/CSS/index.css" rel="stylesheet" type="text/css">
 </head>
 
 

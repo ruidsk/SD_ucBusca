@@ -4,7 +4,7 @@
 <html>
 <head>
     <title>busca.UcBusca</title>
-    <link href="../CSS/index.css" rel="stylesheet" type="text/css">
+    <link href="http://localhost:8080/hey/CSS/index.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <c:choose>
@@ -22,7 +22,7 @@
             <li class="nav-links"><a href="http://localhost:8080/hey/JSP/historico.jsp">Histórico</a></li>
             <li class="nav-links"><a href="http://localhost:8080/hey/JSP/palavrasPesquisadas.jsp">Mais pesquisadas</a></li>
             <li class="nav-links"><a href=<s:url action="facelogin"/>>Ligar ao facebook</a></li>
-            <li class="nav-links"><a href=<s:url action="showOnline"/>>mostar user online</a></li>
+            <li class="nav-links"><a href=<s:url action="showOnline"/>>Mostar user online</a></li>
             <li class="nav-links"><a href="http://localhost:8080/hey/JSP/listaLigacoes.jsp">Lista de ligações</a></li>
             <li id="sign_in">
                 <form action="logout" method="post"><button type="submit">Sair</button></form>
