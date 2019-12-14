@@ -56,6 +56,10 @@ and should reside on the classpath of the webapp (generally /WEB-INF/classes). -
           <result name="success">/JSP/mostraSites.jsp</result>
       </action>
 
+      <action name="checkWordsGuest" class="hey.action.LoginAction" method="checkWordsGuest">
+          <result name="success">/JSP/mostraSitesGuest.jsp</result>
+      </action>
+
 
       <action name="facelogin" class="hey.action.FacebookLoginAction" method="execute">
           <result type="redirect">${authorizationUrl}</result>
