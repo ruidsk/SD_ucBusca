@@ -249,7 +249,7 @@ public class WebCrawler {
             Npalavras.put(palavras, Npalavras.get(palavras) + 1);
         }
         String[] words = palavras.split("[ ,;:.?!(){}\\[\\]<>']+");
-        String urls = "\n ";
+        String urls = "";
         ArrayList<String> resultado = new ArrayList<String>();
         ArrayList<String> aux = new ArrayList<String>();
         int existe = 0;
@@ -293,8 +293,7 @@ public class WebCrawler {
                         HashMap.Entry chave = (HashMap.Entry) it.next();
                         for (String s : resultado) {
                         if (chave.getKey().equals(s)) {
-                            urls = urls + "Site: " + s + " (" + NlinksPSite.get(s) + ")" + "|XXX|" + "Título: " + titulo.get(s) + "|XXX|" +
-                                    "Descrição: " + descricao.get(s) + "|XXX|.|XXX|";
+                            urls = urls + s + "\n(" + NlinksPSite.get(s) + ")" + "\n" + titulo.get(s) + "\n" + descricao.get(s) + "\n\n";
 
                         }
                     }
@@ -406,7 +405,7 @@ public class WebCrawler {
                 if(!descricao.containsKey(ws)){
                     String paragrafos = doc.body().text();
                     try{
-                        String p = paragrafos.substring(0, 50);
+                        String p = paragrafos.substring(0, 100);
                         if (!descricao.containsKey(ws)){
                             descricao.put(ws, p);
                         }
