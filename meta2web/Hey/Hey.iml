@@ -37,5 +37,6 @@
     <orderEntry type="library" name="compress-lzf-1.0.4" level="project" />
     <orderEntry type="library" name="asm-3.3" level="project" />
     <orderEntry type="library" name="javax.xml.bind" level="project" />
+    <orderEntry type="library" name="jquery" level="application" />
   </component>
 </module>

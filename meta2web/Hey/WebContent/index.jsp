@@ -4,25 +4,26 @@
 
 <head>
 	<title>UcBusca</title>
-	<link href="CSS/index.css" rel="stylesheet" type="text/css">
+	<link href="http://localhost:8080/hey/CSS/index.css" rel="stylesheet" type="text/css">
+
 </head>
 
 <body>
 	<header>
 		<nav>
 			<ul id="nav_bar">
-				<li class="nav-links"><a href="index.jsp">Home</a></li>
-				<li class="nav-links"><a href="JSP/menuAdmin.jsp">Para testes: entrar Admin</a></li>
-				<li class="nav-links"><a href="JSP/menuUser.jsp">Entrar User</a></li>
-				<li id="sign_in"><a href="JSP/Registo.jsp">Registo</a></li>
-				<li id="login"><a href="JSP/Login.jsp">Login</a></li>
+				<li class="nav-links"><a href="http://localhost:8080/hey/index.jsp">Home</a></li>
+				<li class="nav-links"><a href="http://localhost:8080/hey/JSP/menuAdmin.jsp">Para testes: entrar Admin</a></li>
+				<li class="nav-links"><a href="http://localhost:8080/hey/JSP/menuUser.jsp">Entrar User</a></li>
+				<li id="sign_in"><a href="http://localhost:8080/hey/JSP/Registo.jsp">Registo</a></li>
+				<li id="login"><a href="http://localhost:8080/hey/JSP/Login.jsp">Login</a></li>
 			</ul>
 		</nav>
 	</header>
 
 	<!-- IMG -->
 	<div class="ucBusca">
-		<a href="#" id="ucBusca_logo"><img src="Assets/Logo.png" /></a>
+		<a href="#" id="ucBusca_logo"><img src="http://localhost:8080/hey/Assets/Logo.png" /></a>
 	</div>
 
 	<c:choose>
@@ -34,7 +35,7 @@
 		</c:otherwise>
 	</c:choose>
 	<!-- FORM SEARCH -->
-	<form action="checkWords" method="post">
+	<form action="checkWordsGuest" method="post">
 		<div class="form">
 
 			<label for="form-search"></label>

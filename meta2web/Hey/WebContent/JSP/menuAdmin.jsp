@@ -21,16 +21,16 @@
     <header>
         <nav>
             <ul id="nav_bar">
-                <li class="nav-links"><a href="menuAdmin.jsp">Home</a></li>
-                <li class="nav-links"><a href="pesquisaSite.jsp">Sites</a></li>
-                <li class="nav-links"><a href="addAdmin.jsp">Add admin</a></li>
-                <li class="nav-links"><a href="indexUrl.jsp">Index urls</a></li>
-                <li class="nav-links"><a href="indexUrlRec.jsp">Index iterativo</a></li>
-                <li class="nav-links"><a href="historico.jsp">Histórico</a></li>
-                <li class="nav-links"><a href="palavrasPesquisadas.jsp">Mais pesquisadas</a></li>
+                <li class="nav-links"><a href="http://localhost:8080/hey/JSP/menuAdmin.jsp">Home</a></li>
+                <li class="nav-links"><a href="http://localhost:8080/hey/JSP/pesquisaSite.jsp">Sites</a></li>
+                <li class="nav-links"><a href="http://localhost:8080/hey/JSP/addAdmin.jsp">Add admin</a></li>
+                <li class="nav-links"><a href="http://localhost:8080/hey/JSP/indexUrl.jsp">Index urls</a></li>
+                <li class="nav-links"><a href="http://localhost:8080/hey/JSP/indexUrlRec.jsp">Index iterativo</a></li>
+                <li class="nav-links"><a href="http://localhost:8080/hey/JSP/historico.jsp">Histórico</a></li>
+                <li class="nav-links"><a href="http://localhost:8080/hey/JSP/palavrasPesquisadas.jsp">Mais pesquisadas</a></li>
                 <li class="nav-links"><a href=<s:url action="facelogin"/>>Ligar ao facebook</a></li>
-                <li class="nav-links"><a href=<s:url action="showOnline"/>>Users online</a></li>
-                <li class="nav-links"><a href="listaLigacoes.jsp">Lista de ligações</a></li>
+                <li class="nav-links"><a href=<s:url action="showOnline"/>>mostar user online</a></li>
+                <li class="nav-links"><a href="http://localhost:8080/hey/JSP/listaLigacoes.jsp">Lista de ligações</a></li>
                 <li id="sign_in">
                     <form action="logout" method="post"><button type="submit">Sair</button></form>
                 </li>
