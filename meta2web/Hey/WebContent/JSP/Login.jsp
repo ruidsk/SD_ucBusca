@@ -8,7 +8,7 @@
 <html>
 <head>
     <title>Login</title>
-    <link href="http://localhost:8080/hey/CSS/Login.css" rel="stylesheet" type="text/css">
+    <link href="http://localhost:8080/hey/CSS/Login2.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
@@ -40,13 +40,13 @@
 
 
         <div class="txtb">
+            USERNAME:
             <input name="username" type="text">
-            <span data-placeholder="Username"></span>
         </div>
 
         <div class="txtb">
+            PASSWORD:
             <input name="password" type="password">
-            <span data-placeholder="Password"></span>
         </div>
 
         <input type="submit" class="logbtn" value="Login">
@@ -60,7 +60,7 @@
     </div>
 
     <div class="bottom-text">
-        Não tens conta? <a href="Registo.jsp">Registo</a>
+        Não tens conta? <a href="http://localhost:8080/hey/JSP/Registo.jsp">Registo</a>
     </div>
 </div>
 
@@ -71,17 +71,7 @@
 
 
 
-<script type="text/javascript">
-    $(".txtb input").on("focus", function () {
-        $(this).addClass("focus");
-    });
 
-    $(".txtb input").on("blur", function () {
-        if ($(this).val() == "")
-            $(this).removeClass("focus");
-    });
-
-</script>
 
 
 </body>

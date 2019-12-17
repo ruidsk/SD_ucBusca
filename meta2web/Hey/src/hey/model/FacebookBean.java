@@ -10,6 +10,9 @@ import com.github.scribejava.core.model.Token;
 
 import rmiserver.ClientInterface;
 import rmiserver.RMIInterface;
+import webSocket.WebSocketAnnotation;
+
+import javax.servlet.http.HttpSession;
 
 public class FacebookBean extends UnicastRemoteObject implements ClientInterface {
 	private RMIInterface server;
@@ -23,14 +26,22 @@ public class FacebookBean extends UnicastRemoteObject implements ClientInterface
 	private String facebook_id;
 	private String userid;
 
+	private WebSocketAnnotation websocket;
+	private HttpSession browserSession;
 
 
-	public FacebookBean() throws RemoteException {
+	public FacebookBean(WebSocketAnnotation web, HttpSession session) throws RemoteException {
 		super();
+		this.browserSession = session;
+		this.websocket = web;
+
+		System.setProperty("java.net.preferIPv4Stack" , "true");
+
 
 		try {
 
 			server = (RMIInterface) LocateRegistry.getRegistry("10.211.55.3").lookup("server");
+			//"10.211.55.3"
 		} catch (NotBoundException | RemoteException e) {
 			e.printStackTrace(); // what happens *after* we reach this line?
 		}
@@ -105,6 +116,8 @@ public class FacebookBean extends UnicastRemoteObject implements ClientInterface
 	@Override
 	public void notification(String s) throws RemoteException {
 
+		System.out.println("sou facebook"+s);
+		//this.websocket.sendMessage(s+this.browserSession.getAttribute("username").toString());
 	}
 }
 	

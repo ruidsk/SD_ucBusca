@@ -56,6 +56,10 @@ and should reside on the classpath of the webapp (generally /WEB-INF/classes). -
           <result name="success">/JSP/mostraSites.jsp</result>
       </action>
 
+      <action name="checkWordsGuest" class="hey.action.LoginAction" method="checkWordsGuest">
+          <result name="success">/JSP/mostraSitesGuest.jsp</result>
+      </action>
+
 
       <action name="facelogin" class="hey.action.FacebookLoginAction" method="execute">
           <result type="redirect">${authorizationUrl}</result>
@@ -64,7 +68,7 @@ and should reside on the classpath of the webapp (generally /WEB-INF/classes). -
       <action name="callback" class="hey.action.FacebookCallbackAction" method="execute">
           <result name="success">/JSP/menuUser.jsp</result>
           <result name="admin">/JSP/menuAdmin.jsp</result>
-          <result name="login">index.jsp</result>
+          <result name="login">/JSP/Login.jsp</result>
       </action>
 
       <action name="associateface" class="hey.action.FacebookRegisterAction" method="execute">

@@ -2,8 +2,10 @@
   <library name="javax.xml.bind">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/src/javax.xml.bind.jar!/" />
+      <root url="file://$PROJECT_DIR$/lib" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/lib" recursive="false" />
   </library>
 </component>

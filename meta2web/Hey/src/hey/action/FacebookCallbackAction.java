@@ -90,8 +90,8 @@ public class FacebookCallbackAction extends ActionSupport implements SessionAwar
 				{
 					userid = this.getFaceBean().getUserid();
 					
-					this.session.put("loggedin", "true");
-					this.session.put("fbloggedin", "true");
+					this.session.put("loggedin", true);
+					this.session.put("fbloggedin", true);
 					this.session.put("username", this.username);
 					this.session.put("accessToken", accessToken);
 					this.session.put("fbid", this.facebook_id);
@@ -110,6 +110,7 @@ public class FacebookCallbackAction extends ActionSupport implements SessionAwar
 
 				}
 				else
+					session.put("ERROR_LOG", "Utilizador não registado");
 					return LOGIN;
 				} catch (RemoteException e) {
 					// TODO Auto-generated catch block

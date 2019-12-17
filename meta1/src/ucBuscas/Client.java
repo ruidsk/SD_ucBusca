@@ -51,9 +51,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
      */
     public void notification(String note) throws RemoteException {
         System.out.println(note);
-        if(flag==true){
 
-        }
     }
 
     /**
@@ -387,7 +385,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
 
                 case 1:
                     System.out.println("Introduza o username do novo admin: ");
-                    String user = input.next();
+                    String user = input.nextLine();
                         /*System.out.println("Password: ");
                         String password = input.next();*/
                     do {
