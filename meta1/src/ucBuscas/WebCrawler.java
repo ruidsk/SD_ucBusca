@@ -208,25 +208,28 @@ public class WebCrawler {
         String resultado = "";
         if (!ws.startsWith("http://") && !ws.startsWith("https://"))
             ws = "http://".concat(ws);
-
-        while (paginasVisitadas.size() < N_paginas_A_visitar) {
-            String currentUrl;
-            if (paginas_A_Visitar.isEmpty()) {
-                currentUrl = ws;
-                paginasVisitadas.add(ws);
-            } else {
-                currentUrl = nextUrl();
+        if(!NlinksPSite.containsKey(ws)) {
+            while (paginasVisitadas.size() < N_paginas_A_visitar) {
+                String currentUrl;
+                if (paginas_A_Visitar.isEmpty()) {
+                    currentUrl = ws;
+                    paginasVisitadas.add(ws);
+                } else {
+                    currentUrl = nextUrl();
+                }
+                main(currentUrl);
+                paginas_A_Visitar.addAll(getLinks());
+                count++;
             }
-            main(currentUrl);
-            paginas_A_Visitar.addAll(getLinks());
-            count++;
+            N_paginas_A_visitar += 11;
+            System.out.println("\n**Done** Visited " + count + " web page(s)\n");
+
+
+            resultado = String.valueOf(count);
         }
-        N_paginas_A_visitar += 11;
-        System.out.println("\n**Done** Visited " + count + " web page(s)\n");
-
-
-        resultado=String.valueOf(count);
-
+        else {
+            resultado = "0! O site já tinha sido indexado!";
+        }
         return resultado;
     }
 
