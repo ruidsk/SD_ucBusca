@@ -4,7 +4,7 @@
 
 <head>
 	<title>UcBusca</title>
-	<link href="http://localhost:8080/hey/CSS/index.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/CSS/index.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -12,16 +12,16 @@
 	<header>
 		<nav>
 			<ul id="nav_bar">
-				<li class="nav-links"><a href="http://localhost:8080/hey/index.jsp">Home</a></li>
-				<li id="sign_in"><a href="http://localhost:8080/hey/JSP/Registo.jsp">Registo</a></li>
-				<li id="login"><a href="http://localhost:8080/hey/JSP/Login.jsp">Login</a></li>
+				<li class="nav-links"><a href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
+				<li id="sign_in"><a href="${pageContext.request.contextPath}/JSP/Registo.jsp">Registo</a></li>
+				<li id="login"><a href="${pageContext.request.contextPath}/JSP/Login.jsp">Login</a></li>
 			</ul>
 		</nav>
 	</header>
 
 	<!-- IMG -->
 	<div class="ucBusca">
-		<a href="#" id="ucBusca_logo"><img src="http://localhost:8080/hey/Assets/Logo.png" /></a>
+		<a href="#" id="ucBusca_logo"><img src="${pageContext.request.contextPath}/Assets/Logo.png" /></a>
 	</div>
 
 	<c:choose>
