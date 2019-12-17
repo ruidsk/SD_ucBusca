@@ -19,7 +19,7 @@ import static java.util.Map.Entry.*;
 public class WebCrawler {
     static HashMap<String, Integer> NlinksPSite = new HashMap<>();  //links e numero de ligacoes
     static Map<String, Integer> Npalavras = new TreeMap<>(); //palavras e numero de vezes que são pesquisadas
-    private static int N_paginas_A_visitar = 20;
+    private static int N_paginas_A_visitar = 11;
     private static Set<String> paginasVisitadas = new HashSet<String>();
     private static List<String> paginas_A_Visitar = new LinkedList<String>();
     private static HashMap<String, String> titulo = new HashMap<>();
@@ -64,7 +64,7 @@ public class WebCrawler {
                 if(!descricao.containsKey(ws)){
                     String paragrafos = doc.body().text();
                     try{
-                        String p = paragrafos.substring(0, 50);
+                        String p = paragrafos.substring(0, 100);
                         if (!descricao.containsKey(ws)){
                             descricao.put(ws, p);
                         }
@@ -74,6 +74,13 @@ public class WebCrawler {
                             descricao.put(ws, p);
                         }
                     }
+                }
+
+                String text = doc.text(); // We can use doc.body().text() if we only want to get text from <body></body>
+                countWords(text, ws);
+
+                if (!NlinksPSite.containsKey(ws)) {
+                    NlinksPSite.put(ws, 0);
                 }
 
                 // Title
@@ -103,7 +110,7 @@ public class WebCrawler {
                     }
                     links2.add(link.absUrl("href"));
                     if (!NlinksPSite.containsKey(link.attr("href"))) {
-                        NlinksPSite.put(ws, 1);
+                        NlinksPSite.put(link.attr("href"), 1);
                     } else {
                         NlinksPSite.put(link.attr("href"), NlinksPSite.get(link.attr("href")) + 1);
                     }
@@ -112,13 +119,13 @@ public class WebCrawler {
                 }
                 faz_backup(ws);
                 // Get website text and count words
-                String text = doc.text(); // We can use doc.body().text() if we only want to get text from <body></body>
-                countWords(text, ws);
+
             }
         } catch (IOException e) {
-            //e.printStackTrace();
+            e.printStackTrace();
+            System.out.println("**Failure** Retrieving links!");
             return false;
-            //System.out.println("**Failure** Retrieving links!");
+
         }
 
         return true;
@@ -134,6 +141,8 @@ public class WebCrawler {
         BufferedReader reader = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(text.getBytes(StandardCharsets.UTF_8))));
         String line;
 
+        System.out.println("Vai fazer countwords para o site: "+ url);
+        System.out.println("\n"+ text);
         // Get words and respective count
         while (true) {
             try {
@@ -212,7 +221,7 @@ public class WebCrawler {
             paginas_A_Visitar.addAll(getLinks());
             count++;
         }
-        N_paginas_A_visitar += 2;
+        N_paginas_A_visitar += 11;
         System.out.println("\n**Done** Visited " + count + " web page(s)\n");
 
 
@@ -278,7 +287,7 @@ public class WebCrawler {
                 }
                 resultado.removeAll(Collections.singleton(null));
 
-
+                System.out.println("\n teste: "+resultado);
 
                 Map<String, Integer> sorted = NlinksPSite
                         .entrySet()
@@ -355,6 +364,7 @@ public class WebCrawler {
                 if (i > 100) {
                     break;
                 } else {
+                    System.out.println("Vai carregar o site: " + temp);
                     loadmain(temp);
                 }
             }
@@ -417,8 +427,15 @@ public class WebCrawler {
                     }
                 }
 
+                String text = doc.text(); // We can use doc.body().text() if we only want to get text from <body></body>
+                countWords(text, ws);
+
+                if (!NlinksPSite.containsKey(ws)) {
+                    NlinksPSite.put(ws, 0);
+                }
+
                 // Title
-                System.out.println(doc.title() + "\n");
+                System.out.println("Título: "+doc.title() + "\n");
 
                 // Get all links
                 Elements links = doc.select("a[href]");
@@ -445,7 +462,7 @@ public class WebCrawler {
                     links2.add(link.absUrl("href"));
 
                     if (!NlinksPSite.containsKey(link.attr("href"))) {
-                        NlinksPSite.put(ws, 1);
+                        NlinksPSite.put(link.attr("href"), 1);
                     } else {
                         NlinksPSite.put(link.attr("href"), NlinksPSite.get(link.attr("href")) + 1);
                     }
@@ -454,9 +471,9 @@ public class WebCrawler {
                 }
 
                 // Get website text and count words
-                String text = doc.text(); // We can use doc.body().text() if we only want to get text from <body></body>
-                countWords(text, ws);
+
             }
+
         } catch (IOException e) {
             //e.printStackTrace();
             return false;
