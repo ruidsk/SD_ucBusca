@@ -163,8 +163,8 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	public String addUrlRec() throws RemoteException{
 		String aux = this.getHeyBean().addUrlRec(site);
 		String[] tmp_split = aux.split(":", 2);
-		System.out.println("\nForam adicionados "+ tmp_split[1] + " sites!");
-		session.put("addUrlRec","Foram adicionados "+ tmp_split[1] + " sites!");
+		System.out.println("\nFoi adicionado o seguinte número de sites: "+ tmp_split[1]);
+		session.put("addUrlRec","Foi adicionado o seguinte número de sites: "+ tmp_split[1]);
 		return "success";
 	}
 

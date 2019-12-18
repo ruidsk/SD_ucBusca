@@ -4,7 +4,7 @@
 <html>
 <head>
     <title>busca.UcBusca</title>
-    <link href="http://localhost:8080/hey/CSS/index.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/CSS/index.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <c:choose>
@@ -14,12 +14,12 @@
 <header>
     <nav>
         <ul id="nav_bar">
-            <li class="nav-links"><a href="http://localhost:8080/hey/JSP/menuUser.jsp">Home</a></li>
-            <li class="nav-links"><a href="http://localhost:8080/hey/JSP/printSitesUser.jsp">Sites</a></li>
-            <li class="nav-links"><a href="http://localhost:8080/hey/JSP/historicoUser.jsp">Histórico de pesquisas</a></li>
-            <li class="nav-links"><a href="http://localhost:8080/hey/JSP/listaLigacoesUser.jsp">Consultar lista de ligações</a></li>
+            <li class="nav-links"><a href="${pageContext.request.contextPath}/JSP/menuUser.jsp">Home</a></li>
+            <li class="nav-links"><a href="${pageContext.request.contextPath}/JSP/printSitesUser.jsp">Sites</a></li>
+            <li class="nav-links"><a href="${pageContext.request.contextPath}/JSP/historicoUser.jsp">Histórico de pesquisas</a></li>
+            <li class="nav-links"><a href="${pageContext.request.contextPath}/JSP/listaLigacoesUser.jsp">Consultar lista de ligações</a></li>
             <li class="nav-links"><a href=<s:url action="facelogin"/>>Ligar ao facebook</a></li>
-            <li class="nav-links"><a href="http://localhost:8080/hey/JSP/palavrasPesquisadasUser.jsp">Palavras mais pesquisadas</a></li>
+            <li class="nav-links"><a href="${pageContext.request.contextPath}/JSP/palavrasPesquisadasUser.jsp">Palavras mais pesquisadas</a></li>
             <li id="sign_in"><form action="logout" method="post" ><button type="submit">Sair</button></form></li>
         </ul>
     </nav>

@@ -8,7 +8,7 @@
 <html>
 <head>
     <title>Login</title>
-    <link href="http://localhost:8080/hey/CSS/Login2.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/CSS/Login2.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
@@ -19,7 +19,7 @@
 <header>
     <nav>
         <ul id="nav_bar">
-            <li class="nav-links"><a href="http://localhost:8080/hey/index.jsp">Home</a></li>
+            <li class="nav-links"><a href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
            </ul>
     </nav>
 </header>
@@ -55,12 +55,12 @@
 
     <div class="txtb" style="align-items: center;">
         <s:form action="facelogin" method="post">
-            <input type="image" src="http://localhost:8080/hey/Assets/buton.png" alt="Submit">
+            <input type="image" src="${pageContext.request.contextPath}/Assets/buton.png" alt="Submit">
         </s:form>
     </div>
 
     <div class="bottom-text">
-        Não tens conta? <a href="http://localhost:8080/hey/JSP/Registo.jsp">Registo</a>
+        Não tens conta? <a href="${pageContext.request.contextPath}/JSP/Registo.jsp">Registo</a>
     </div>
 </div>
 
