@@ -4,7 +4,7 @@
 
 <head>
 	<title>UcBusca</title>
-	<link href="http://localhost:8080/hey/CSS/index.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/CSS/index.css" rel="stylesheet" type="text/css">
 
 </head>
 
